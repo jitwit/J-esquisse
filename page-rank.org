@@ -1,0 +1,110 @@
+#+title: Page Rank
+
+* Idea
+
+Page rank is a way to measure how important nodes are in a
+network. Assuming a traveller chooses their next link unbiasedly and
+at any spot they might reset, where do they spend their time?
+
+To given names to quantities, the traveller continues with probability
+$d$ and follows one of the links out with uniform probability. Placing
+these quantities in a matrix such that $A[v][u]$ is the chance of
+heading to node $v$ from $u$, the previous condition means that the
+columns of $A$ sum to 1 and that if $u$ has $n$ out edges, these
+entries are $\frac{1}{n}$.
+
+Let $R$ store the chance of being on each node. The equation $R =
+\frac{1-d}{N} \cdot 1_N - d \cdot A * R$ represents the steady state
+of the journey described above and the algebraic solution is
+
+$$
+R = (I_N+d\cdot A)^{-1} \cdot \frac{1-d}{N}
+$$
+
+The equation can also be used to iterate until a close enough answer
+is found.
+
+* J
+
+Here is a ~J~ program to compute the page rank. The part of the
+program left of the multiplciation (~+/ .*~) subtracts the identity
+matrix of appropriate size from $d\cdot A$ and finds the inverse
+(~%.~). The right part is the stopping quantity $\frac{1-d}{N}$, a
+vector.
+
+#+BEGIN_SRC j :session :exports code
+page_rank=: ([: %. =@i.@#@] - *) +/ .* ((]#(1:-[)%])#@])
+
+NB. the "click" probability d is commonly 0.85 measuring the web. 0.3
+NB. is often used for biological applications.
+demo=:('network';'column sum';'page rank')&,. @ (;+/;0.85&page_rank)
+#+END_SRC
+
+#+RESULTS:
+
+* Examples
+
+A network with two nodes and links between each.
+
+#+BEGIN_SRC j :session :exports results
+demo 2 2 $0 1 1 0
+#+END_SRC
+
+#+RESULTS:
+: ┌──────────┬───────┐
+: │network   │0 1    │
+: │          │1 0    │
+: ├──────────┼───────┤
+: │column sum│1 1    │
+: ├──────────┼───────┤
+: │page rank │0.5 0.5│
+: └──────────┴───────┘
+
+A network of four nodes and the following links between them [0->1,
+0->2, 1->2, 2->0, 3->2].
+
+#+BEGIN_SRC j :session :exports results
+demo 4 4$0 0 1 0 0.5 0 0 0 0.5 1 0 1 0 0 0 0
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌──────────┬─────────────────────────────────┐
+│network   │  0 0 1 0                        │
+│          │0.5 0 0 0                        │
+│          │0.5 1 0 1                        │
+│          │  0 0 0 0                        │
+├──────────┼─────────────────────────────────┤
+│column sum│1 1 1 1                          │
+├──────────┼─────────────────────────────────┤
+│page rank │0.372527 0.195824 0.394149 0.0375│
+└──────────┴─────────────────────────────────┘
+#+end_example
+
+A love triangle. 
+
+#+BEGIN_SRC j :session :exports results
+love_triangle=: 3 3 $ 0 1 1 0.5 0 0 0.5 0 0
+demo love_triangle
+#+END_SRC
+
+#+RESULTS:
+: ┌──────────┬──────────────────────────┐
+: │network   │  0 1 1                   │
+: │          │0.5 0 0                   │
+: │          │0.5 0 0                   │
+: ├──────────┼──────────────────────────┤
+: │column sum│1 1 1                     │
+: ├──────────┼──────────────────────────┤
+: │page rank │0.486486 0.256757 0.256757│
+: └──────────┴──────────────────────────┘
+
+The portions aren't exactly 0.5 and two 0.25s because of the damping
+factor $d$. With the lower damping $d=0.31$:
+
+#+BEGIN_SRC j :session :exports both
+0.31 page_rank love_triangle
+#+END_SRC
+
+#+RESULTS:
+: 0.412214 0.293893 0.293893
