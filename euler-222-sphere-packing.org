@@ -1,0 +1,70 @@
+#+title: Sphere Packing
+
+Inside a pipe of radius 50mm, balls of radii $30,31,\dots, 50$ mm are
+placed. What's the smallest possible height among all arrangements?
+
+* Observations
+
+** Formula for the height of two spheres
+
+Take two spheres with radii $s$ and $r$. If they touch along a segment
+making $\theta$ with the horizontal, the height of the combination is 
+
+$$
+(s+r)\cdot (1 + \sin\theta).
+$$
+
+The horizontal extent is $(s+r)\cdot (1+\cos\theta)\le 100$. The
+greater the horizontal extent, the smaller the vertical, so the
+packing will be at equality and $\theta$ can be calculated directly as
+
+$$
+\theta = \cos^{-1} \bigg(\frac{100}{s+r} - 1\bigg).
+$$
+
+** Generalizing height to more spheres
+
+The distance between centers of spheres is $(s+r)\cdot
+\sin\theta$. With many spheres $r_1,r_2,\dots,r_n$, the total height
+is
+
+$$ r_1 + (r_1+r_2)\cdot \sin\theta_{1,2} + (r_2+r_3) \cdot \sin
+\theta_{2,3} + \dots + (r_{n-1}+r_n)\cdot \sin\theta_{n-1,n} + r_n. $$
+
+Said again, the triangle formed by the two centers and the horizontal
+of two triangles has, so 
+
+$$\sqrt {(s+r)^2 + (100-s-r)^2} = (s+r)\cdot \sin \theta$$
+
+gives the height, which is $\sqrt {200\cdot(s+r) - 100^2}$.
+
+** Inserting a sphere larger than the others in an arrangement
+
+Let $h(s,r) = \sqrt {200\cdot (s+r) - 100^2}$ stand for the height
+between two centers of balls with radii $s,r$, the function discovered
+above. Let $L$ be the length of an arrangement of at least 3 balls
+with $s$ the radius of a ball larger than all others in the
+arrangement to be inserted, $c$ the radius of a ball at the end, and
+$a,b$ two spheres in the middle. Compare adding $s$ to the end on top
+of $c$ vs adding it between $a,b$:
+
+$$
+(L-c+r+h(c,r)) - (L+h(a,r)+h(r,b)-h(a,b)) = r-c+h(c,r)+h(a,b)-h(a,r)-h(r,b)
+$$
+
+
+
+* J Program
+
+#+BEGIN_SRC j :session :exports both
+round=: [: <. 0.5 + ]                 NB. round is floor (y+0.5)
+pipe=: 100                            NB. diameter of pipe
+stack=: [: %: (pipe^2) -~ 2*pipe * +  NB. distance between two centers
+pack=: {. + {: + [: +/ }. stack }:    NB. total height of an ordering of spheres
+arrange=: ({:,|.@$:@}:)`]@.(0:=#)     NB. recursively stack, putting largest in front
+
+]solution=:round 1000 * pack arrange (30+i.21)
+#+END_SRC
+
+#+RESULTS:
+: 1590933

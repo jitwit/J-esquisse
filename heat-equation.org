@@ -1,0 +1,52 @@
+#+title: Simulating Heat Equation
+
+The plan is to visualize heat dispersion. The differential equation
+for heat spreading through a material is:
+
+$$u_t = \alpha \cdot \nabla ^2 u$$
+
+where $\alpha$ depends on the material and $u$ is a function mapping
+points in space and time to temperature.
+
+$u$ will be represented as an array mapping coordinates to
+temperatures, and will evolve through time by calculating the
+Laplacian and adjusting accordingly.
+
+* Finite difference
+
+The discrete derivative can be calculated by looking at differences
+about $u(x,y)$. The centered operator for the first derivative of the
+first variable is
+
+$$\frac{u(x+\frac{h}{2},y)-u(x-\frac{h}{2},y)}{h}$$
+
+and doing that twice gives
+
+$$\frac{u(x+h,y)+u(x-h,y)-2\cdot u(x,y)}{h^2}$$
+
+as the second partial derivative $u_{xx}$.
+
+The $h^2$ term may be absorbed in $\alpha$, so it may be dropped. An
+approximation for the Laplacian is thus,
+
+$$
+\nabla^2 u = u_{xx} + u_{yy} = u(x+1,y)+u(x,y+1)+u(x-1,y)+u(x,y-1)-4\cdot u(x,y)
+$$
+
+with an array ($h=1$ being the smallest difference in indices). In J:
+
+#+BEGIN_SRC j :session :exports code :tangle programs/heat-equation.ijs
+nabla2=: (1 0)&|.+(0 1)&|.+(_1 0)&|.+(0 _1)&|.-4:*]
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC j :session
+require'viewmat'
+coinsert'jviewmat jgl2'
+
+palette=: 2 3 $ 0 0 0 255 0 0
+alpha=: 0.2
+#+END_SRC
+
+#+RESULTS:
