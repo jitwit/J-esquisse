@@ -5,7 +5,7 @@ placed. What's the smallest possible height among all arrangements?
 
 * Observations
 
-** Formula for the height of two spheres
+** Formula for the height of an arrangement
 
 Take two spheres with radii $s$ and $r$. If they touch along a segment
 making $\theta$ with the horizontal, the height of the combination is 
@@ -22,8 +22,6 @@ $$
 \theta = \cos^{-1} \bigg(\frac{100}{s+r} - 1\bigg).
 $$
 
-** Generalizing height to more spheres
-
 The distance between centers of spheres is $(s+r)\cdot
 \sin\theta$. With many spheres $r_1,r_2,\dots,r_n$, the total height
 is
@@ -31,12 +29,13 @@ is
 $$ r_1 + (r_1+r_2)\cdot \sin\theta_{1,2} + (r_2+r_3) \cdot \sin
 \theta_{2,3} + \dots + (r_{n-1}+r_n)\cdot \sin\theta_{n-1,n} + r_n. $$
 
-Said again, the triangle formed by the two centers and the horizontal
-of two triangles has, so 
+Looking geometrically, the triangle formed by the two centers and the
+horizontal of two triangles gives
 
-$$\sqrt {(s+r)^2 + (100-s-r)^2} = (s+r)\cdot \sin \theta$$
+$$(s+r)\cdot \sin \theta = \sqrt {(s+r)^2 + (100-s-r)^2}$$
 
-gives the height, which is $\sqrt {200\cdot(s+r) - 100^2}$.
+which is the vertical height. Simplified: $\sqrt {200\cdot(s+r) -
+100^2}$.
 
 ** Inserting a sphere larger than the others in an arrangement
 
@@ -52,7 +51,7 @@ $$
 (L-c+r+h(c,r)) - (L+h(a,r)+h(r,b)-h(a,b)) = r-c+h(c,r)+h(a,b)-h(a,r)-h(r,b)
 $$
 
-
+tbc...
 
 * J Program
 
