@@ -6,7 +6,7 @@ nabla2=: (1 0)&|.+(0 1)&|.+(_1 0)&|.+(0 _1)&|.-4:*]
 
 NB. pal=: 
 palette=: 2 3 $ 40 0 0 0 98 187
-alpha=: 0.2
+k=: 0.2
 img=: ? 400 580 $ 0
 
 HEQ=: noun define
@@ -45,7 +45,7 @@ img=: ? (pixw , pixh) $ 0
 )
 
 evolve=: verb define
-img=:img + k * nabla2 img
+img=: img + k * nabla2 img
 )
 
 heq_screen_mmove=: verb define
