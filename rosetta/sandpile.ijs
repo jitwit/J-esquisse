@@ -12,7 +12,8 @@ NB. sand from rotating (|.) by neighborhood _2 ]\ _1 0 0 _1 1 0 0 1
 NB. and adding (+/). this implementation has the grid wrapping around
 NB. so that sand on the top may spill to the bottom. the fit conjunction 
 NB. |.!.0 could be used if sand should spill off the world instead.
-sand=: + [: (_4&* + [: +/ (_2]\_1 0 0 _1 1 0 0 1)&|.) 4&<:
+nhood=:_2]\_1 0 0 _1 1 0 0 1
+sand=:+[:(_4&*+[:+/nhood&|.)3&<
  
 NB. reach a fix point (^: _) and display the sand using viewmat.
 require 'viewmat'
