@@ -24,7 +24,7 @@ A=.0$]D0=.D=. dna n NB. initial dna and history of actions
 
 NB. k times do a random action according to weights and record it
 for. i.k do.
-  D=.". action=. (":?#D),' ',(":MUTS{::~(+/\ws)I.?0),' D'
+  D=.".]action=. (":?#D),' ',(":MUTS{::~(+/\ws)I.?0),' D'
   A=. action ; A
 end.
 
