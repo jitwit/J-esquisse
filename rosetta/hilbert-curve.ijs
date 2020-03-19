@@ -1,6 +1,6 @@
 require 'plot'
 
 iter=: (, 1 , +@|.) @: (,~ 0j_1 ,~ 0j_1*|.)
-hilbert=: 3 : '0j1+(%{:) +/\0,iter ^: y '''''
+H=: monad : '0j1+(%{:) +/\0,iter ^: y '''''
 
-plot ^: IFQT hilbert 5
+plot ^: IFQT H 5

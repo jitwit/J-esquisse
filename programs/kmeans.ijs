@@ -4,3 +4,5 @@ cluster=: ] </.~ [: (i. <./)"1 [: |: l2"1 _1/
 init=: ] cluster~ ] {~ [ {. [: ?~ #@]
 iter=: ; cluster~ [: > (+/%#) &.>
 kmeans=: [: iter^:_ init
+
+2 kmeans points
