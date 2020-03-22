@@ -2,15 +2,15 @@
 
 Solutions in J.
 
-** Phase 2
+* Phase 2
 
-*** Easy
+** Easy
 
-**** Shhh! It's a secret!
+*** Shhh! It's a secret!
 
 Easy level difficulty.
 
-***** Cooking on the Grille
+**** Cooking on the Grille
 
 Given a rectangular grid and a mask, uncover the message. The basic
 idea is to ravel both then select based on the spaces.
@@ -34,7 +34,7 @@ grille ([;];Grille) grid
 : │ #####│NYMPCE│         │
 : └──────┴──────┴─────────┘
 
-***** The Secret is Key
+**** The Secret is Key
 
 The idea in the encoding is to split the message into chunks according
 to the size of the key, transpose, grade by the key, and ravel.
@@ -64,7 +64,7 @@ TransCoding=: TransEnc :. TransDec
 : │OUT OF ORDER│O  DTFRRUOOE│OUT OF ORDER│
 : └────────────┴────────────┴────────────┘
 
-***** When in Prison, Do as the Prisoners Do
+**** When in Prison, Do as the Prisoners Do
 
 ~TapEnc~ can surely be simplified. The idea is to index based on div
 and mod into alphabet without ~'J'~.
@@ -86,13 +86,14 @@ Tap=: TapEnc :. TapDec
 : └───────────────────┴───────────────────┘
 
 
-**** Watch Out for That Mine!
+*** Watch Out for That Mine!
 
 Another easy one.
 
 #+BEGIN_SRC j :session :exports both
-MakeMines=: dyad : 'y $ _1 (x?.*/y)} (*/y)$0' NB. fixing random seed for reproducability
-CountMines=: + >:* [: +/ [: | (,/,"0/~i:1)&(|.!.0)
+NB. fixing random seed for reproducability
+MakeMines=: dyad : 'y$_1(x?.*/y)}(*/y)$0'
+CountMines=: +>:*[:+/[:|(,/,"0/~i:1)&(|.!.0)
 
 (; CountMines) 11 MakeMines 8 5
 #+END_SRC
@@ -112,9 +113,9 @@ CountMines=: + >:* [: +/ [: | (,/,"0/~i:1)&(|.!.0)
 #+end_example
 
 
-*** Medium
+** Medium
 
-**** Degree Array
+*** Degree Array
 
 Given an array list return the degrees of the vertices.
 
@@ -129,7 +130,6 @@ G {~ (vs i.~ ~. {."1 es)   NB. sort so that V[i] has out edges of node i
 Degrees=: [: > # &.> @ EdgeList
 
 ((;  Degrees) _2 ]\ 4 0) ,:~ (; Degrees) _2 ]\ 6 7 1 2 2 3 6 3 5 6 2 5 2 4 4 1
-
 #+END_SRC
 
 #+RESULTS:
@@ -187,7 +187,7 @@ end. }. sccs </. vs
 
 Components =: # @ SCC
 
-((; Components ; <@SCC) _2 ]\ 4 0)
+(; Components ; <@SCC) _2 ]\ 4 0
 (; Components ; <@SCC) _2 ]\ 12 13 1 2 1 5 5 9 5 10 9 10 3 4 3 7 3 8 4 8 7 11 8 11 11 12 8 12
 #+END_SRC
 
@@ -217,16 +217,19 @@ Components =: # @ SCC
 └─────┴─┴────────────────────────────┘
 #+end_example
 
-**** Numeric Integration
+*** Numeric Integration
+
+**** Trapezoid
 
 #+BEGIN_SRC j :session :exports both
-
 Trapezoid=: 1 : 0
 dx=. x%~b-a[n=. 1+x['a b'=. y
-((-:dx)*2-0=x|i.n) +/ .* u a+dx*i.n
+(-:dx)*(1,(2$~<:x),1)+/ .*u a+dx*i.n
 )
 
 ,. (1000 -: Trapezoid 0 1);(1000 (1&o.) Trapezoid 0 1p1);1000 *: Trapezoid 0 1
+
+^. Trapezoid"0 _&(1,^1) 10^i.4
 #+END_SRC
 
 #+RESULTS:
@@ -237,3 +240,47 @@ dx=. x%~b-a[n=. 1+x['a b'=. y
 : ├────────┤
 : │0.333334│
 : └────────┘
+: 
+: 0.859141 0.998447 0.999984 1
+
+**** Simpson
+
+#+BEGIN_SRC j :session :exports both
+Simpson=: 1 : 0
+assert. 0=2|x
+dx=. x%~b-a[n=. 1+x['a b'=. y
+1r3*dx*(1,(4 2$~<:x),1) +/ .* u a+dx*i.n
+)
+
+('n';'n ^. Simpson 1,^1'), ,. <"0 (,. ^. Simpson"0 _&(1,^1)) 2,10^1+i.2
+#+END_SRC
+
+#+RESULTS:
+: ┌───┬─────────────────┐
+: │n  │n ^. Simpson 1,^1│
+: ├───┼─────────────────┤
+: │2  │0.996735         │
+: ├───┼─────────────────┤
+: │10 │0.999991         │
+: ├───┼─────────────────┤
+: │100│1                │
+: └───┴─────────────────┘
+
+**** Romberg
+
+I would like to come up with a solution which avoids for-looping. I
+was happy to notice the formula ~R=. q * 2 ((_1,d)+/ .*])\ R~ where
+~d~ is ~4^m~ and ~q~ ~1/(d-1)~ from the recurrences.
+
+#+BEGIN_SRC j :session :exports both
+Romberg=: 1 : 0
+R=.-:(+/u y)*]I=.-~/]'a b'=.y
+for_n. >:i.x do. R=. R,(-:{:R)+(I%2^n)*+/u a+(I%2^n)*>:+:i.2^<:n end.
+for_m. >:i.x do. R=. 2(_1,4^m)&(+/ .*)\ R%<:4^m end. {.R
+)
+
+(i.5) (^. Romberg"0 _) 1,^1
+#+END_SRC
+
+#+RESULTS:
+: 0.859141 0.996735 0.999906 0.999998 1
