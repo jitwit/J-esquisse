@@ -217,6 +217,17 @@ Components =: # @ SCC
 └─────┴─┴────────────────────────────┘
 #+end_example
 
+**** Verifying with Rosalind graphs
+
+#+BEGIN_SRC j :session :exports both
+ros1=: ".'m' freads jcwdpath'Phase2materials2019/rosalind/rosalind_graph3.txt'
+
+Components ros1
+#+END_SRC
+
+#+RESULTS:
+: 241
+
 *** Numeric Integration
 
 **** Trapezoid
@@ -280,7 +291,10 @@ for_m. >:i.x do. R=. 2(_1,4^m)&(+/ .*)\ R%<:4^m end. {.R
 )
 
 (i.5) (^. Romberg"0 _) 1,^1
+(i.10) (1&o. Romberg"0 _) 0 1p1
 #+END_SRC
 
 #+RESULTS:
 : 0.859141 0.996735 0.999906 0.999998 1
+: 
+: 1.92367e_16 2.0944 1.99857 2.00001 2 2 2 2 2 2

@@ -33,11 +33,32 @@ matrix of appropriate size ~(=@i.@#)~ from $d\cdot A$ and calculates
 the inverse (~%.~). The right part is the stopping quantity
 $\frac{1-d}{N}$, a vector.
 
-#+BEGIN_SRC j :session :exports code :tangle programs/page-rank.ijs
-page_rank=: ([: %. =@i.@#@] - *) +/ .* ((]#(1:-[)%])#@])
+#+BEGIN_SRC j :session :exports both :tangle programs/page-rank.ijs
+floyd_warshall=: <./ .+ ~ ^: _
+page_rank=: ([: %. =@i.@#@] - *) +/ .* ((]$-.@[%])#@])
+game_of_life=: (3=])`(e.&3 4)@.["0 0[:+/^:2(,"0/~i:1)&(|.!.0)
+
+]Mat=: 4 4$0 0 1 0 0.5 0 0 0 0.5 1 0 1 0 0 0 0
+0.9 page_rank Mat
+
+(;floyd_warshall) 3 3 $ 0 0.5 3 1 0 0.25 0.1 1 0
 #+END_SRC
 
 #+RESULTS:
+#+begin_example
+  0 0 1 0
+0.5 0 0 0
+0.5 1 0 1
+  0 0 0 0
+
+0.381779 0.1968 0.396421 0.025
+
+┌────────────┬─────────────┐
+│  0 0.5    3│   0 0.5 0.75│
+│  1   0 0.25│0.35   0 0.25│
+│0.1   1    0│ 0.1 0.6    0│
+└────────────┴─────────────┘
+#+end_example
 
 * Examples
 
