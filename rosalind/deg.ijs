@@ -15,9 +15,11 @@ D =. 0, > # &.> G    NB. 0 prepended for indexing reasons
 
 SCC=: 3 : 0
 sccs=.vs=. i.>:{.,y
-for_e. /:~ /:~"1 }. y do.
-  sccs=. (<./ e{sccs) e} sccs 
+for_e. /:~ (, |."1) }. y do.
+  r=. {&sccs ^: _ e
+  sccs=. (<./ r) (r,e)} sccs
 end. }. sccs </. vs
 )
 
 Components =: # @ SCC
+
