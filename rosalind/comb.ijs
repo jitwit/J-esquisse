@@ -1,6 +1,7 @@
 NB. solutions
 
 NB. number of permutation of k things from n things
+perms=: i.@!A.i.
 P=: !@[*!
 
 NB. given random mating in pop with makeup k dd, m dr, n rr, how many

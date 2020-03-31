@@ -2,5 +2,5 @@ fasta=: [: (>@{.;LF-.~[:;}.)"1 ;: ;._1
 O=: 1 : '((-u){.x-.'' '')-:(u{.y-.'' '')'
 Overlap=: 1 : '[: (#~([:-.=)/"1) 4 $. [: $. (u O)"1 1/~'
 
-V=: fasta]in=: 1!:1 < 'rosalind_grph.txt'
+V=: fasta]in=: rosalind 'grph'
 ;:^:_1 {."1 V{~ 3 Overlap > {:"1 V

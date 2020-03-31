@@ -1,4 +1,3 @@
-
 NB. parse argument string in fasta to boxed table
 fasta=: ([:({. , [:<[:; }.) [:<;._2 ,&LF) ;._1
 NB. [: (>@{.;LF-.~[:;}.)"1 ;:
