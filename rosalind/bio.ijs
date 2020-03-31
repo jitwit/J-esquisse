@@ -1,6 +1,10 @@
 NB. parse argument string in fasta to boxed table
-fasta=: ([:({. , [:<[:; }.) [:<;._2 ,&LF) ;._1
-NB. [: (>@{.;LF-.~[:;}.)"1 ;:
+
+fasta=: ([:({.,[:<[:;}.)[:<;._2,&LF);._1
+
+nuc_cnt=: [: +/ =/&'ACGT'
+rna_tra=: 'ACGU'{~'ACGT'&i.
+rev_com=: [:|.'TGCA'{~'ACGT'&i.
 
 retrieve=: monad define
 assert. 'rosalind' -: 1{::fpathname jcwdpath''
@@ -16,3 +20,9 @@ target=. 'data/rosalind_',y,'.txt'
 assert. 'rosalind' -: 1{::fpathname jcwdpath''
 1!:1<target
 )
+
+example=: monad define
+1!:1 < 'in.txt'
+)
+
+outputs=: fwrites&'out.txt'
