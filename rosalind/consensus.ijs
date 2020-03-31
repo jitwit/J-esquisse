@@ -1,4 +1,5 @@
 concensus=: ('ACGT'{~(i.>./)"1),(' ',.~'ACGT',.':'),.(":@|:)
+pdist=: ([:-.#@[%~ +/ .=)
 
-pdst=: [: -. #@[ %~ +/ .=
-8j5 ": pdst"1/~ > {:"1 fasta rosalind'pdst'
+concensus nuc_cnt > {:"1 fasta rosalind'cons'
+8j5 ": pdist"1/~ > {:"1 fasta rosalind'pdst'

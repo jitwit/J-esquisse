@@ -3,3 +3,4 @@ rna_tra=: 'ACGU'{~'ACGT'&i.
 rev_com=: [:|.'TGCA'{~'ACGT'&i.
 hamming=: +/ .(-.@=)
 motif  =: 1+[:I.E.~
+gc_con=: #%~[:+/e.&'GC'

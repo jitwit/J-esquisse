@@ -3,8 +3,14 @@ NB. parse argument string in fasta to boxed table
 fasta=: ([:({.,[:<[:;}.)[:<;._2,&LF);._1
 
 nuc_cnt=: [: +/ =/&'ACGT'
-rna_tra=: 'ACGU'{~'ACGT'&i.
-rev_com=: [:|.'TGCA'{~'ACGT'&i.
+NB. decision to default to space is questionable
+rna_tra=: 'ACGU '{~'ACGT'&i.
+rev_com=: [:|.'TGCA '{~'ACGT'&i.
+gc_con =: #%~[:+/e.&'GC'
+
+'mRNA CODON'=: (3&{."1 ; {:"1) ];._2 (1!:1)<'table/codon.txt'
+START=: 'AUG'
+STOPS=: mRNA {~ I. '*' E. CODON
 
 retrieve=: monad define
 assert. 'rosalind' -: 1{::fpathname jcwdpath''
@@ -26,3 +32,4 @@ example=: monad define
 )
 
 outputs=: fwrites&'out.txt'
+
