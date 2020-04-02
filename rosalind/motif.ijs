@@ -22,12 +22,27 @@ substrings=: a:-.~[:,/ (<\~ }.@i.@#)
 SS=: [: ; ([:<<\)\.
 SUF=: (,@:(/:~ <\.)) &.>
 
-NB. lcs will be prefix of all suffixes.
-NB. plan: calculate suffixes for all strands
-NB.       sort each of them
-NB.       look at one string, find first suffix that is prefix of all.
-NB.       find length of longest exact match.
-NB. too slow
-LCS=: monad define NB. brutish first draft
-y
+LCS=: [: ([:>./[:(#;._1) 0,])/.&.:|. =/
+slow=: monad define
+base=. >{.y
+bound=.>./base LCS>]comp=.({~?@#)]rest=.}.y
+for_j. 1+i.-bound do.
+  for_s. j<\base do.
+    if. *./ >([: +./ (>s)&E.) &.> rest do. s return. end.
+  end.
+end.
 )
+
+LGIS=: [: ~. [: <./\. (#~ ([: =/ (,: >./\.) @ SEQ))
+LGDS=: LGIS &.: -
+NB. approaching...
+NB. choose first longest possible number as early as possible?
+NB. (,: ([: =/ (,: >./\.) @ SEQ)) 5 1 2 0 4 2 3 9
+SEQ=: monad define
+d=.0#~]n=.#y
+g=. (>:i.n) (+&.>) ([:<[:I. {. < }.)\. y 
+for_v. i.-n do.
+  d=. (>: >./ 0,(v{::g){d) v} d
+end. d
+)
+

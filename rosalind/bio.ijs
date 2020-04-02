@@ -25,8 +25,8 @@ STOPS=: mRNA {~ I. '*' E. CODON
 NB. synth some ribonucleic acid to a codon
 synth=: CODON{~mRNA&i.
 NB. todo: readframe a bit inelegant. when synth fails (length < 3),
-NB. just puts a space. this is "ok" because the tail '*' gets chopped
-NB. off by curtail }:.
+NB. just puts a space. this works because the last tail '*' gets
+NB. chopped off by curtail }:.
 ReadFrame=: [:}:[:([:<]([:<}.~)"_ 0/[:I.'M'&=);._2'*',~_3(synth ::' ')\ RNA
 OpenFrames=: a:-.~[:~.[:,[:>[:ReadFrame"1[:,/[:(}.^:(i.3))"1(,:RC)
 
