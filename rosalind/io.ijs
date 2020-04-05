@@ -1,4 +1,4 @@
-require'web/gethttp' NB. rosalind utilities for downloading and managing inputs/outputs
+require'web/gethttp convert/json' NB. rosalind utilities for downloading and managing inputs/outputs
 
 retrieve=: monad define
 assert_rosalind ''
