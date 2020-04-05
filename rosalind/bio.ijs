@@ -12,6 +12,7 @@ NB. mRNA goes dna -> mrna. mRNA^:_1 goes mrna -> dna
 mRNA=: ('ACGU '{~'ACGT'&i.) :. ('ACGT '{~'ACGU'&i.)
 COM=: 'TGCA '{~'ACGT'&i.
 RC=: |.@COM f.
+hamming=: +/ .(-.@=)
 
 NB. amount of GC nucleotides as percentage
 GC_N=: #%~[:+/e.&'GC'
