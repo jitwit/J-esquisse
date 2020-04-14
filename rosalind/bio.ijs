@@ -15,7 +15,7 @@ RC=: |.@COM f.
 hamming=: +/ .~:
 
 NB. amount of GC nucleotides as percentage
-GC_N=: #%~[:+/e.&'GC'
+GC_N=: # %~ [:+/e.&'GC'
 
 NB. anticodons to amino acid table
 'CODON AMINO'=: (3&{."1 ; {:"1) ];._2 (1!:1)<'table/codon.txt'

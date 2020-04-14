@@ -1,0 +1,272 @@
+* Speech
+
+** Parts
+
+*** Noun
+
+Roughly, nouns are things. Number ~0~ is a noun, as are the characters
+~'noun'~.
+
+*** Verbs
+
+Verbs act on nouns. The cat runs. The verb ~+:~ doubles.
+
+*** Adverbs and Conjunctions
+
+Adverbs and conjunctions operate on verbs -- modify their
+behavior. Compare the following using the reflex adverb ~~~:
+
+#+BEGIN_SRC j :session :exports both
+('i:3';'dot (*)';'sign (*~)'),.(;*~;*) i:3
+#+END_SRC
+
+#+RESULTS:
+: ┌─────────┬────────────────┐
+: │i:3      │_3 _2 _1 0 1 2 3│
+: ├─────────┼────────────────┤
+: │dot (*)  │9 4 1 0 1 4 9   │
+: ├─────────┼────────────────┤
+: │sign (*~)│_1 _1 _1 0 1 1 1│
+: └─────────┴────────────────┘
+
+** Valence
+
+As in chemistry, valence describes what sorts of things bond
+together. In J verbs have monadic valence or dyadic valence, meaning
+they bond to one or two arguments. 
+
+In a monadic context, ~*~ is sign, whereas in a dyadic one, it is
+multiplication.
+
+What differentiates adverbs from conjunctions is valence--adverbs are
+monadic operators, conjunctions are dyadic ones.
+
+** Composition
+
+Verbs fit together in what are called hooks and trains. How to read
+and write these so called trains is complicated by J's pervasive
+overloading of monads and dyads and litany of primatives for combining
+them and controlling flow. 
+
+One of the key concepts to internalize is that operators
+(adverbs/conjunctions) parse first and adverbs act left. After that,
+everything is read right to left and that's how things are
+executed. trains come in groups of three. The way to read a train of 5
+verbs is that the first 3 are a train, contained in a larger train
+which also includes the leftmost 2. For example:
+
+#+BEGIN_SRC j :session :exports both
+mean=: +/%#
+mean1=: +/%<:@#
+pstdev=: mean&.:*: @: -mean
+sstdev=: mean1&.:*: @: -mean
+(pstdev 2 4 4 4 5 5 7 9);sstdev 727.7 1086.5 1091.0 1361.3 1490.5 1956.1
+#+END_SRC
+
+#+RESULTS:
+: ┌─┬───────┐
+: │2│420.962│
+: └─┴───────┘
+
+
+* Arrays
+
+In J, everything's an array. As one should expect, there are many ways
+to build them, too.
+
+** Shape
+
+One of the fundamental ways is by use of (re)-shape ~$~.
+
+As a monad, shape tells you the dimension and size. As a dyad it makes
+an array of the size described by ~x~ containing the items of ~y~
+cycled as needed. Given a poverty of ~y~ relative to ~x~, the items of
+~y~ are cycled.
+
+#+BEGIN_SRC j :session :exports both
+a1=: 5 $ 0
+a2=: 2 2 $ 0
+a3=: 3 3 $ 'abcd'
+a4=: 2 2 3 $ 1 2 3 4
+('array';'shape') , (,. $&.>) a1;a2;a3;a4
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────────┬─────┐
+│array    │shape│
+├─────────┼─────┤
+│0 0 0 0 0│5    │
+├─────────┼─────┤
+│0 0      │2 2  │
+│0 0      │     │
+├─────────┼─────┤
+│abc      │3 3  │
+│dab      │     │
+│cda      │     │
+├─────────┼─────┤
+│1 2 3    │2 2 3│
+│4 1 2    │     │
+│         │     │
+│3 4 1    │     │
+│2 3 4    │     │
+└─────────┴─────┘
+#+end_example
+
+*** Scalar
+
+Scalars are arrays with empty shape. 
+
+#+BEGIN_SRC j :session :exports both
+(a:=<$0);(0$0)$12
+#+END_SRC
+
+#+RESULTS:
+: ┌─┬──┐
+: │1│12│
+: └─┴──┘
+
+The right example illustrates the definition and that definition means
+it's possible to use shape to build scalars, too.
+
+*** Reshape
+
+Reshape to hint at items. In the first reshape, the items (1-cells) of
+the original array are cycled in the described shape. This contrasts
+the original demo of ~$~, as shown by the shaping of raveled (monad
+~,~) ~a1~.
+
+#+BEGIN_SRC j :session :exports both
+a1=: i. 3 3
+a1;(2 2 2 $ a1);2 2 2 $,a1
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────┬─────┬───┐
+│0 1 2│0 1 2│0 1│
+│3 4 5│3 4 5│2 3│
+│6 7 8│     │   │
+│     │6 7 8│4 5│
+│     │0 1 2│6 7│
+│     │     │   │
+│     │     │   │
+│     │3 4 5│   │
+│     │6 7 8│   │
+│     │     │   │
+│     │0 1 2│   │
+│     │3 4 5│   │
+└─────┴─────┴───┘
+#+end_example
+
+*** Append
+
+Dyad ~~~ makes an array from ~x~ and ~y~ together. The 2d example
+below helps show that the rows are the most significant dimension ie,
+the items. The 0-cells are the individual characters.
+
+#+BEGIN_SRC j :session :exports both
+a1=: 2 3$'ab'
+a2=: 2 3$'cdef'
+b1=: 2 2 2 $ 1 2 3 4 5
+b2=: 1 2 2 $ 6 7 8
+(a1,a2);b1,b2
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───┬───┐
+│aba│1 2│
+│bab│3 4│
+│cde│   │
+│fcd│5 1│
+│   │2 3│
+│   │   │
+│   │6 7│
+│   │8 6│
+└───┴───┘
+#+end_example
+
+If something with smaller items is appended to something with larger
+ones, the missing parts are filled out by spaces in the case of
+characters or zeros for numerical arrays. Scalars, however, are
+replicated to fill out the item.
+
+#+BEGIN_SRC j :session :exports both
+(9 9 , i.3 3);('abba' , 3 3 $ 'wxyz');('z',2 2 3$'abcd')
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────┬────┬───┐
+│9 9 0│abba│zzz│
+│0 1 2│wxy │zzz│
+│3 4 5│zwx │   │
+│6 7 8│yzw │abc│
+│     │    │dab│
+│     │    │   │
+│     │    │cda│
+│     │    │bcd│
+└─────┴────┴───┘
+#+end_example
+
+NOTE: I'm feeling that a lot of this array stuff is easier to
+understand not having to also worry about understanding the
+hooking/forking. Probably best to try to cover that stuff first.
+
+#+BEGIN_SRC j :session :exports both
+(+/ @ *:) i. 3 3
+#+END_SRC
+
+#+RESULTS:
+:  0  1  4
+:  9 16 25
+: 36 49 64
+
+
+* Rank
+
+Rank is a fundamental concept in J. ~verbs~ have rank, which describes
+which cells are acted upon by a given verb. 
+
+Rank can be infinite ~_~, which means the verb may act on any which
+dimension cell. By default, it acts on the whole of the argument, but
+the rank conjunction ~"~ can change that.
+
+Dyads have a rank for each argument.
+
+J authors say if you don't know the rank of a verb, you don't know the
+verb! Not knowing the rank of a verb is like not knowing the voltage
+of a power supply! Well, best to correct my wishy washy knowledge!
+
+** Tip
+
+Use ~verb b. 0~ to discover the rank of a verb. The first number is
+the monadic rank, the latter ones the dyadic ranks.
+
+
+* Random/Notes
+
+#+BEGIN_SRC j :session :exports both
+NB. checker board
+checker=: ~:/~ @ $&0 1
+(+/\ checker 10);checker&.>7;8
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───────────────────┬─────────────┬───────────────┐
+│0 1 0 1 0 1 0 1 0 1│0 1 0 1 0 1 0│0 1 0 1 0 1 0 1│
+│1 1 1 1 1 1 1 1 1 1│1 0 1 0 1 0 1│1 0 1 0 1 0 1 0│
+│1 2 1 2 1 2 1 2 1 2│0 1 0 1 0 1 0│0 1 0 1 0 1 0 1│
+│2 2 2 2 2 2 2 2 2 2│1 0 1 0 1 0 1│1 0 1 0 1 0 1 0│
+│2 3 2 3 2 3 2 3 2 3│0 1 0 1 0 1 0│0 1 0 1 0 1 0 1│
+│3 3 3 3 3 3 3 3 3 3│1 0 1 0 1 0 1│1 0 1 0 1 0 1 0│
+│3 4 3 4 3 4 3 4 3 4│0 1 0 1 0 1 0│0 1 0 1 0 1 0 1│
+│4 4 4 4 4 4 4 4 4 4│             │1 0 1 0 1 0 1 0│
+│4 5 4 5 4 5 4 5 4 5│             │               │
+│5 5 5 5 5 5 5 5 5 5│             │               │
+└───────────────────┴─────────────┴───────────────┘
+#+end_example
+
+

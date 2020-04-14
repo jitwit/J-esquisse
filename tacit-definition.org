@@ -1,0 +1,173 @@
+
+#+title: Tacit Definition Notes
+
+Paper [[https://www.jsoftware.com/papers/TacitDefn.htm][TacitDefn]] by R Hui, K Iverson, E McDonnell.
+
+Argues that most explicit definitions fit naturally in tacit style.
+
+* Cells & Rank
+
+A $k$-cell of an array is specified by the last $k$ axes. 
+
+~b~ is a 2 by 3 by 4 array.
+
+#+BEGIN_SRC j :session :exports both
+b=. i. 2 3 4
+
+('0-cell';'1-cell';'2-cell';'3-cell') ,. (<b) ,~ (1 1 1;1 2 ;1) (<@{)/ b
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌──────┬───────────┐
+│0-cell│17         │
+├──────┼───────────┤
+│1-cell│20 21 22 23│
+├──────┼───────────┤
+│2-cell│12 13 14 15│
+│      │16 17 18 19│
+│      │20 21 22 23│
+├──────┼───────────┤
+│3-cell│ 0  1  2  3│
+│      │ 4  5  6  7│
+│      │ 8  9 10 11│
+│      │           │
+│      │12 13 14 15│
+│      │16 17 18 19│
+│      │20 21 22 23│
+└──────┴───────────┘
+#+end_example
+
+Cells of rank 1 less than the dimension of the array are called
+_major-cell_ or _item_. 2d matrices are row-major, the 1-cells are the
+rows.
+
+** Scan (/) and Prefix (\)
+
+~f/ a~ applies dyadically ~f~ between items of ~a~ (from end/right ie like
+~fold-right~).
+
+~f\ a~ applies monadically ~f~ on prefixes of ~a~.
+
+#+BEGIN_SRC j :session :exports both
+,. (; +/\ ; +/) 5 # 1
+#+END_SRC
+
+#+RESULTS:
+: ┌─────────┐
+: │1 1 1 1 1│
+: ├─────────┤
+: │1 2 3 4 5│
+: ├─────────┤
+: │5        │
+: └─────────┘
+
+These operators modify the behavior of verbs and are called
+adverbs. The convention is adverbs have valence 1, acting on the verb
+to the left.
+
+** Rank (")
+
+The rank _conjunction_ is another operator as ~/~ and
+~\~. ~conjunction~ means dyadic operator, taking left and right
+operands. It allows one to specify to what parts of an array a verb is
+applied.
+
+** Fork
+
+A sentence with 3 consecutive verbs is a _fork_.
+
+#+BEGIN_SRC j :session :exports both
+mean=: +/ % #
+gmean=: # %: */
+midi=: -:@<:@#
+medi=: [: mean (<. ; >.) @ midi { /:~
+
+(; medi ; mean ; gmean) 2 3 4 2
+#+END_SRC
+
+#+RESULTS:
+: ┌───────┬───┬────┬───────┐
+: │2 3 4 2│2.5│2.75│2.63215│
+: └───────┴───┴────┴───────┘
+
+** Composition/Bond
+
+Conjunction ~f & g~ is called _bond_ (in paper _with_). Whereas forks
+apply the outer verbs dyadically (when dyadic possible) with both
+arguments, bond applies ~g~ to each argument before passing that to
+~f~. In monadic case, there's no difference compared to atop.
+
+#+BEGIN_SRC j :session :exports both
+pos=: 0&< NB. preposition testing for positive argument.
+i_0_100 =: 0&< *. <&100 NB. inside interval (0,100)
+
+((,. pos) i: 3) ; (,. i_0_100) 35 * i.4
+#+END_SRC
+
+#+RESULTS:
+: ┌────┬─────┐
+: │_3 0│  0 0│
+: │_2 0│ 35 1│
+: │_1 0│ 70 1│
+: │ 0 0│105 0│
+: │ 1 1│     │
+: │ 2 1│     │
+: │ 3 1│     │
+: └────┴─────┘
+
+** Under/atop/power
+
+more means of composition
+
+* Permutations
+
+~r~ gives a table with unique rows of length ~!n~. This will be a tool
+for representing permutations. ~dfr~ means direct from representation
+and ~rdf~ the reverse.
+
+I think I'm starting to see how ~dfr~ works. Each row of the table ~r~
+has a different permutation to sort, corresponding exactly to all of
+the permutations. I think... the grading is applied row-wise ("1).
+
+#+BEGIN_SRC j :session :exports both
+dfr=. /:^:2 @ ,/"1   NB. idk yet 
+rfd=. +/@({.>}.)\."1
+r  =. (n-i.n)#:i.!n=.3 NB. n is 3. i.!3 is i.6. #: is antibase. called reduced representation
+(; dfr ; rfd@dfr) r
+#+END_SRC
+
+#+RESULTS:
+: ┌─────┬─────┬─────┐
+: │0 0 0│0 1 2│0 0 0│
+: │0 1 0│0 2 1│0 1 0│
+: │1 0 0│1 0 2│1 0 0│
+: │1 1 0│1 2 0│1 1 0│
+: │2 0 0│2 0 1│2 0 0│
+: │2 1 0│2 1 0│2 1 0│
+: └─────┴─────┴─────┘
+
+Elements of reduced representation indicate transpositions needed to
+make permutation... so parity is found:
+
+#+BEGIN_SRC j :session :exports both
+par=. _1^+/@rfd
+
+par 0 2 1
+#+END_SRC
+
+#+RESULTS:
+: _1
+
+
+To signify non-permutation with 0 
+
+#+BEGIN_SRC j :session :exports both
+par=. ([-:/:^:2) * _1&^@(+/)@rfd
+
+par 0 2 1
+#+END_SRC
+
+#+RESULTS:
+: _1
+

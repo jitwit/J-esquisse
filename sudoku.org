@@ -1,0 +1,120 @@
+
+* Notes reading Hui's J Sudoku solver
+
+#+BEGIN_SRC j :session :exports code
+parse_su=: '.123456789'&i.
+hard_sus=: '.123456789'&i. ;._2 (1!:1)<'hard_sudoku.txt'
+eg      =: 11 { hard_sus
+see1   =: (;~9$1 0 0)&(<;.1) @ ({&'.123456789') @ (9 9&$) @ ,
+see    =: <@see1"1`see1@.(1:=#@$)
+diff   =: * 0&=@}:@(0&,)
+#+END_SRC
+
+#+RESULTS:
+
+First, some of the ideas/tricks
+
++ Represent board as digits, 0 for unassigned.
++ Look for forced assignments. ~ac~ finds variables with one possible
+  value. ~ar~ finds values with one possible slot in a region. They
+  are both "forced" moves.
++ Make guesses on squares with fewest reaming options if no forced
+  moves possible.
++ Filter boards with contradictions and recursively search.
+
+** Regions
+
+#+BEGIN_SRC j :session :exports code
+j      =. (]/. i.@#) ,{;~3#i.3 NB. 9x9 grid. j for index? "box major order"?
+r      =. 9#i.9 9              NB. r for row. ith row lists other variables in row that has i.
+c      =. 81$|:i.9 9           NB. c for col. same idea as with rows.
+b      =. (,j{9#i.9) { j       NB. b for box.
+
+I      =: ~."1 r,.c,.b         NB. I for neighbors...
+R      =: j,(,|:)i.9 9         NB. R for regions
+#+END_SRC
+
+#+RESULTS:
+
+** Constraints
+
+My english readings of ~ac/ar~ are the following:
+
+  ~ac~ assigns a digit ~1+i.9~ at variables where exactly one option
+  remains.
+
+  ~ar~: 
+   + ~m~ counts how many times each digit appears in the regions and
+     finds ones with 1.
+   + ~j~ indicate the indices of the regions.
+   + ~k~ find the digits that are forced.
+   + ~i~ map to to box-major board indices.
+   + add 1 to ~k~ and return masks that will assign.
+
+  ~assign~: keep propagating assignments from ~ar~ and ~ac~ for each
+  of the potential guesses.
+
+#+BEGIN_SRC j :session :exports code
+regions=: R {"_ 1 ]
+free   =: 0&= > (1+i.9) e."1 I&{              NB. bits that are open
+ok     =: (27 9$1) -:"2 (0&= +. ~:"1)@regions NB. no dupes besides 0sy
+
+ac     =: +/ .*&(1+i.9) * 1 = +/"1
+
+ar     =: 3 : 0
+ m=. 1=+/"2 R{y
+ j=. I. +./"1 m
+ k=. 1 i."1~ j{m
+ i=. ,(k{"_1 |:"2 (j{R){y) #"1 j{R
+ (1+k) i}81$0
+)
+
+assign =: (+ (ac >. ar)@free)^:_"1
+#+END_SRC
+
+#+RESULTS:
+
+** Guesses
+
+After ~assign~ putters out, what can be done? First, check if it
+stopped because the board is solved (no zeros remain). Otherwise grab
+the bool matrix in ~b~, find indices with smallest branching in ~i~,
+and return a guess. Make a guess for each possible digit found at ~i~.
+
+As in previous stages, one nicety of the representation is that free
+indices being represented by 0 means assignment by addition is the
+natural way.
+
+#+BEGIN_SRC j :session :exports code
+guessa =: 3 : 0
+ if. -. 0 e. y do. ,:y return. end.
+ b=. free y
+ i=. (i.<./) (+/"1 b){10,}.i.10
+ y +"1 (1+I.i{b)*/i=i.81
+)
+
+guess=: ; @: (<@guessa"1)
+#+END_SRC
+
+#+RESULTS:
+
+** Solution
+
+And now for the main attraction. Until fixpoint:
+
+  + ~assign~
+  + filter ~ok~ guesses
+  + make ~guesses~
+
+#+BEGIN_SRC j :session :exports both
+sudoku =: guess @: (ok # ]) @: assign ^:_ @ ,
+#+END_SRC
+
+#+RESULTS:
+
+* Refl
+
+Cool. I wonder if this works out particularly well mostly because all
+the regions have the same number of elements. What would happen in eg
+graph coloring or something else with irregularly sized regions? Can
+this method translate?
