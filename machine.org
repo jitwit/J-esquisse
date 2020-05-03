@@ -1,0 +1,106 @@
+
+
+* J's sequential machine operator (;:)
+
+This is hairy. Idea is ~x ;: y~ recognizes ~y~ according to ~x~, where
+~x=. f ; sc; m; ijrd~ has up to 4 components.
+
+** ~x~
+
+The state machine specification.
+
+*** ~f~
+
+~f~ is a function code which says what to do upon recognition. It can
+box recognized words (~0~) or trace states of iteration (~5~), for
+example.
+
+
+***  ~sc~
+
+Describe transition table. Items in the table are indexed by pairs
+~r,c~ where ~r~ is current state and ~c~ the current character's
+class. The entry at index ~r,c~ is a pair of new state and output
+action ~r1,a~.
+
+| code | action                   | comment                    |
+|------+--------------------------+----------------------------|
+|    0 | no out                   | none                       |
+|    1 | ~j =. i~                 | start word/vector          |
+|    2 | ~j =. i  [ ew (i,j,r,c)~ | end word                   |
+|    3 | ~j =. _1 [ ew (i,j,r,c)~ | signal error?              |
+|    4 | ~j =. i  [ ev (i,j,r,c)~ | analogue for emit _vector_ |
+|    5 | ~j =. _1 [ ev (i,j,r,c)~ | analogous, again           |
+|    6 | stop                     |                            |
+
+Basically, it's like vertices form graph based on domain of ~r~ with
+labelled edges by character class ~c~ (and action) between them. Why?
+because the ~e(w|v)~ functions throw error if ~j~ is negative!
+
+*** ew/ev
+
+Based on code ~f~, the following happens with ~ew/ev~:
+
+| ~f~ | definition ew/ev  | comments               |
+|-----+-------------------+------------------------|
+|   0 | ~<y{~j+i.i-j~     | box current word       |
+|   1 | ~y{~j+i.i-j~      | just current word      |
+|   2 | ~j,i-j~           | word start/end indices |
+|   3 | ~c+q*r~           | state table index      |
+|   4 | ~j,(i-j),c+q*r~   | combo of 2/3           |
+|   5 | ~i,j,r,c,s{~<r,c~ | full trace             |
+
+
+*** ~m~ (optional)
+
+~m~ is a (possibly boxed?) description of character classes. In first
+example in lab, Hui maps ~' '=a.~ such that class 0 denotes non space
+and class 1 denotes space.
+
+*** ~ijrd~ (optional)
+
+Seed initial index ~i~, word begin ~j~, state ~r~ and ~d~ used to say
+what to do at end. Key takeaway is that this really is the state being
+acted upon.
+
+** example
+
+First example from lab is to show similarity with verb from cut:
+~<;.1~
+
+#+BEGIN_SRC j :session :exports both
+sc0=: 2 2 2$ 0 0  1 1  1 0  1 2  NB. state table
+M0=: 0;sc0;' '=a.
+
+M0 ;: ' four score and seven years ago...'
+#+END_SRC
+
+#+RESULTS:
+: ┌─────┬──────┬────┬──────┬──────┬───────┐
+: │ four│ score│ and│ seven│ years│ ago...│
+: └─────┴──────┴────┴──────┴──────┴───────┘
+
+** challenge
+
+Also from lab: write similar machine that excludes spaces.
+
+I'm thinking what is needed is 3 states. ~j~ can be set upon hitting
+first nonspace. can be emitted upon exiting with space or end of word.
+
+#+BEGIN_SRC j :session :exports both
+sc1=: 3 2 2$1 1  0 0  1 0  2 2  1 1  2 0
+M1=: 0;sc1;' '=a.
+
+(M0;:'four score and  seven years ago')
+(M1;:'four score and  seven years ago')
+#+END_SRC
+
+#+RESULTS:
+: ┌──────┬────┬─┬──────┬──────┬────┐
+: │ score│ and│ │ seven│ years│ ago│
+: └──────┴────┴─┴──────┴──────┴────┘
+: 
+: ┌────┬─────┬───┬─────┬─────┬───┐
+: │four│score│and│seven│years│ago│
+: └────┴─────┴───┴─────┴─────┴───┘
+
