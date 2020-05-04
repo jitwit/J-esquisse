@@ -2,19 +2,32 @@
 
 * J's sequential machine operator (;:)
 
-This is hairy. Idea is ~x ;: y~ recognizes ~y~ according to ~x~, where
-~x=. f ; sc; m; ijrd~ has up to 4 components.
+Hairy. Idea is ~x ;: y~ recognizes ~y~ according to ~x~. It allows one
+to encode Mealy machines where ~x=. f ; sc; m; ijrd~ . Formally, a
+Mealy machine is a 5-tuple $(S,S_0,\Sigma,\Lambda,T)$:
++ $S$ is the state space, (~ijr~ in ~;:~ docs)
++ $S_0 \in S$ the initial state, the optional fourth component to ~x~
++ $\Sigma$ is the input alphabet, the classes of atoms of ~y~
+  determined by ~m~.
++ $\Lambda$ is the output alphabet, the actions (specefied by code
+  ~f~)
++ $T$ is a transition function $T : S \times \Sigma \rightarrow S
+  \times \Lambda$ corresponding to ~sc~ table.
+
+As noted in wiki entry on [[https://en.wikipedia.org/wiki/Mealy_machine][Mealy machines]], ~J~'s formulation of them is
+an example of coalescing functions $T,G$.
 
 ** ~x~
 
-The state machine specification.
+The state machine specification. ~x=. f ; sc; m; ijrd~ 
+has up to 4
+components.
 
 *** ~f~
 
 ~f~ is a function code which says what to do upon recognition. It can
 box recognized words (~0~) or trace states of iteration (~5~), for
 example.
-
 
 ***  ~sc~
 
@@ -25,10 +38,10 @@ action ~r1,a~.
 
 | code | action                   | comment                    |
 |------+--------------------------+----------------------------|
-|    0 | no out                   | none                       |
-|    1 | ~j =. i~                 | start word/vector          |
-|    2 | ~j =. i  [ ew (i,j,r,c)~ | end word                   |
-|    3 | ~j =. _1 [ ew (i,j,r,c)~ | signal error?              |
+|    0 | no out                   | nothing                    |
+|    1 | ~j =. i~                 | start! word/vector         |
+|    2 | ~j =. i  [ ew (i,j,r,c)~ | end! word                  |
+|    3 | ~j =. _1 [ ew (i,j,r,c)~ | reset j  (eg drop spaces)  |
 |    4 | ~j =. i  [ ev (i,j,r,c)~ | analogue for emit _vector_ |
 |    5 | ~j =. _1 [ ev (i,j,r,c)~ | analogous, again           |
 |    6 | stop                     |                            |
@@ -41,27 +54,42 @@ because the ~e(w|v)~ functions throw error if ~j~ is negative!
 
 Based on code ~f~, the following happens with ~ew/ev~:
 
-| ~f~ | definition ew/ev  | comments               |
-|-----+-------------------+------------------------|
-|   0 | ~<y{~j+i.i-j~     | box current word       |
-|   1 | ~y{~j+i.i-j~      | just current word      |
-|   2 | ~j,i-j~           | word start/end indices |
-|   3 | ~c+q*r~           | state table index      |
-|   4 | ~j,(i-j),c+q*r~   | combo of 2/3           |
-|   5 | ~i,j,r,c,s{~<r,c~ | full trace             |
+| ~f~ | definition ew/ev  | comments               | advice on use                                       |
+|-----+-------------------+------------------------+-----------------------------------------------------|
+|   0 | ~<y{~j+i.i-j~     | box current word       | words themselves are of interest                    |
+|   1 | ~y{~j+i.i-j~      | just current word      | some words omitted others retained                  |
+|   2 | ~j,i-j~           | word start/end indices | if words need further computation (see huffman lab) |
+|   3 | ~c+q*r~           | state table index      | '' ...                                              |
+|   4 | ~j,(i-j),c+q*r~   | combo of 2/3           | '' ...                                              |
+|   5 | ~i,j,r,c,s{~<r,c~ | full trace             | debugging                                           |
 
+~ev~ is weird. if the previous emit was an ~ev~ and the state was the
+same ~r~, concatenate current word to previous one. It is said that ev
+is used to form vector constants but it is not used often.
 
-*** ~m~ (optional)
+*** ~m~ (optional -- default ~y~)
 
 ~m~ is a (possibly boxed?) description of character classes. In first
 example in lab, Hui maps ~' '=a.~ such that class 0 denotes non space
 and class 1 denotes space.
 
-*** ~ijrd~ (optional)
+Ok, so when ~m~ is boxed, the ~ith~ box contains the letters that get
+cmapped to ~i~. Thus, the alphabet over which the machine operates has
+size ~+/ #&> m~.
 
-Seed initial index ~i~, word begin ~j~, state ~r~ and ~d~ used to say
-what to do at end. Key takeaway is that this really is the state being
-acted upon.
+It is now clear how ~m~ ties to ~'p q 2'=.$sc~. There are ~p~ entries
+for possible states ~|dom(r)|~, ~q~ for the letters of the alphabet
+$|\Sigma|$, and the innermost 2 is for the pair of next state and
+action.
+
+~sc~ is a table indexed by state and character class, mapping to state
+and action.
+
+*** ~ijrd~ (optional -- default ~0 _1 0~)
+
+Seed initial index ~i~, word begin ~j~, state ~r~. Also, ~d~ is used
+to say what to do at end. Key takeaway is that this really is the
+state being acted upon.
 
 ** example
 
@@ -82,25 +110,34 @@ M0 ;: ' four score and seven years ago...'
 
 ** challenge
 
-Also from lab: write similar machine that excludes spaces.
-
-I'm thinking what is needed is 3 states. ~j~ can be set upon hitting
-first nonspace. can be emitted upon exiting with space or end of word.
+Also from lab: write similar machine that excludes spaces. First
+iteration was ~sc1~. Second comes from lab slide 13, demonstrating how
+action code 3 resets ~j~, allowing for consecutive spaces to be
+discarded with 2 input states.
 
 #+BEGIN_SRC j :session :exports both
 sc1=: 3 2 2$1 1  0 0  1 0  2 2  1 1  2 0
+sc2=: 2 2 2$1 1  0 0  1 0  0 3
 M1=: 0;sc1;' '=a.
+M2=: 0;sc2;' '=a.
 
 (M0;:'four score and  seven years ago')
 (M1;:'four score and  seven years ago')
+(M2;:'four score and  seven years ago')
 #+END_SRC
 
 #+RESULTS:
-: ┌──────┬────┬─┬──────┬──────┬────┐
-: │ score│ and│ │ seven│ years│ ago│
-: └──────┴────┴─┴──────┴──────┴────┘
-: 
-: ┌────┬─────┬───┬─────┬─────┬───┐
-: │four│score│and│seven│years│ago│
-: └────┴─────┴───┴─────┴─────┴───┘
+#+begin_example
+┌──────┬────┬─┬──────┬──────┬────┐
+│ score│ and│ │ seven│ years│ ago│
+└──────┴────┴─┴──────┴──────┴────┘
+
+┌────┬─────┬───┬─────┬─────┬───┐
+│four│score│and│seven│years│ago│
+└────┴─────┴───┴─────┴─────┴───┘
+
+┌────┬─────┬───┬─────┬─────┬───┐
+│four│score│and│seven│years│ago│
+└────┴─────┴───┴─────┴─────┴───┘
+#+end_example
 

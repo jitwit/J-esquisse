@@ -1,0 +1,10 @@
+
+
+#+BEGIN_SRC j :session :exports both
+P=: '%.?50 50$1000'
+trial=: 3 : '6 !:2 P'
+
+dist =: trial"0 ] 100000 # 0
+#+END_SRC
+
+#+RESULTS:

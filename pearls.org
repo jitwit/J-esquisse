@@ -1,0 +1,126 @@
+
+Transcriptions of algorithms described in Richard Bird's Pearls of
+Functional Algorithm Design.
+
+* The Smallest Free Number
+
+*Given $n$ nonnegative numbers, what's the first one not inside?*
+
+$n$ numbers can't cover of $n+1$ numbers, or so counting pigeons has
+taught us. In particular, the first $n+1$ are no exception!
+
+#+BEGIN_SRC j :session :exports both
+
+MinFree =: 3 : 0
+h =. #y                  NB. holes
+pir=. (#~ 0&<: *. <&h) y NB. pigeons-in-range
+1 i.~ 0 pir} h#1
+)
+
+(;:'pidgeons hole') , > (; MinFree) &.> 0 1 2 ; 0 1 9 ; 0 4 3 2 7
+#+END_SRC
+
+#+RESULTS:
+: ┌─────────┬────┐
+: │pidgeons │hole│
+: ├─────────┼────┤
+: │0 1 2    │3   │
+: ├─────────┼────┤
+: │0 1 9    │2   │
+: ├─────────┼────┤
+: │0 4 3 2 7│1   │
+: └─────────┴────┘
+
+* A Surpassing Problem
+
+Given some string, count the number of surpassers for each one. A
+surpasser is a later letter that also comes later in the alphabet. In
+other words, $a$ appearing at index $i$ is a surpasser of $b$ at $j$
+when both $a>b$ and $i>j$.
+
+#+BEGIN_SRC j :session :exports both
+BruteMSP1 =: ([: +/ {. < }.)\.
+BruteMSP2 =: [: +/"1 ([: </~ i.@#) * (</~)
+
+S=: 'GENERATING'
+,. (; [: BruteMSP1 a. i. ]) S
+,. (; [: BruteMSP2 a. i. ]) S
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌───────────────────┐
+│GENERATING         │
+├───────────────────┤
+│5 6 2 5 1 4 0 1 0 0│
+└───────────────────┘
+
+┌───────────────────┐
+│GENERATING         │
+├───────────────────┤
+│5 6 2 5 1 4 0 1 0 0│
+└───────────────────┘
+#+end_example
+
+* Inside the Convex Hull
+
+OK, $Bird$, in my opinion, sucks at explaining things. Lots of haskell
+specifics pop into things that I believe are meant to be general
+explanations. Implementation details about representing $n$-simplices
+as lists of length $n+1$ of integers, sticking to rational $Q^n$ is
+weird. Also, he just says here is the definition of orientation as
+~fromIntegral . signum . det~ without really saying much about it.
+
+So. Looking to wikipedia for sanity, $n$-simplices are affinely
+independent collections of $n+1$ points of $R^n$. Affine independence
+just means that ~}. - {.~ is linearly independent.
+
+
+#+BEGIN_SRC j :session :exports both
+smp =: _3 ]\ 12 $ 0 0 0 1
+
+facets =: _1&(]\.) NB. good demo of outfix
+
+('4-simplex';'faces'),:(;facets) smp
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+┌─────────┬─────┐
+│4-simplex│faces│
+├─────────┼─────┤
+│0 0 0    │1 0 0│
+│1 0 0    │0 1 0│
+│0 1 0    │0 0 1│
+│0 0 1    │     │
+│         │0 0 0│
+│         │0 1 0│
+│         │0 0 1│
+│         │     │
+│         │0 0 0│
+│         │1 0 0│
+│         │0 0 1│
+│         │     │
+│         │0 0 0│
+│         │1 0 0│
+│         │0 1 0│
+└─────────┴─────┘
+#+end_example
+
+
+#+BEGIN_SRC j :session :exports both
+ori =: [: * -/ .*
+ORS =: [: ori ((-~"_1 1) _1&(]\.))
+ORP =: _1 (ori\.) -~"1
+
+ORI smp
+
+int =: ORP -: ORS@] NB. is x int(erior to) y?
+
+0.1 0.1 0.79999 int smp
+#+END_SRC
+
+#+RESULTS:
+: 1 _1 1 _1
+: 
+: 1

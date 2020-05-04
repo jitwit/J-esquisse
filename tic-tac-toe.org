@@ -1,0 +1,22 @@
+
+#+BEGIN_SRC j :session :exports both
+rcs=: (,,,@|:)@i.@,~
+dis=: (<: * >:@i.) , >:*i.
+NB. winning indices
+ixs=: [: |: (-]\dis,rcs) M. & (%:@#)
+
+NB. x win y if symbol x wins in board y, a flat array
+win=: 1 e. [: */ ({~ ixs) @: =
+
+result=: _1 1 ([*win)"0 _/ ]
+
+(_3 ]\ eg) ; result eg=: <: 2 * ?. 9#2
+#+END_SRC
+
+#+RESULTS:
+: ┌───────┬────┐
+: │_1 1 _1│_1 1│
+: │ 1 1 _1│    │
+: │_1 1 _1│    │
+: └───────┴────┘
+
