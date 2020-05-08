@@ -17,28 +17,18 @@
            third
            (sxpath '(// table))))
 
-(define jdoc
-  (pre-post-order
-   (parse nuvoc)
-   `((a . ,(lambda (a h . x) ;; gross way to delete title attribute
-             `(a (@ (href ,(string-append
-                            jsoftware.com
-                            (first ((sxpath '(// *text*)) h)))))
-                 ,@x)))
-     (*text* . ,(lambda x x))
-     (*default* . ,(lambda x x)))))
-
 (define (dump-jdoc-urls)
-  (delete-file "data/jdoc")
+  (when (file-exists? "data/jdoc")
+    (delete-file "data/jdoc"))
   (with-output-to-file "data/jdoc"
     (lambda ()
       (pre-post-order
        (parse nuvoc)
        `((a . ,(lambda (a h . x)
-                 (display (string-append
-                           jsoftware.com
-                           (first ((sxpath '(// *text*)) h))))
-                 (newline)
+                 (let ((href (first ((sxpath '(// *text*)) h))))
+                   (unless (string-contains? href "#")
+                     (display (string-append jsoftware.com href))
+                     (newline)))
                  a))
          (*text* . ,(lambda x x))
          (*default* . ,(lambda x x))))

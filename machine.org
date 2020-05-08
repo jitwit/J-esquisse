@@ -19,8 +19,7 @@ an example of coalescing functions $T,G$.
 
 ** ~x~
 
-The state machine specification. ~x=. f ; sc; m; ijrd~ 
-has up to 4
+The state machine specification. ~x=. f ; sc; m; ijrd~ has up to 4
 components.
 
 *** ~f~
@@ -47,8 +46,7 @@ action ~r1,a~.
 |    6 | stop                     |                            |
 
 Basically, it's like vertices form graph based on domain of ~r~ with
-labelled edges by character class ~c~ (and action) between them. Why?
-because the ~e(w|v)~ functions throw error if ~j~ is negative!
+labelled edges by character class ~c~ (and action) between them.
 
 *** ew/ev
 
