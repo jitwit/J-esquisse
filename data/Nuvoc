@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>NuVoc - J Wiki</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"NuVoc","wgTitle":"NuVoc","wgCurRevisionId":27758,"wgRevisionId":27758,"wgArticleId":5213,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["NuVoc"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"NuVoc","wgRelevantArticleId":5213,"wgRequestId":"40c79b6ab8cbde0bf540f01e","wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgWikiEditorEnabledModules":[]});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","site":"ready","user.options":"ready","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready"});mw.loader.implement("user.tokens@1ceampt",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});mw.loader.load(["mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.31.0"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/mediawiki/opensearch_desc.php" title="J Wiki (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="https://code.jsoftware.com/mediawiki/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="J Wiki Atom feed" href="/mediawiki/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<!--[if lt IE 9]><script src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=html5shiv&amp;only=scripts&amp;skin=vector&amp;sync=1"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-NuVoc rootpage-NuVoc skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div class="mw-indicators mw-body-content">
+</div>
+<h1 id="firstHeading" class="firstHeading" lang="en">NuVoc</h1>			<div id="bodyContent" class="mw-body-content">
+				<div id="siteSub" class="noprint">From J Wiki</div>				<div id="contentSub"></div>
+								<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><h3><span class="mw-headline" id="J_Primitives">J Primitives</span></h3>
+<dl><dd><table class="wikitable" style="font-size:0.8em;margin-left:2em;text-align:left;;background-color:#ffffff;;border:none;">
+
+<tbody><tr>
+<td style="border:none;">&#160;
+</td>
+<td style="border:none;">Learn <a href="/wiki/Vocabulary/HowNuVoc" title="Vocabulary/HowNuVoc">how to understand this page</a><tt>&#160;&#160;&#160;&#160;&#160;&#160;</tt>
+</td>
+<td style="border:none;"><a href="/wiki/Vocabulary/AboutNuVoc/Comments" title="Vocabulary/AboutNuVoc/Comments">Report a bug</a>
+</td></tr>
+<tr>
+<td style="border:none;">Scroll Down to a list of <a href="#bottomrefs">Ancillary Pages</a>
+</td>
+<td style="border:none;">Learn some <a href="/wiki/Vocabulary/AET" title="Vocabulary/AET">special terms</a> J uses
+</td>
+<td style="border:none;">See a <a href="/wiki/User:Devon_McCormick/MinimalBeginningJ" title="User:Devon McCormick/MinimalBeginningJ">minimal subset</a> of what's below
+</td></tr></tbody></table></dd></dl>
+<dl><dd><table class="wikitable" style="font-size:0.8em;margin-left:0em;;background-color:#ffffff;border:none;">
+
+<tbody><tr style="font-weight:bold;">
+<td style="text-align:center;border-left:none;border-top:none;border-bottom:none;">KEY:
+</td>
+<td>Primitive
+</td>
+<td style="text-align:center"><a href="/wiki/Vocabulary/Valence" title="Vocabulary/Valence">Valence</a>
+</td>
+<td rowspan="3" style="width:10%;border:none; text-align:center">
+</td>
+<td colspan="6" style="text-align:center">COLOR CODE: <tt>&#160;</tt>&#160;&#160;<a href="/wiki/Vocabulary/PartsOfSpeech" title="Vocabulary/PartsOfSpeech">Parts of Speech</a>
+</td></tr>
+<tr>
+<td style="border-top:none;border-bottom:none;border-left:none;">
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>=</tt>
+</td>
+<td style="border-left:none;"><i>Monadic </i><tt>rank</tt> and use • <i>Dyadic </i>use and <tt>ranks</tt>
+</td>
+<td style="background-color:#ddccff;">Verb
+</td>
+<td style="background-color:#cceeff;">Adverb
+</td>
+<td style="background-color:#eeffcc;">Conjunction
+</td>
+<td style="background-color:#ffccee;">Noun
+</td>
+<td style="background-color:#dddddd;">Copula
+</td>
+<td style="background-color:#eeaaaa;">Control
+</td></tr>
+<tr>
+<td style="border-top:none;border-bottom:none;border-left:none;">
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>_:</tt>
+</td>
+<td style="border-left:none;text-align:center;"><tt>monadic rank</tt>&#160;&#160;<i>Dual-Valence</i>&#160;&#160;<tt>dyadic ranks</tt>
+</td>
+<td style="border:none;">
+</td>
+<td colspan="2" style="text-align:center"><tt>u v</tt>: verb operands<br /><tt>m n</tt>: noun operands
+</td></tr></tbody></table></dd></dl>
+<p><span id="maintable"></span>
+</p>
+<dl><dd><table class="wikitable" style="font-size:0.8em;;background-color:#ffffff;border:none;">
+
+<tbody><tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>=</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/eq" title="Vocabulary/eq">Self-Classify</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/eq#dyadic" title="Vocabulary/eq">Equal</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#dddddd;border-right:none;"><tt>=.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/eqdot" title="Vocabulary/eqdot">Is (Local)</a>
+</td>
+<td style="background-color:#dddddd;border-right:none;"><tt>=:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/eqco" title="Vocabulary/eqco">Is (Global)</a>
+</td>
+<td colspan="4" style="border-left:none;border-right:none;border-top:none;border-bottom:none;">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>&lt;</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/lt" title="Vocabulary/lt">Box</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/lt#dyadic" title="Vocabulary/lt">Less Than</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>&lt;.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/ltdot" title="Vocabulary/ltdot">Floor</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/ltdot#dyadic" title="Vocabulary/ltdot">Lesser Of (Min)</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>&lt;:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/ltco" title="Vocabulary/ltco">Decrement</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/ltco#dyadic" title="Vocabulary/ltco">Less Or Equal</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>&gt;</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/gt" title="Vocabulary/gt">Open</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/gt#dyadic" title="Vocabulary/gt">Larger Than</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>&gt;.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/gtdot" title="Vocabulary/gtdot">Ceiling</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/gtdot#dyadic" title="Vocabulary/gtdot">Larger of (Max)</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>&gt;:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/gtco" title="Vocabulary/gtco">Increment</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/gtco#dyadic" title="Vocabulary/gtco">Larger Or Equal</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ffccee;border-right:none;"><tt>_</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/under" title="Vocabulary/under">Negative Sign / Infinity</a>
+</td>
+<td style="background-color:#ffccee;border-right:none;"><tt>_.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/underdot" title="Vocabulary/underdot">Indeterminate</a>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>_:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/underco" title="Vocabulary/underco">Infinite</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>+</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/plus" title="Vocabulary/plus">Conjugate</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/plus#dyadic" title="Vocabulary/plus">Plus</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>+.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/plusdot" title="Vocabulary/plusdot">Real/Imag</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/plusdot#dyadic" title="Vocabulary/plusdot">GCD (Or)</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>+:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/plusco" title="Vocabulary/plusco">Double</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/plusco#dyadic" title="Vocabulary/plusco">Not-Or</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>*</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/star" title="Vocabulary/star">Signum</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/star#dyadic" title="Vocabulary/star">Times</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>*.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/stardot" title="Vocabulary/stardot">Length/Angle</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/stardot#dyadic" title="Vocabulary/stardot">LCM (And)</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>*:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/starco" title="Vocabulary/starco">Square</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/starco#dyadic" title="Vocabulary/starco">Not-And</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>-</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/minus" title="Vocabulary/minus">Negate</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/minus#dyadic" title="Vocabulary/minus">Minus</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>-.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/minusdot" title="Vocabulary/minusdot">Not</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/minusdot#dyadic" title="Vocabulary/minusdot">Less</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>-:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/minusco" title="Vocabulary/minusco">Halve</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/minusco#dyadic" title="Vocabulary/minusco">Match</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>%</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/percent" title="Vocabulary/percent">Reciprocal</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/percent#dyadic" title="Vocabulary/percent">Divide</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>%.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>2</tt>&#160;&#160;<a href="/wiki/Vocabulary/percentdot" title="Vocabulary/percentdot">Matrix Inverse</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/percentdot#dyadic" title="Vocabulary/percentdot">Matrix Divide</a>&#160;&#160;<tt>_&#160;2</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>%:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/percentco" title="Vocabulary/percentco">Square Root</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/percentco#dyadic" title="Vocabulary/percentco">Root</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>^</tt><br />
+<p><tt>^!.p</tt>
+</p>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/hat" title="Vocabulary/hat">Exponential</a> <br />
+<p>&#160;
+</p>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/hat#dyadic" title="Vocabulary/hat">Power</a>&#160;&#160;<tt>0&#160;0</tt> <br />
+<p><a href="/wiki/Vocabulary/hat#stope" title="Vocabulary/hat">Stope Function</a>&#160;&#160;<tt>0&#160;0</tt>
+</p>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>^.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/hatdot" title="Vocabulary/hatdot">Natural Log</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/hatdot#dyadic" title="Vocabulary/hatdot">Logarithm</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>^:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/hatco" title="Vocabulary/hatco">Power of Verb</a>&#160;&#160;<tt>_&#160;_</tt> <br />
+<p>(<a href="/wiki/Vocabulary/hatco#IfDyad" title="Vocabulary/hatco">If</a>, <a href="/wiki/Vocabulary/hatco#Inverse" title="Vocabulary/hatco">Inverse</a>, <a href="/wiki/Vocabulary/hatco#DoWhile" title="Vocabulary/hatco">DoWhile</a>)
+</p>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>$</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/dollar" title="Vocabulary/dollar">Shape Of</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/dollar#dyadic" title="Vocabulary/dollar">Shape</a>&#160;&#160;<tt>1&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>$.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/dollardot" title="Vocabulary/dollardot">Sparse</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>$:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/dollarco" title="Vocabulary/dollarco">Self-Reference</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#cceeff;border-right:none;"><tt>u~</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none;border-bottom:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/tilde" title="Vocabulary/tilde">Reflex</a>
+</td>
+<td style="border-left:none;border-right:none;border-bottom:none;">•
+</td>
+<td style="text-align:left;border-left:none;border-bottom:none;"><a href="/wiki/Vocabulary/tilde#dyadic" title="Vocabulary/tilde">Passive</a>&#160;&#160;<tt>lu&#160;ru</tt>
+</td>
+<td rowspan="2" style="background-color:#ddccff;border-right:none;"><tt>~.</tt>
+</td>
+<td rowspan="2" style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/tildedot" title="Vocabulary/tildedot">Nub</a>
+</td>
+<td rowspan="2" style="border-left:none;border-right:none">•
+</td>
+<td rowspan="2" style="text-align:left;border-left:none">
+</td>
+<td rowspan="2" style="background-color:#ddccff;border-right:none;"><tt>~:</tt>
+</td>
+<td rowspan="2" style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/tildeco" title="Vocabulary/tildeco">Nub Sieve</a>
+</td>
+<td rowspan="2" style="border-left:none;border-right:none">•
+</td>
+<td rowspan="2" style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/tildeco#dyadic" title="Vocabulary/tildeco">Not-Equal</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#cceeff;border-right:none;"><tt>m~</tt>
+</td>
+<td colspan="3" style="text-align:center;border-top:none;"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/tildem" title="Vocabulary/tildem">Evoke</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>|</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/bar" title="Vocabulary/bar">Magnitude</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/bar#dyadic" title="Vocabulary/bar">Residue</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>|.</tt><br />
+<p><tt>|.!.f</tt>
+</p>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/bardot" title="Vocabulary/bardot">Reverse</a>  <br />
+<p><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/bardot#monadicfit" title="Vocabulary/bardot">Shift Right 1</a>
+</p>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/bardot#dyadic" title="Vocabulary/bardot">Rotate</a>&#160;&#160;<tt>_&#160;_</tt>  <br />
+<p><a href="/wiki/Vocabulary/bardot#dyadicfit" title="Vocabulary/bardot">Shift</a>&#160;&#160;<tt>_&#160;_</tt>
+</p>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>|:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/barco" title="Vocabulary/barco">Transpose</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/barco#dyadic" title="Vocabulary/barco">Rearrange Axes</a>&#160;&#160;<tt>1&#160;_</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>2</tt>&#160;&#160;<a href="/wiki/Vocabulary/dot" title="Vocabulary/dot">Determinant</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/dot#dyadic" title="Vocabulary/dot">Matrix Product</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td colspan="8">
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/cor" title="Vocabulary/cor">Def</a> ( <a href="/wiki/Vocabulary/com" title="Vocabulary/com">Explicit Def</a>, <a href="/wiki/Vocabulary/coa" title="Vocabulary/coa">Verb Anatomy</a>, <a href="/wiki/Vocabulary/cou" title="Vocabulary/cou">Monad/Dyad</a> )
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>:.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>mu</tt>&#160;&#160;<a href="/wiki/Vocabulary/codot" title="Vocabulary/codot">Assign Obverse</a>&#160;&#160;<tt>lu&#160;ru</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>::</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/coco" title="Vocabulary/coco">Assign Adverse</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>,</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/comma" title="Vocabulary/comma">Ravel</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/comma#dyadic" title="Vocabulary/comma">Append</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>,.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/commadot" title="Vocabulary/commadot">Ravel Items</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/commadot#dyadic" title="Vocabulary/commadot">Stitch</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>,:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/commaco" title="Vocabulary/commaco">Itemize</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/commaco#dyadic" title="Vocabulary/commaco">Laminate</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td rowspan="4" style="background-color:#ddccff;border-right:none;"><tt>;</tt>
+</td>
+<td rowspan="4" style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/semi" title="Vocabulary/semi">Raze</a>
+</td>
+<td rowspan="4" style="border-left:none;border-right:none">•
+</td>
+<td rowspan="4" style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/semi#dyadic" title="Vocabulary/semi">Link</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;border-bottom:none;"><tt>;.</tt>
+</td>
+<td style="text-align:center;border-left:none;border:none">
+</td>
+<td style="border-left:none;border:none"><a href="/wiki/Vocabulary/semidot" title="Vocabulary/semidot">Cut</a>
+</td>
+<td style="text-align:left;border:none">
+</td>
+<td rowspan="4" style="background-color:#ddccff;border-right:none;"><tt>;:</tt>
+</td>
+<td rowspan="4" style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/semico" title="Vocabulary/semico">Words</a>
+</td>
+<td rowspan="4" style="border-left:none;border-right:none">•
+</td>
+<td rowspan="4" style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/semico#dyadic" title="Vocabulary/semico">Seq. Machine</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;border-top:none;border-bottom:none;"><tt>;.0</tt>
+</td>
+<td style="text-align:center;border:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/semidot0" title="Vocabulary/semidot0">Reversed</a>
+</td>
+<td style="border-left:none;border:none">•
+</td>
+<td style="text-align:left;border:none"><a href="/wiki/Vocabulary/semidot0#dyadic" title="Vocabulary/semidot0">Subarray</a>&#160;&#160;<tt>2&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;border-top:none;border-bottom:none;"><tt>;.&#177;1&#160;&#177;2</tt>
+</td>
+<td style="text-align:center;border:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/semidot1" title="Vocabulary/semidot1">SelfIntervals</a>
+</td>
+<td style="border-left:none;border:none">•
+</td>
+<td style="text-align:left;border:none"><a href="/wiki/Vocabulary/semidot1#dyadic" title="Vocabulary/semidot1">Intervals</a>&#160;&#160;<tt>1&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;border-top:none;"><tt>;.&#177;3</tt>
+</td>
+<td style="text-align:center;border:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/semidot3" title="Vocabulary/semidot3">MaxCubes</a>
+</td>
+<td style="border-left:none;border:none">•
+</td>
+<td style="text-align:left;border:none"><a href="/wiki/Vocabulary/semidot3#dyadic" title="Vocabulary/semidot3">Subarrays</a>&#160;&#160;<tt>2&#160;_</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>#</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/number" title="Vocabulary/number">Tally</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/number#dyadic" title="Vocabulary/number">Copy</a>&#160;&#160;<tt>1&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>#.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/numberdot" title="Vocabulary/numberdot">Base Two</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/numberdot#dyadic" title="Vocabulary/numberdot">Base</a>&#160;&#160;<tt>1&#160;1</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>#:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/numberco" title="Vocabulary/numberco">Antibase Two</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/numberco#dyadic" title="Vocabulary/numberco">Antibase</a>&#160;&#160;<tt>1&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>!</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/bang" title="Vocabulary/bang">Factorial</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/bang#dyadic" title="Vocabulary/bang">Out Of</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>!.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>mu</tt>&#160;&#160;<a href="/wiki/Vocabulary/bangdot" title="Vocabulary/bangdot">Fit (Customize)</a>&#160;&#160;<tt>lu&#160;ru</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>!:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/bangco" title="Vocabulary/bangco">Foreign (System Functions)</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#cceeff;border-right:none;"><tt>/</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/slash" title="Vocabulary/slash">Insert</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/slash#dyadic" title="Vocabulary/slash">Table</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#cceeff;border-right:none;"><tt>/.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/slashdot" title="Vocabulary/slashdot">Oblique</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/slashdot#dyadic" title="Vocabulary/slashdot">Key</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>/:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/slashco" title="Vocabulary/slashco">Grade Up</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/slashco#dyadic" title="Vocabulary/slashco">Sort Up [Using]</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#cceeff;border-right:none;"><tt>\</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/bslash" title="Vocabulary/bslash">Prefix</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/bslash#dyadic" title="Vocabulary/bslash">Infix</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#cceeff;border-right:none;"><tt>\.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/bslashdot" title="Vocabulary/bslashdot">Suffix</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/bslashdot#dyadic" title="Vocabulary/bslashdot">Outfix</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>\:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/slashco" title="Vocabulary/slashco">Grade Down</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/slashco#dyadic" title="Vocabulary/slashco">Sort Down [Using]</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>[</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/squarelf" title="Vocabulary/squarelf">Same</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/squarelf#dyadic" title="Vocabulary/squarelf">Left</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td colspan="4">
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>[:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/squarelfco" title="Vocabulary/squarelfco">Cap</a>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>]</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/squarert" title="Vocabulary/squarert">Same</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/squarert#dyadic" title="Vocabulary/squarert">Right</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td colspan="8">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>{</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlylf" title="Vocabulary/curlylf">Catalogue</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/curlylf#dyadic" title="Vocabulary/curlylf">From</a>&#160;&#160;<tt>0&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>{.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlylfdot" title="Vocabulary/curlylfdot">Head</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/curlylfdot#dyadic" title="Vocabulary/curlylfdot">Take</a>&#160;&#160;<tt>1&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>{:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlylfco" title="Vocabulary/curlylfco">Tail</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none">
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>{::</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlylfcoco" title="Vocabulary/curlylfcoco">Map</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/curlylfcoco#dyadic" title="Vocabulary/curlylfcoco">Fetch</a>&#160;&#160;<tt>1&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#cceeff;border-right:none;"><tt>}</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlyrt" title="Vocabulary/curlyrt">Composite Item</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/curlyrt#dyadic" title="Vocabulary/curlyrt">Amend</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>}.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlyrtdot" title="Vocabulary/curlyrtdot">Behead</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/curlyrtdot#dyadic" title="Vocabulary/curlyrtdot">Drop</a>&#160;&#160;<tt>1&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>}:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/curlyrtco" title="Vocabulary/curlyrtco">Curtail</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none">
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>"</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/quote" title="Vocabulary/quote">Rank</a> (<tt>u"n</tt>&#160;&#160;<a href="/wiki/Vocabulary/quote" title="Vocabulary/quote">Assign</a>, <tt>m"n</tt>&#160;&#160;<a href="/wiki/Vocabulary/quotem" title="Vocabulary/quotem">Const.</a> , <tt>u"v</tt>&#160;&#160;<a href="/wiki/Vocabulary/quotev" title="Vocabulary/quotev">Copy</a>)
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>".</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/quotedot" title="Vocabulary/quotedot">Do</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/quotedot#dyadic" title="Vocabulary/quotedot">Numbers</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>":</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/quoteco" title="Vocabulary/quoteco">Default Format</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/quoteco#dyadic" title="Vocabulary/quoteco">Format</a>&#160;&#160;<tt>1&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>`</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/grave" title="Vocabulary/grave">Tie (Gerund)</a>
+</td>
+<td colspan="4">
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>`:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/graveco" title="Vocabulary/graveco">Evoke Gerund</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none"><tt>@</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>mv</tt>&#160;&#160;<a href="/wiki/Vocabulary/at" title="Vocabulary/at">Atop</a>&#160;&#160;<tt>lv&#160;rv</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>@.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>mv</tt>&#160;&#160;<a href="/wiki/Vocabulary/atdot" title="Vocabulary/atdot">Agenda</a>&#160;&#160;<tt>lv&#160;rv</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>@:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/atco" title="Vocabulary/atco">At</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>&amp;</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/ampm" title="Vocabulary/ampm">Bond</a>&#160;&#160;<tt>0&#160;_</tt><br />
+<p><tt>mv</tt>&#160;&#160;<a href="/wiki/Vocabulary/ampv" title="Vocabulary/ampv">Compose</a>&#160;&#160;<tt>mv&#160;mv</tt>
+</p>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>&amp;.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>mv</tt>&#160;&#160;<a href="/wiki/Vocabulary/ampdot" title="Vocabulary/ampdot">Under (Dual)</a>&#160;&#160;<tt>mv&#160;mv</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>&amp;:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/ampco" title="Vocabulary/ampco">Appose</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>&amp;.:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/ampdotco" title="Vocabulary/ampdotco">Under</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td rowspan="2" style="background-color:#ddccff;border-right:none;"><tt>?</tt>
+</td>
+<td rowspan="2" style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/query" title="Vocabulary/query">Roll</a>
+</td>
+<td rowspan="2" style="border-left:none;border-right:none">•
+</td>
+<td rowspan="2" style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/query#dyadic" title="Vocabulary/query">Deal</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td rowspan="2" style="background-color:#ddccff;border-right:none;"><tt>?.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none;border-bottom:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/querydot" title="Vocabulary/querydot">Roll</a>
+</td>
+<td style="border-left:none;border-right:none;border-bottom:none;">•
+</td>
+<td style="text-align:left;border-left:none;border-bottom:none;"><a href="/wiki/Vocabulary/querydot#dyadic" title="Vocabulary/querydot">Deal</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td colspan="4" rowspan="2" style="text-align:center">
+</td></tr>
+<tr>
+<td colspan="3" style="text-align:center;border-left:none;border-top:none;">(fixed seed)
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#ffccee;border-right:none;"><tt>a.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/adot" title="Vocabulary/adot">Alphabet (all bytes)</a>
+</td>
+<td style="background-color:#ffccee;border-right:none;"><tt>a:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/aco" title="Vocabulary/aco">Ace (Boxed Empty)</a>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>A.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/acapdot" title="Vocabulary/acapdot">Anagram Index</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/acapdot#dyadic" title="Vocabulary/acapdot">Anagram</a>&#160;&#160;<tt>0&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#cceeff;border-right:none;"><tt>m b.</tt><br /><tt>u b.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/bdot" title="Vocabulary/bdot">Boolean</a>, <a href="/wiki/Vocabulary/bdot#bitwise" title="Vocabulary/bdot">Bitwise</a>, <a href="/wiki/Vocabulary/bdot#bitshift" title="Vocabulary/bdot">Bitwise Shift</a>&#160;&#160;<tt>0&#160;0</tt> <br />
+<p><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/bdotu" title="Vocabulary/bdotu">Verb Info (Obverse, Rank, Identity)</a>
+</p>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>C.</tt><br />
+<p><tt>C.!.2</tt>
+</p>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/ccapdot" title="Vocabulary/ccapdot">Cycle-Direct</a> <br />
+<p><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/ccapdot#permparity" title="Vocabulary/ccapdot">Permut. Parity</a>
+</p>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/ccapdot#dyadic" title="Vocabulary/ccapdot">Permute</a>&#160;&#160;<tt>1&#160;_</tt> <br />
+<p><small><tt>&#160;</tt></small>
+</p>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>d.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/ddot" title="Vocabulary/ddot">Ordinary</a><br />
+<p><a href="/wiki/Vocabulary/ddot" title="Vocabulary/ddot">Derivative</a>
+</p>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none">
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>u D.</tt><br /><tt>m D.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>mu</tt>&#160;&#160;<a href="/wiki/Vocabulary/dcapdot" title="Vocabulary/dcapdot">Derivative</a> <br />
+<p><tt>mu</tt>&#160;&#160;<a href="/wiki/Vocabulary/dcapdot#dcapdotm" title="Vocabulary/dcapdot">Assign Deriv.</a>
+</p>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none">
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>D:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none">
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/dcapco" title="Vocabulary/dcapco">Secant Slope</a>&#160;&#160;<tt>mu&#160;mu</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>e.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/edot" title="Vocabulary/edot">Raze In</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/edot#dyadic" title="Vocabulary/edot">Member (In)</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>E.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none">
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/ecapdot" title="Vocabulary/ecapdot">Find Matches</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#cceeff;border-right:none;"><tt>f.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/fdot" title="Vocabulary/fdot">Fix</a>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>F. F.. F.:<br />F: F:. F::</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/fcap" title="Vocabulary/fcap">Fold</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>H.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/hcapdot" title="Vocabulary/hcapdot">Hypergeometric</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>i.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/idot" title="Vocabulary/idot">Integers</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/idot#dyadic" title="Vocabulary/idot">Index Of</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>i:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/ico" title="Vocabulary/ico">Steps</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/ico#dyadic" title="Vocabulary/ico">Index Of Last</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>I.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/icapdot" title="Vocabulary/icapdot">Indices</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/icapdot#dyadic" title="Vocabulary/icapdot">Interval Index</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>j.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/jdot" title="Vocabulary/jdot">Imaginary</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/jdot#dyadic" title="Vocabulary/jdot">Complex</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>L.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/lcapdot" title="Vocabulary/lcapdot">Level Of</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none">
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><tt>L:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/lcapco" title="Vocabulary/lcapco">Level At</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#cceeff;border-right:none;"><tt>M.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>mu</tt>&#160;&#160;<a href="/wiki/Vocabulary/mcapdot" title="Vocabulary/mcapdot">Memo</a>&#160;&#160;<tt>lu&#160;ru</tt>
+</td>
+<td style="background-color:#ffffff;border-right:none;"><tt>NB.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/ncapbcapdot" title="Vocabulary/ncapbcapdot">Comment</a>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>o.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/odot" title="Vocabulary/odot">Pi Times</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/odot#dyadic" title="Vocabulary/odot">Circle Function</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>p.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/pdot" title="Vocabulary/pdot">Roots</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/pdot#dyadic" title="Vocabulary/pdot">Polynomial</a>&#160;&#160;<tt>1&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>p..</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>1</tt>&#160;&#160;<a href="/wiki/Vocabulary/pdotdot" title="Vocabulary/pdotdot">Poly. Deriv.</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/pdotdot#dyadic" title="Vocabulary/pdotdot">Poly. Integral</a>&#160;&#160;<tt>0&#160;1</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>p:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/pco" title="Vocabulary/pco">Primes</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>q:</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/qco" title="Vocabulary/qco">Prime Factors</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/qco#dyadic" title="Vocabulary/qco">Prime Exp.</a>&#160;&#160;<tt>0&#160;0</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>r.</tt>
+</td>
+<td style="text-align:right;border-left:none;border-right:none"><tt>0</tt>&#160;&#160;<a href="/wiki/Vocabulary/rdot" title="Vocabulary/rdot">Angle</a>
+</td>
+<td style="border-left:none;border-right:none">•
+</td>
+<td style="text-align:left;border-left:none"><a href="/wiki/Vocabulary/rdot#dyadic" title="Vocabulary/rdot">Polar</a>&#160;&#160;<tt>0&#160;0</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>s:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/sco" title="Vocabulary/sco">Symbol</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><tt>S:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/scapco" title="Vocabulary/scapco">Spread</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>u:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/uco" title="Vocabulary/uco">Unicode</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#ddccff;border-right:none;"><tt>x:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/xco" title="Vocabulary/xco">Extended Precision</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>Z:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/zcapco" title="Vocabulary/zcapco">Terminate Fold</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;text-align:center;border-right:none;"><tt>_9:</tt> to <tt>9:</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/zeroco" title="Vocabulary/zeroco">Constant Functions</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td style="background-color:#eeffcc;border-right:none;"><i><tt>u v</tt></i>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/hook" title="Vocabulary/hook">Hook</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#eeffcc;border-right:none;"><i><tt>f g h</tt></i>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/fork" title="Vocabulary/fork">Fork</a>&#160;&#160;<tt>_&#160;_</tt>
+</td>
+<td style="background-color:#ddccff;border-right:none;"><tt>u.</tt> <tt>v.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><tt>_</tt>&#160;&#160;<a href="/wiki/Vocabulary/udot" title="Vocabulary/udot">Enhanced Operand</a>&#160;&#160;<tt>_&#160;_</tt>
+</td></tr>
+<tr>
+<td colspan="12">
+</td></tr>
+<tr>
+<td style="background-color:#eeaaaa;border-right:none;"><span id="controls"></span><tt>assert.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/assertdot" title="Vocabulary/assertdot">Assertion</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>break.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/breakdot" title="Vocabulary/breakdot">Terminate loop</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>continue.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/continuedot" title="Vocabulary/continuedot">Terminate iteration</a>
+</td></tr>
+<tr>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>else.</tt> <tt>elseif.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/elsedot" title="Vocabulary/elsedot">Execute alternative</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>for.</tt> <tt>for_ijk.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/fordot" title="Vocabulary/fordot">Repeat for each item</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>goto_lbl.</tt> <tt>label_lbl.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/gotodot" title="Vocabulary/gotodot">Go to label</a>
+</td></tr>
+<tr>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>if.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/ifdot" title="Vocabulary/ifdot">Execute if</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>return.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/returndot" title="Vocabulary/returndot">Exit with result</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>select.</tt> <tt>case.</tt> <tt>fcase.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/selectdot" title="Vocabulary/selectdot">Select among alternatives</a>
+</td></tr>
+<tr>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>throw.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/throwdot" title="Vocabulary/throwdot">Throw to higher-level <tt>catcht.</tt></a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>try.</tt> <tt>catch.</tt> <tt>catchd.</tt> <tt>catcht.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/trydot" title="Vocabulary/trydot">Execute, catching errors</a>
+</td>
+<td style="background-color:#eeaaaa;border-right:none;"><tt>while.</tt> <tt>whilst.</tt>
+</td>
+<td colspan="3" style="text-align:center;border-left:none;"><a href="/wiki/Vocabulary/whiledot" title="Vocabulary/whiledot">Loop while</a>
+</td></tr></tbody></table></dd></dl>
+<hr />
+<p><span id="bottomrefs"></span>
+</p>
+<h3><span class="mw-headline" id="Ancillary_Pages">Ancillary Pages</span></h3>
+<p>These are special articles written to comply with NuVoc standards, and tagged: Category:NuVoc.
+</p><p>They explain principles and practice in greater depth than appropriate on the primitives' pages themselves (all tagged: CategoryVoc), or which are relevant to more than one page.
+</p><p>They are <i>task-oriented</i> rather than <i>function-oriented</i>
+</p>
+<ul><li>i.e. they describe features from the point-of-view of what the reader wants to achieve, rather than document J's functionality (as the primitive-pages do)</li></ul>
+<p>These pages are linked from the primitive-pages themselves, at the point where they are relevant.
+</p><p>But for convenient lookup and revision, they are listed below:
+</p>
+<dl><dd><table class="wikitable">
+
+<tbody><tr>
+<td><a href="/wiki/Vocabulary/AboutNuVoc" title="Vocabulary/AboutNuVoc">Vocabulary/AboutNuVoc</a>
+</td>
+<td>About the Accessible Dictionary: how and why
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/AET" title="Vocabulary/AET">Vocabulary/AET</a>
+</td>
+<td>"Absolutely essential J terms" to know for NuVoc
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Agreement" title="Vocabulary/Agreement">Vocabulary/Agreement</a>
+</td>
+<td>How argument cells are matched for dyads (with tables)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/AmendingBoxedStructures" title="Vocabulary/AmendingBoxedStructures">Vocabulary/AmendingBoxedStructures</a>
+</td>
+<td>Making replacements inside a boxed array
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/ArrayProcessing" title="Vocabulary/ArrayProcessing">Vocabulary/ArrayProcessing</a>
+</td>
+<td>How do you process an array? (an introduction)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Assignment" title="Vocabulary/Assignment">Vocabulary/Assignment</a>
+</td>
+<td>Private and public assignment explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Constants" title="Vocabulary/Constants">Vocabulary/Constants</a>
+</td>
+<td>Number formation (an intro by examples)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/ControlStructures" title="Vocabulary/ControlStructures">Vocabulary/ControlStructures</a>
+</td>
+<td>Control words used in J definitions
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/CyclicGerund" title="Vocabulary/CyclicGerund">Vocabulary/CyclicGerund</a>
+</td>
+<td>Cyclic gerunds explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Dissect" title="Vocabulary/Dissect">Vocabulary/Dissect</a>
+</td>
+<td>Pictorial view and analysis of a J sentence
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/EZRank" title="Vocabulary/EZRank">Vocabulary/EZRank</a>
+</td>
+<td>Rank in a hurry: "rank" concept rapidly explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/EmptyArguments" title="Vocabulary/EmptyArguments">Vocabulary/EmptyArguments</a>
+</td>
+<td>What happens when an argument to a verb has no atoms, or no cells (two different conditions!)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/ErrorMessages" title="Vocabulary/ErrorMessages">Vocabulary/ErrorMessages</a>
+</td>
+<td>Error Messages (formal table plus explanations)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Foreigns" title="Vocabulary/Foreigns">Vocabulary/Foreigns</a>
+</td>
+<td>System Functions and Miscellaneous Features (<tt>m!:n</tt>)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/FramingFill" title="Vocabulary/FramingFill">Vocabulary/FramingFill</a>
+</td>
+<td>Result collection and framing fill explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/GerundsAndAtomicRepresentation" title="Vocabulary/GerundsAndAtomicRepresentation">Vocabulary/GerundsAndAtomicRepresentation</a>
+</td>
+<td>Gerunds and Atomic Representation explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Glossary" title="Vocabulary/Glossary">Vocabulary/Glossary</a>
+</td>
+<td>J terms (a comprehensive formal list)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/HowNuVoc" title="Vocabulary/HowNuVoc">Vocabulary/HowNuVoc</a> &#160; <b><tt>&lt;-- START HERE --</tt></b>
+</td>
+<td>How to use NuVoc
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/IFamily" title="Vocabulary/IFamily">Vocabulary/IFamily</a>
+</td>
+<td>The <tt>i.</tt>-family of verbs described
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Idioms" title="Vocabulary/Idioms">Vocabulary/Idioms</a>
+</td>
+<td>Idioms (miscellaneous list)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Inverses" title="Vocabulary/Inverses">Vocabulary/Inverses</a>
+</td>
+<td>Inverse and Obverse explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/JBreak" title="Vocabulary/JBreak">Vocabulary/JBreak</a>
+</td>
+<td>JBreak: forcing J to stop executing the current process
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/LAPACK" title="Vocabulary/LAPACK">Vocabulary/LAPACK</a>
+</td>
+<td>J interface to the LAPACK library
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Lint" title="Vocabulary/Lint">Vocabulary/Lint</a>
+</td>
+<td>How to use <tt>lint</tt>: the builtin Program Flow Analyzer
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Libraries" title="Vocabulary/Libraries">Vocabulary/Libraries</a>
+</td>
+<td>The J Libraries and what they do
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Locales" title="Vocabulary/Locales">Vocabulary/Locales</a>
+</td>
+<td>Locales explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Loopless" title="Vocabulary/Loopless">Vocabulary/Loopless</a>
+</td>
+<td>Loopless programming explained: repeating a function on cells, partitions, subarrays, etc.
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Modifiers" title="Vocabulary/Modifiers">Vocabulary/Modifiers</a>
+</td>
+<td>Modifiers (adverbs and conjunctions) explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/NounExplicitDefinition" title="Vocabulary/NounExplicitDefinition">Vocabulary/NounExplicitDefinition</a>
+</td>
+<td>How to define a noun as an explicit entity using (<tt>:</tt>)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Nouns" title="Vocabulary/Nouns">Vocabulary/Nouns</a>
+</td>
+<td>All about Nouns
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/NumericPrecisions" title="Vocabulary/NumericPrecisions">Vocabulary/NumericPrecisions</a>
+</td>
+<td>Numeric Precisions in J
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/ObjectOrientedProgramming" title="Vocabulary/ObjectOrientedProgramming">Vocabulary/ObjectOrientedProgramming</a>
+</td>
+<td>Object-Oriented Programming in J
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/PartsOfSpeech" title="Vocabulary/PartsOfSpeech">Vocabulary/PartsOfSpeech</a>
+</td>
+<td>The Parts of Speech: Noun, Verb, etc.  Call by name and call by value.
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Printf" title="Vocabulary/Printf">Vocabulary/Printf</a>
+</td>
+<td>How to use the <tt>printf</tt> addon
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/RankFromV" title="Vocabulary/RankFromV">Vocabulary/RankFromV</a>
+</td>
+<td>The rank of a verb created by an adverb or conjunction
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/RankInfo" title="Vocabulary/RankInfo">Vocabulary/RankInfo</a>
+</td>
+<td>Rank Information linked from CategoryVoc pages
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/RankInfoIsImportant" title="Vocabulary/RankInfoIsImportant">Vocabulary/RankInfoIsImportant</a>
+</td>
+<td>Why is the rank of a verb important to know?
+</td></tr>
+<tr>
+<td><a href="/wiki/Guides/Regular_Expressions/Overview" title="Guides/Regular Expressions/Overview">Guides/Regular Expressions/Overview</a>
+</td>
+<td>Regex in J
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/ScreenOutputInput" title="Vocabulary/ScreenOutputInput">Vocabulary/ScreenOutputInput</a>
+</td>
+<td>Screen output and input explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/SpecialCombinations" title="Vocabulary/SpecialCombinations">Vocabulary/SpecialCombinations</a>
+</td>
+<td>Special Combinations of primitives (with tables)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/TBlock" title="Vocabulary/TBlock">Vocabulary/TBlock</a>
+</td>
+<td>Clarification of the <b>T-block</b> and the <b>B-block</b> in an <tt>if.</tt>-statement
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/TestYourJ" title="Vocabulary/TestYourJ">Vocabulary/TestYourJ</a>
+</td>
+<td>Test Your J (tells you if you've any need of NuVoc)
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Unreadability" title="Vocabulary/Unreadability">Vocabulary/Unreadability</a>
+</td>
+<td>The alleged unreadability of J - and what to do about it
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/UnicodeCodePoint" title="Vocabulary/UnicodeCodePoint">Vocabulary/UnicodeCodePoint</a>
+</td>
+<td>The Unicode Code Point (UCP) explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Valence" title="Vocabulary/Valence">Vocabulary/Valence</a>
+</td>
+<td>Verb <i>valence</i> explained
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Verbs" title="Vocabulary/Verbs">Vocabulary/Verbs</a>
+</td>
+<td>All about Verbs
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/VerbRank" title="Vocabulary/VerbRank">Vocabulary/VerbRank</a>
+</td>
+<td>Verb rank, and how J extends small verbs to big arrays
+</td></tr>
+<tr>
+<td><a href="http://www.jsoftware.com/help/dictionary/vocabul.htm" class="extiw" title="jdic:vocabul">JDic:vocabul</a>
+</td>
+<td>VOC - the original "pro version" of this portal page
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/Words" title="Vocabulary/Words">Vocabulary/Words</a>
+</td>
+<td>All about J Words
+</td></tr>
+<tr>
+<td><a href="/wiki/Vocabulary/ZeeLocale" title="Vocabulary/ZeeLocale">Vocabulary/ZeeLocale</a>
+</td>
+<td>"Factory words" - the z-locale and its contents
+</td></tr></tbody></table></dd></dl>
+<hr />
+
+<!-- 
+NewPP limit report
+Cached time: 20200507003529
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.086 seconds
+Real time usage: 0.088 seconds
+Preprocessor visited node count: 39/1000000
+Preprocessor generated node count: 84/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 5/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+</div>
+<!-- Saved in parser cache with key my_wiki:pcache:idhash:5213-0!canonical and timestamp 20200507003529 and revision id 27758
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://code.jsoftware.com/mediawiki/index.php?title=NuVoc&amp;oldid=27758">https://code.jsoftware.com/mediawiki/index.php?title=NuVoc&amp;oldid=27758</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/mediawiki/index.php?title=Category:NuVoc&amp;action=edit&amp;redlink=1" class="new" title="Category:NuVoc (page does not exist)">NuVoc</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-login"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=NuVoc" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+							<li id="ca-nstab-main" class="selected"><span><a href="/wiki/NuVoc" title="View the content page [c]" accesskey="c">Page</a></span></li><li id="ca-talk" class="new"><span><a href="/mediawiki/index.php?title=Talk:NuVoc&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [t]" accesskey="t">Discussion</a></span></li>						</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+						<h3 id="p-variants-label">
+							<span>Variants</span>
+						</h3>
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+							<li id="ca-view" class="collapsible selected"><span><a href="/wiki/NuVoc">Read</a></span></li><li id="ca-viewsource" class="collapsible"><span><a href="/mediawiki/index.php?title=NuVoc&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span></li><li id="ca-history" class="collapsible"><span><a href="/mediawiki/index.php?title=NuVoc&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>						</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+						<h3 id="p-cactions-label"><span>More</span></h3>
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+						<form action="/mediawiki/index.php" id="searchform">
+							<div id="simpleSearch">
+								<input type="search" name="search" placeholder="Search J Wiki" title="Search J Wiki [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+			<div class="body">
+								<ul>
+					<li id="n-New-Users"><a href="/wiki/Guides/GettingStarted">New Users</a></li><li id="n-Guides"><a href="/wiki/Guides">Guides</a></li><li id="n-System"><a href="/wiki/System">System</a></li><li id="n-Showcase"><a href="/wiki/Showcase">Showcase</a></li><li id="n-Library"><a href="/wiki/Library">Library</a></li><li id="n-Community"><a href="/wiki/Community">Community</a></li><li id="n-Recent-changes"><a href="/wiki/Special:RecentChanges">Recent changes</a></li><li id="n-Random-page"><a href="/wiki/Special:Random">Random page</a></li><li id="n-J-wiki-search"><a href="/wiki/Special:JwikiSearch">J wiki search</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+			<div class="body">
+								<ul>
+					<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/NuVoc" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/NuVoc" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="/mediawiki/index.php?title=NuVoc&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="/mediawiki/index.php?title=NuVoc&amp;oldid=27758" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/mediawiki/index.php?title=NuVoc&amp;action=info" title="More information about this page">Page information</a></li><li id="t-cite"><a href="/mediawiki/index.php?title=Special:CiteThisPage&amp;page=NuVoc&amp;id=27758" title="Information on how to cite this page">Cite this page</a></li>				</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+				<div id="footer" role="contentinfo">
+						<ul id="footer-info">
+								<li id="footer-info-lastmod"> This page was last edited on 11 January 2020, at 01:43.</li>
+							</ul>
+						<ul id="footer-places">
+								<li id="footer-places-about"><a href="/wiki/About" title="About">About J Wiki</a></li>
+							</ul>
+										<ul id="footer-icons" class="noprint">
+										<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="/mediawiki/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/mediawiki/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mediawiki/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>					</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.086","walltime":"0.088","ppvisitednodes":{"value":39,"limit":1000000},"ppgeneratednodes":{"value":84,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":5,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20200507003529","ttl":86400,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":26});});</script>
+	</body>
+</html>
