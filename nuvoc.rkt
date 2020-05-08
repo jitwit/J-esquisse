@@ -28,7 +28,6 @@
      (*text* . ,(lambda x x))
      (*default* . ,(lambda x x)))))
 
-
 (define (dump-jdoc-urls)
   (delete-file "data/jdoc")
   (with-output-to-file "data/jdoc"

@@ -77,35 +77,19 @@ just means that ~}. - {.~ is linearly independent.
 
 
 #+BEGIN_SRC j :session :exports both
-smp =: _3 ]\ 12 $ 0 0 0 1
+smp =: |: _3 ]\ 12 $ 0 0 0 1
 
-facets =: _1&(]\.) NB. good demo of outfix
-
-('4-simplex';'faces'),:(;facets) smp
+(; -/ .*) 1 2 0 3 { smp , 1
+NB. ('4-simplex';'faces'),:(;facets) smp
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
-┌─────────┬─────┐
-│4-simplex│faces│
-├─────────┼─────┤
-│0 0 0    │1 0 0│
-│1 0 0    │0 1 0│
-│0 1 0    │0 0 1│
-│0 0 1    │     │
-│         │0 0 0│
-│         │0 1 0│
-│         │0 0 1│
-│         │     │
-│         │0 0 0│
-│         │1 0 0│
-│         │0 0 1│
-│         │     │
-│         │0 0 0│
-│         │1 0 0│
-│         │0 1 0│
-└─────────┴─────┘
-#+end_example
+: ┌───────┬──┐
+: │0 0 1 0│_1│
+: │0 0 0 1│  │
+: │0 1 0 0│  │
+: │1 1 1 1│  │
+: └───────┴──┘
 
 
 #+BEGIN_SRC j :session :exports both
@@ -124,3 +108,43 @@ int =: ORP -: ORS@] NB. is x int(erior to) y?
 : 1 _1 1 _1
 : 
 : 1
+
+
+#+begin_src j :session :exports both :async t
++/ i. 10000
+#+end_src
+
+#+RESULTS:
+: 27f68fd9247d64bc3b1e7d5f17c94c32
+
+
+
+src_j[:session]{+/ i. 10} {{{results(=10=)}}}
+
+
+
+
+
+
+
+
+
+
+
+#+begin_src j :session :exports both
+
+#+end_src
+
+#+RESULTS:
+: 499999500000
+
+
+
+
+
+#+begin_src j :session :exports both :async t
++/ i. 100000000
+#+end_src
+
+#+RESULTS:
+: a9e7c4c44b59cb0031b8979f1df58094
