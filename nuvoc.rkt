@@ -6,16 +6,38 @@
          webscraperhelper)
 
 (define jsoftware.com "https://code.jsoftware.com")
+(define data/Nuvoc "data/Nuvoc")
+(define data/jdoc "data/jdoc")
 
 (define nuvoc
-  (with-input-from-file "data/Nuvoc"
+  (with-input-from-file data/Nuvoc
     (lambda ()
       (html->xexp (current-input-port)))))
 
+;; key is border-right:none! the things following one of those which
+;; don't have that property are part of monad/dyad info
+
 (define parse
-  (compose (sxpath '(// td (*or* tt a)))
-           third
+  (compose (sxpath '(// td))
+           (node-pos 3)
            (sxpath '(// table))))
+
+(define (jdoc-entity? node) ;; doesn't catch end of row?
+  (match (assoc 'style (sxml:attr-list node))
+    (`(style ,css) (and (string-contains? css "border-right:none")
+                        (not (string-contains? css "border-left:none"))))
+    (_ #f)))
+
+(define (group nodes)
+  (let loop ((nodes nodes) (xs '()) (xss '()))
+    (match nodes
+      ('() (reverse xss))
+      (`(,x ,nodes ...)
+       (if (jdoc-entity? x)
+         (loop nodes (list x) (cons (cons '*jdoc* (reverse xs)) xss))
+         (loop nodes (cons x xs) xss))))))
+
+(define parse* (compose group parse))
 
 (define (dump-jdoc-urls)
   (when (file-exists? "data/jdoc")
@@ -33,3 +55,6 @@
          (*text* . ,(lambda x x))
          (*default* . ,(lambda x x))))
       (void))))
+
+
+
