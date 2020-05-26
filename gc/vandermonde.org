@@ -1,0 +1,32 @@
+
+Calculating the determinant of the vandermonde matrix of $n$ variables
+involves a few cool tricks. The calculation to be done is
+
+$$ W(x_1, \dots , x_n) = 
+\begin{pmatrix}
+1 & 1 & \cdots & 1 \\
+x_1 & x_2 & \cdots & x_n \\
+\vdots  & \vdots  & \ddots & \vdots  \\
+x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1}
+\end{pmatrix} $$
+
+The first trick/observation is that it is polynomial in any of the
+variables $x_i$. Another is that given $x_i = x_j$, then $W = 0$,
+since the matrix would have two identical columns. The third is that
+the degree of the polynomial in any $x_i$ is $n-1$ in that variable,
+which means it has $n-1$ roots, which can be determined by the
+identical column argument. Therefore, $$ W(x_1,\dots, x_n) =
+a(x_1,\dots, x_{n-1})\cdot \prod_{i < n} x_n - x_i $$
+
+with leading coefficient $a$ consisting of terms containing the
+remaining variables. Looking at the minor of $x_n^{n-1}$, it becomes
+more or less clear that the terms $a(x_1,\dots, x_{n-1})$ in fact
+coincide with $W(x_1, \dots, x_{n-1})$! This is because the degree of
+the $x_n-x_i$ terms is $n-1$ so the $a$ ones come from the minor of
+$x_n^{n-1}$, or the vandermonde determinant of $x_1,\dots, x_{n-1}$.
+
+Recursively expanding the biggest $x_i$ leads to the result
+$$
+W(x_1,\dots, x_n) = \prod_{1 \le i < j \le n} x_j - x_i 
+$$
+

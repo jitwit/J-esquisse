@@ -1,0 +1,69 @@
+
+* Parsing Expression Grammar or Peg
+
+[[https://en.wikipedia.org/wiki/Parsing_expression_grammar][wiki on pegs]]
+
+** Syntax
+
+Pegs are made of:
++ Finite set $N$ of nonterminal symbols
++ Finite set $\Sigma$ of terminal symbols disjoint from $N$
++ Finite set $P$ of parsing rules
++ Starting expression $E_s$
+
+*** Parsing Expressions
+
+Parsing expressions can be atomic or compound. Atomic parsing
+expressions include
++ nonterminals from $N$
++ terminals from $\Sigma$ 
++ the empty string $\epsilon$
+Compound expressions built given expressions $a,b$ are built by
++ sequence $ab$ (then)
++ ordered choice $a|b$ (or)
++ kleene star $a*$ (at least 0)
++ kleene plus $a+$ (at least 1)
++ optional $a?$ (at most 1)
++ and-predicate $\&a$ (fail if $a$ fails, not consuming input)
++ not-predicate $!a$ (fail if $a$ succeeds, not consuming input)
+
+*** Parsing Rule
+
+A parsing rule in $P$ takes the form $A \leftarrow e$, where
+$A\in N$ is a nonterminal symbol and $e$ is a parsing expression.
+
+** Operation
+
+Nonterminals $N$ basically represent functions that take input string
+and upon success the (modified) function may proceed on the rest of
+the input string and upon failure consume no input.
+
+*** Atoms
+
+An atomic terminal expression from $\Sigma$ succeeds if the first
+character of the input string matches. An empty expression $\epsilon$
+always succeeds without consuming input. Nonterminal expressions are
+like recursive calls, which may succeed without consuming.
+
+*** Compounds
+
+Sequence $ab$ proceeds with $b$ unless $a$ fails.
+
+Choice $a|b$ first tries $a$, continues if result is
+success. Otherwise backtrack to where we were when $a$ was tried and
+attempt $b$.
+
+The $*$, $+$, and $?$ are counter intuitive going off regular
+expressions. The mode of operation is greedy, never backtracking! Eg,
+if $z$ represents an atomic symbol ~z~, $z*$ matches as many ~z~ as
+posslble. Notably $z*z$ always fails because $z*$ leaves no ~z~ left.
+
+$\&a$ consumes no input but ensures an $a$. $!a$ gaurds against $a$
+without consuming.
+
+ #+begin_src j :session :exports both
+i. 10
+ #+end_src
+
+ #+RESULTS:
+ : 0 1 2 3 4 5 6 7 8 9

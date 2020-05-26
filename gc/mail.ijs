@@ -1,6 +1,3 @@
-
-
-#+BEGIN_SRC j :session :exports both :tangle mail.ijs
 coclass 'mail'
 
 require'plot web/gethttp arc/zlib regex'
@@ -47,7 +44,3 @@ decompress=: 3 : 0
 gzed=. 'gz' -: > {: <;._1 '.',y
 2!:0 ^: gzed 'gzip -d ',y
 )
-#+END_SRC
-
-#+RESULTS:
-

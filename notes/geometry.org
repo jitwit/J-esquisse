@@ -1,0 +1,150 @@
+
+* Vector Length
+
+A vector can be turned into a unit one by dividing it by its length.
+
+#+begin_src j :session :exports code
+L2=: +/ &.: *:
+unit=: % L2
+#+end_src
+
+#+RESULTS:
+
+Sanity check:
+
+#+begin_src j :session :exports both
+(;unit;L2;(L2@unit))"1 ] _1 2 , 3 4 ,: 8 9
+#+end_src
+
+#+RESULTS:
+: ┌────┬──────────────────┬───────┬─┐
+: │_1 2│_0.447214 0.894427│2.23607│1│
+: ├────┼──────────────────┼───────┼─┤
+: │3 4 │0.6 0.8           │5      │1│
+: ├────┼──────────────────┼───────┼─┤
+: │8 9 │0.664364 0.747409 │12.0416│1│
+: └────┴──────────────────┴───────┴─┘
+
+* Distance to a line
+
+$L = \{Ax + By + C = 0\}$. Given a point $Q=(x_0,y_0)$, what's the
+distance to $L$? The distance is defined geometrically as the length
+of the segment perpindicular to $L$ from it to $Q$.
+
+The origin and $L$ form a triangle, including the coordinate axis. The
+distance to $L$ from $O$ can be found by studying that triangle. Once
+that distancce is known, the distance $L$ to $Q$ can be found by
+calculating the same quantity under the transformation of $Q$ to $O$.
+
+The points where the axis intersect with $L$ are found by setting $x$
+and $y$ to 0: $(-\frac{C}{B},0)\text{ and }(0,-\frac{C}{A})$. The
+distance $d$ to the origin is the height when the hypotenuse $h$ is
+the width. This may be found by equating the area found from that
+perspective with the area $A$ calculated from the height and width
+from the intersections with the axis.
+
+$$h = \sqrt{\frac{C^2}{B^2} + \frac{C^2}{A^2}} =
+\frac{|C|}{AB}\sqrt{A^2+B^2}$$
+
+$$ A = \frac{C^2}{2 A B} = \frac{d |C|\sqrt{A^2+B^2}}{2 A B} $$
+
+$$ d = \frac{|C|}{\sqrt{A^2+B^2}} $$
+
+Now, translate $Q$ to the origin $O$, $T_Q: z \mapsto z-Q$. The set of
+points that determine $L$ is now $L_Q = \{ (x,y) : A(x+x_0) + B
+(y+y_0) + C = 0 \}$, which is like the original equation with $C_Q =
+C + A x_0 + B y_0$ so:
+
+$$ d(Q,L) = d(O,L_Q) = \frac{| C + A x_0 + B y_0 |}{\sqrt{A^2+B^2}} $$
+
+** Another Approach
+
+could be to look at cross product inside plane embedded in
+$\mathbb{R}^3$ with unit vector parallel to $L$ and a point on $L$.
+
+* Cross product
+
+#+begin_src j :session :exports both
+tensor=: C.!.2 @ (#: i.) @ $~
+tensor 3
+#+end_src
+
+#+RESULTS:
+#+begin_example
+ 0  0  0
+ 0  0  1
+ 0 _1  0
+
+ 0  0 _1
+ 0  0  0
+ 1  0  0
+
+ 0  1  0
+_1  0  0
+ 0  0  0
+#+end_example
+
+* Rigid Transformations of Plane
+
+** Translation
+
+#+begin_src j :session :exports both
+trans=: 1 : 'm&+'
+
+(; 3 _3 trans"1) 2]\ i: 3
+#+end_src
+
+#+RESULTS:
+: ┌─────┬────┐
+: │_3 _2│0 _5│
+: │_2 _1│1 _4│
+: │_1  0│2 _3│
+: │ 0  1│3 _2│
+: │ 1  2│4 _1│
+: │ 2  3│5  0│
+: └─────┴────┘
+
+** Rotation
+
+#+begin_src j :session :exports both
+M_rot=: 1 : '(2 2$(2&o.)`(1 o.-)`(1&o.)`(2 o.-)`:0 m)&(+/ . *)'
+
+NB. rotation of 0 1 by angle pi/4 about origin
+(; (o. 1r4) M_rot)"1 (1 0 ,: 0 1)
+#+end_src
+
+#+RESULTS:
+: ┌───┬──────────────────┐
+: │1 0│0.707107 0.707107 │
+: ├───┼──────────────────┤
+: │0 1│_0.707107 0.707107│
+: └───┴──────────────────┘
+
+** Reflection about line
+
+#+begin_src j :session :exports both
+M_ref=: 1 : '(2 2$(2&o.)`(1&o.)`(1&o.)`(2 o.-)`:0+:m)&(+/ . *)'
+
+NB. reflection by line through origin making angle pi/4 with x axis
+(; (o. 1r4) M_ref)"1 (1 0 ,: 0 1)
+#+end_src
+
+#+RESULTS:
+: ┌───┬─────────────┐
+: │1 0│6.12323e_17 1│
+: ├───┼─────────────┤
+: │0 1│1 6.12323e_17│
+: └───┴─────────────┘
+
+Important properties of the determinants of the rotation/reflection
+matrices are that they are equal to $1$ and $-1$. They form a group
+under composition, as two rotations compose to a rotation, a
+rotation+reflection to a reflection and two reflections to a
+rotation. This group is called the orthogonal group of order 2,
+$O(2,\mathbb{R})$. It is constituted by the matrices of
+$\mathbb{R}^{2\times 2}$ of determinant 1 or $_1$ whose column vectors
+are orthogonal.
+
+Matrices with orthogonal column vectors have their transpose as their
+inverse (immediate after studying matrix product with entries such
+that $ac+bd=ab+cd=0$ and 
