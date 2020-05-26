@@ -1,23 +1,17 @@
 NB. flat trie representation
+NB. read dictionary
 NB. W=: (<@}:;._2) 1!:1 < '../gobble/cobble/share/collins.txt'
-start=: (#;~{.@;@{.)/.~{.&>
 
-ws =: W {~ /:~ 10 ?. 1000
+NB. compress y - study a list of words y, depth/parent vectors/flattened chars
+NB. x trie y - flatten list of words y, at current depth x
+NB. x path y - trace back word starting at index x in trie y
+NB. tri and group mutually & recursively partition words by first char
+NB. then flatten keeping tracck of depths.
 
 compress =: (;~ [: parent 0 {:: ]) @: (0&trie)
-NB. x trie y flatten words of y, current depth is x
-trie =: 4 : '({."1 ;&; ({:"1)) (x&group /.~ {.&>) y'
-group =: 4 : 0
-if. 1=#y do. x (] ;~ [+i.@#@;@]) y
-else. (x,a) ; (({.>{.y),b) [ 'a b'=.(1+x) trie }. &.> y end.
-)
+trie =: 4 : '({."1 ;&; ({:"1)) (x& grp /.~ {.&>) y'
+grpb=: ];~[+i.@#@;@]
+grpi=: 4 : '(x,a);(({.>{.y),b)[''a b''=.(1+x)trie}.&.>y'
+grp =: grpi`grpb@.(1=#@]) f.
 parent=: * * (i:<:@{:)\
-
-NB. trace back word starting at index x in trie y
-path=: 4 : 0
-'p d w'=. y
-n=. x { d
-|. w {~ ({&p) ^: (i.>:n) x
-)
-
-compress ws
+path=: 4 : 'w {~ ({&p) ^: (i.->:x{d) x[''p d w''=. y'
