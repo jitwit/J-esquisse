@@ -19,14 +19,12 @@ NB. visual
 grains=: 4000
 size=: 51
 NB. color(t) = a + b ⋅ cos[ 2π(c⋅t+d)]
-NB. todo
 pala=: 0.5 0.5 0.5
 palb=: 0.5 0.5 0.5
 palc=: 1.0 1.0 1.0
 pald =: 0 0.33 0.67
 
-palt=: (grains , 3) $ 255
-
+palt=: ? (grains , 3) $ 255
 world =: grains grid size
 dt=: 1
 
