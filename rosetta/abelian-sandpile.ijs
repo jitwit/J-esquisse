@@ -16,23 +16,32 @@ s=:(+[:(_4&*+[:+/((,-)(,:|.)0 1)|.!.0])3&<)
 s ^:_ gd 100
 
 NB. visual
-grains=: 20000
-size=: 201
-palt=: ? (grains , 3) $ 255
+grains=: 4000
+size=: 51
+NB. color(t) = a + b ⋅ cos[ 2π(c⋅t+d)]
+NB. todo
+pala=: 0.5 0.5 0.5
+palb=: 0.5 0.5 0.5
+palc=: 1.0 1.0 1.0
+pald =: 0 0.33 0.67
+
+palt=: (grains , 3) $ 255
+
 world =: grains grid size
 dt=: 1
 
 bunker_form =: 0 : 0
 pc bunker closeok; pn "abelian bunker";
 bin h;
-  minwh 400 400; cc G isidraw;
+  minwh 600 600; cc G isidraw;
   bin v;
     cc pause button; set pause caption pause;
     cc play button; set play caption play;
     cc reset button; set reset caption reset;
     cc step button; set step caption step;
-    cc grains edit; set grains wh 80 20; set grains text 1000;
-    cc size edit; set size wh 80 20; set size text 201;
+    cc btime edit; set btime wh 80 20; set btime text 1;
+    cc bgrains edit; set bgrains wh 80 20; set bgrains text 4000;
+    cc bsize edit; set bsize wh 80 20; set bsize text 51;
   bin z;
 bin z;
 pshow;
@@ -64,10 +73,9 @@ wd 'timer ',":dt
 )
 
 reset=: 3 : 0
-wd 'timer 0'
 world=: grains grid size
 palt=: ? (grains , 3) $ 255
-wd 'timer 0'
+step ''
 )
 
 step=: 3 : 0
@@ -83,15 +91,16 @@ bunker_pause_button=: pause
 bunker_play_button=: play
 bunker_reset_button=: reset
 bunker_step_button=: step
-bunker_grains_button=: 3 : 0
-wd 'psel bunker'
-echo grains=: ". wd 'get grains text'
+bunker_bgrains_button=: 3 : 0
+grains=: ". wd 'psel bunker; get bgrains text'
 reset''
 )
-bunker_size_button=: 3 : 0
-wd 'psel bunker'
-echo size=: ". wd 'get size text'
+bunker_bsize_button=: 3 : 0
+size=: ". wd 'psel bunker; get bsize text'
 reset''
+)
+bunker_btime_button=: 3 : 0
+wd 'timer ',": dt=: ". wd 'psel bunker; get btime text'
 )
 
 sys_timer_z_=: iterate_base_
