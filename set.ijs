@@ -13,7 +13,7 @@ do. ijk=. i,j,k if. set ijk { y do. ijk return. end.
 end. end. end. ''
 )
 
-mrunset=: 3 : 0
+runset=: 3 : 0
 if. #ijk=. findsets b [ 'b d'=. y
 do. if. (12>:#b)*#d do. ((3{.d),b{~(i.#b)-.ijk);3}.d else. (b{~(i.#b)-.ijk);d end.
 else. if. #d do. ((3{.d),b);3}.d else. y end. end.
