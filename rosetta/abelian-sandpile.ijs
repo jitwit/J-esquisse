@@ -24,7 +24,9 @@ palb=: 0.5 0.5 0.5
 palc=: 1.0 1.0 1.0
 pald =: 0 0.33 0.67
 
-palt=: ? (grains , 3) $ 255
+palette =: 3 : '<. 255 * 1 <. 0 >. pala + palb * 2 o. 2p1 * pald + palc * y'"0
+
+palt=: palette (255 %~ i. 256)
 world =: grains grid size
 dt=: 1
 
@@ -72,7 +74,7 @@ wd 'timer ',":dt
 
 reset=: 3 : 0
 world=: grains grid size
-palt=: ? (grains , 3) $ 255
+NB. palt=: ? (grains , 3) $ 255
 step ''
 )
 
@@ -102,5 +104,11 @@ wd 'timer ',": dt=: ". wd 'psel bunker; get btime text'
 )
 
 sys_timer_z_=: iterate_base_
-bunker_close ^: (wdisparent'bunker') ''
-setup ''
+
+courir =: 3 : 0
+if. IFQT do. bunker_close ^: (wdisparent'bunker') ''
+    	     setup ''
+end.
+)
+
+courir''
