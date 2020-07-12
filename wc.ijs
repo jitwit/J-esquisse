@@ -9,7 +9,13 @@ chars=: #
 
 wc=: lines`words`chars `: 0
 
+NB. find x most frequent words in text y
+freq =: 4 : 0
+x{.\:~(#;{.)/.~(1 0$~#y)#y=.y<;.1~({.,2~:/\])((39,97+/i.26){a.)e.~y=.tolower y
+)
+
 bench=: 3 : 0
 echo '"' ,~ 'benching: "', prog=. 'wc 1!:1 < corpus_file'
 bonsai prog
 )
+

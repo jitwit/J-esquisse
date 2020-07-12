@@ -9,7 +9,6 @@ wc2=: {. cnt@:sel@:tok@:tolower@:]
 
 wc=: 4 : 0
 x{.\:~(#;{.)/.~(1 0$~#y)#y=.y<;.1~({.,2~:/\])((97+/i.26){a.)e.~y=.tolower y
-NB. y=.tolower y
 )
 
 n=: 40
