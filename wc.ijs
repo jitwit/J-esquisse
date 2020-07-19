@@ -1,4 +1,4 @@
-load 'stats/bonsai'
+load 'stats/bonsai viewmat'
 
 corpus_file =: 'data/shakespeare.txt'
 corpus =: 1!:1 < corpus_file
@@ -16,6 +16,28 @@ x{.\:~(#;{.)/.~(1 0$~#y)#y=.y<;.1~({.,2~:/\])((39,97+/i.26){a.)e.~y=.tolower y
 
 bench=: 3 : 0
 echo '"' ,~ 'benching: "', prog=. 'wc 1!:1 < corpus_file'
-bonsai prog
+echo bonsai prog
+echo '"' ,~ 'benching: "', prog=. '10 freq 1!:1 < corpus_file'
+echo bonsai prog
 )
 
+char_class=: a. e. 'abcdefghijklmnopqrstuvwxyz''"'
+
+NB. states: 0         1    2         3      4
+NB.         start/end word bracketed quoted spaced endbrack endquote
+state_table=: 2 2 2 $ , ". ;. _2 ] 0 : 0
+0 0  1 1 NB. outside word
+0 3  1 0 NB. inside word
+)
+
+parse =: (0;state_table;char_class)&;:
+
+wds=: }: @: (0 1 E. 0 , whitespace e.~ a.&i.)
+
+cwds=: parse tolower corpus
+
+coocc=: ((>./~) * ((*./~) @: *)) @: (+/ @: ((=/) & 'abcdefghijklmnopqrstuvwxyz'))
+
+pairs =: (0&{::) * (coocc@(1&{::))
+
+cooccs=: +/ (pairs @: (#;{.))/.~ cwds
