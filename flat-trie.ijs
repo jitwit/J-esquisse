@@ -1,6 +1,6 @@
 NB. flat trie representation
 NB. read dictionary
-W=: (<@}:;._2) 1!:1 < '../gobble/cobble/share/collins.txt'
+W=: (<@,&'$'@}:;._2) 1!:1 < '../gobble/cobble/share/collins.txt'
 
 NB. compress y - study a list of words y, parent/depth/flattened chars
 compress =: (;~ [: parent 0 {:: ]) @: (0&trie)
@@ -18,8 +18,17 @@ grpi=: 4 : 0
   'a b'=.(1+x)trie}.&.>y
   (x,a);(({.>{.y),b)
 )
+
 grp =: grpi`grpb@.(1=#@]) f.
 parent=: * * (i:<:@{:)\
+
+NB. better performing version of parent from A. Hsu thesis
+parentk=: 3 : 0
+ps=. 0 #~ n =. # y
+for_ab. 2 ]\ (i.n) </.~ y do. 'x y' =. ab
+  ps=. ((<: x I. y) { x) y} ps
+end. ps
+)
 
 NB. x path y - trace back word starting at index x in trie y
 path=: 4 : 'w {~ ({&p) ^: (i.->:x{d) x[''p d w''=. y'
