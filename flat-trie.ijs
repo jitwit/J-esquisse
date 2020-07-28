@@ -3,7 +3,7 @@ NB. read dictionary
 W=: (<@,&'$'@}:;._2) 1!:1 < '../gobble/cobble/share/collins.txt'
 
 NB. compress y - study a list of words y, parent/depth/flattened chars
-compress =: (;~ [: parent 0 {:: ]) @: (0&trie)
+compress =: (;~ [: parent_hsu 0 {:: ]) @: (0&trie)
 
 NB. tri and group mutually & recursively partition words by first char
 NB. then flatten keeping tracck of depths. todo keep track of accepts
@@ -23,10 +23,10 @@ grp =: grpi`grpb@.(1=#@]) f.
 parent=: * * (i:<:@{:)\
 
 NB. better performing version of parent from A. Hsu thesis
-parentk=: 3 : 0
+parent_hsu=: 3 : 0
 ps=. 0 #~ n =. # y
-for_ab. 2 ]\ (i.n) </.~ y do. 'x y' =. ab
-  ps=. ((<: x I. y) { x) y} ps
+for_xy. 2 ]\ (i.n) </.~ y
+do. ps=. ps y}~ x {~ <: x I. y [ 'x y' =. xy
 end. ps
 )
 
