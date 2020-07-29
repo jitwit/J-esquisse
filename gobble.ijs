@@ -26,21 +26,20 @@ trie=: 3 : 0
   chrs  =. edges
   for_t. subtries do.
     'is cs' =. , > t
-    if. #is
-    do.
-        hptrs =. hptrs , tp                       NB. point to block
-        tptrs =. tptrs , tp + is                  NB. include and update pointers in block
-	tp =. tp + # is                           NB. update tail pointer
-	hp =. 1 + hp                              NB. update head pointer
-	chrs =. chrs , cs                         NB. include chars
-    else.
-        hptrs =. hptrs , hp                       NB. point to self
-        hp =. 1 + hp                              NB. update head ptr
-    end.
+    NB. nonempty suffix
+    if. #is do.
+      chrs =. chrs , cs          NB. include chars
+      hptrs =. hptrs , tp        NB. point to block
+      tptrs =. tptrs , tp + is   NB. include and update pointers in block
+      tp =. tp + # is            NB. update tail pointer
+      hp =. 1 + hp               NB. update head pointer
+    NB. empty suffix below, point current head char to self and update head pointer
+    else. hp =. 1 + hp [ hptrs =. hptrs , hp end.
   end.
   (hptrs,tptrs) ; chrs
   end.
 )
 
-trie lexicon
+'ptrs chrs' =: trie lexicon
+,. ((,:~ i.@#) ptrs);chrs
 NB. trie lexicon
