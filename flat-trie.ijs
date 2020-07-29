@@ -11,9 +11,11 @@ NB. x trie y - flatten list of words y, at current depth x
 trie =: 4 : 0
   ({."1 ;&; ({:"1)) (x& grp /.~ {.&>) y
 )
+
 grpb=: 4 : 0
   y;~x+i.#;y
 )
+
 grpi=: 4 : 0
   'a b'=.(1+x)trie}.&.>y
   (x,a);(({.>{.y),b)
@@ -26,7 +28,7 @@ NB. better performing version of parent from A. Hsu thesis
 parent_hsu=: 3 : 0
 ps=. 0 #~ n =. # y
 for_xy. 2 ]\ (i.n) </.~ y
-do. ps=. ps y}~ x {~ <: x I. y [ 'x y' =. xy
+do. ps=. ps y }~ x {~ <: x I. y [ 'x y' =. xy
 end. ps
 )
 
@@ -36,7 +38,7 @@ path=: 4 : 'w {~ ({&p) ^: (i.->:x{d) x[''p d w''=. y'
 NB. 'x0 x1' CD y - char x0 at depth x1 in trie y
 CD=: 4 : '((1{::x)=1{::y)*((0{::x)=2{::y)'
 
-lexicon=: /:~ ;: 'car cars cat cats do dog dogs done ear ears eat eats'
+lexicon=: ,&'$' &.> /:~ ;: 'car cars cat cats do dog dogs done ear ears eat eats'
 NB. take depth vector and get 2d array
 spread=: (=/~ (i.@:>:@:(>./)))
 
