@@ -16,7 +16,7 @@ trie0=: 3 : 0
 
 trie=: 3 : 0
   y =. y -. a: NB. drop empty suffixes
-  if. a: = y do. ('';'') else.
+  if. a: = y do. ('';'';'') else.
   grps =. by_head y
   edges =. > {."1 grps
   subtries =. (trie @: (}.&.>)) &.> {:"1 grps
@@ -24,8 +24,9 @@ trie=: 3 : 0
   hp =. 0
   tptrs =. hptrs =. ''
   chrs  =. edges
+  deps  =. tp#0
   for_t. subtries do.
-    'is cs' =. , > t
+    'ds is cs' =. , > t
     NB. nonempty suffix
     if. #is do.
       chrs =. chrs , cs          NB. include chars
@@ -33,13 +34,26 @@ trie=: 3 : 0
       tptrs =. tptrs , tp + is   NB. include and update pointers in block
       tp =. tp + # is            NB. update tail pointer
       hp =. 1 + hp               NB. update head pointer
+      deps =. deps , 1 + ds
     NB. empty suffix below, point current head char to self and update head pointer
     else. hp =. 1 + hp [ hptrs =. hptrs , hp end.
-  end.
-  (hptrs,tptrs) ; chrs
-  end.
+  end. deps;(hptrs,tptrs) ; chrs end.
 )
 
-'ptrs chrs' =: trie lexicon
-,. ((,:~ i.@#) ptrs);chrs
-NB. trie lexicon
+NB. block should be determinable from pointers
+NB. let i,j be indices
+NB. if i+1 = j, p[i] > p[j] => j in subtrie/i is end of head block
+NB. if ptr[i] = i+1, head block is of size 1
+NB. else can keep scanning?
+NB. have index x pointing to "head" block
+NB. maybe following is easier if wasteful:
+match_char=: 4 : 0
+'j c' =. x
+'deps ptrs chrs' =. y
+n =. # deps
+k =. j + c i.~ (j+i. (27 <. n - j)) { chrs
+if. k = n do. _1
+elseif. =/ j,k { deps do. k { ptrs
+else. _1 end.
+)
+
