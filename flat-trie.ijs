@@ -1,6 +1,6 @@
 NB. flat trie representation
 NB. read dictionary
-W=: (<@,&'$'@}:;._2) 1!:1 < '../gobble/cobble/share/collins.txt'
+W=: (<@,&'$'@}:;._2) 1!:1 < jpath '~/code/gobble/cobble/share/collins.txt'
 
 NB. compress y - study a list of words y, parent/depth/flattened chars
 compress =: (;~ [: parent_hsu 0 {:: ]) @: (0&trie)
@@ -27,9 +27,9 @@ parent=: * * (i:<:@{:)\
 NB. better performing version of parent from A. Hsu thesis
 parent_hsu=: 3 : 0
 ps=. 0 #~ n =. # y
-for_xy. 2 ]\ (i.n) </.~ y
-do. ps=. ps y }~ x {~ <: x I. y [ 'x y' =. xy
-end. ps
+for_lk. 2 ]\ (i.n) </.~ y
+do. ps=. ps k }~ l {~ <: l I. k [ 'l k' =. lk
+end. ps + (i. n) * 0 = y
 )
 
 NB. x path y - trace back word starting at index x in trie y

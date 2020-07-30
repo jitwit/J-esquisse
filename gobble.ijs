@@ -49,11 +49,19 @@ NB. have index x pointing to "head" block
 NB. maybe following is easier if wasteful:
 match_char=: 4 : 0
 'j c' =. x
+if. j < 0 do. _1 return. end.
 'deps ptrs chrs' =. y
 n =. # deps
 k =. j + c i.~ (j+i. (27 <. n - j)) { chrs
-if. k = n do. _1
-elseif. =/ j,k { deps do. k { ptrs
-else. _1 end.
+if. k >: n do. _1 return. end.
+if. =/ (j,k) { deps do. k { ptrs return. end.
+_1
+)
+
+match_prefix=: 4 : 0
+ix=. 0
+for_c. x
+do. ix=. (ix;c) match_char y
+end. ix
 )
 
