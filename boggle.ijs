@@ -15,7 +15,6 @@ dice4=: _6]\'NAEAEGEGNWEHCSOAHPLVERDYTOATOWPKAFFSHRVTWEHQUMNIEITSSORLTYETTITSYDL
 roll=: ({~?~@#) {"0 1~ [: ? #"1
 NB. score by indexing into score array by word length
 score_word=: 0 0 0 1 1 2 3 5 11{~8<.#
-NB. score a list of words
 view_board=: -@%:@#<"0\]
 
 NB. take i. x y board and list graph as array with box
@@ -40,7 +39,7 @@ NB. possible. Finally, copy the exact matches and present after
 NB. sorting.
 boggle =: 3 : 0
   candidates =. (y&expand_paths) ^: a: < ,:"0 i. # y
-  matches =. ; (<@(path_word&y))"1 &.> candidates
+  matches =. ; (<@(fill_word&y))"1 &.> candidates
   (/: #&>) /:~ ~. (#~ exact"0) matches
 )
 
