@@ -1,6 +1,7 @@
 load 'stats/bonsai viewmat'
 
 corpus_file =: 'data/shakespeare.txt'
+sqlite3=: 'data/sqlite3.c'
 corpus =: 1!:1 < corpus_file
 whitespace=: 9 10 11 12 13 32
 lines=: # @: (#;._2)
