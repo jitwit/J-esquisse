@@ -7,7 +7,7 @@ Functional Algorithm Design.
 *Given $n$ nonnegative numbers, what's the first one not inside?*
 
 $n$ numbers can't cover of $n+1$ numbers, or so counting pigeons has
-taught us. In particular, the first $n+1$ are no exception!
+taught us. In particular the first $n+1$ are no exception!
 
 #+BEGIN_SRC j :session :exports both
 
@@ -62,89 +62,4 @@ S=: 'GENERATING'
 └───────────────────┘
 #+end_example
 
-* Inside the Convex Hull
 
-OK, $Bird$, in my opinion, sucks at explaining things. Lots of haskell
-specifics pop into things that I believe are meant to be general
-explanations. Implementation details about representing $n$-simplices
-as lists of length $n+1$ of integers, sticking to rational $Q^n$ is
-weird. Also, he just says here is the definition of orientation as
-~fromIntegral . signum . det~ without really saying much about it.
-
-So. Looking to wikipedia for sanity, $n$-simplices are affinely
-independent collections of $n+1$ points of $R^n$. Affine independence
-just means that ~}. - {.~ is linearly independent.
-
-
-#+BEGIN_SRC j :session :exports both
-smp =: |: _3 ]\ 12 $ 0 0 0 1
-
-(; -/ .*) 1 2 0 3 { smp , 1
-NB. ('4-simplex';'faces'),:(;facets) smp
-#+END_SRC
-
-#+RESULTS:
-: ┌───────┬──┐
-: │0 0 1 0│_1│
-: │0 0 0 1│  │
-: │0 1 0 0│  │
-: │1 1 1 1│  │
-: └───────┴──┘
-
-
-#+BEGIN_SRC j :session :exports both
-ori =: [: * -/ .*
-ORS =: [: ori ((-~"_1 1) _1&(]\.))
-ORP =: _1 (ori\.) -~"1
-
-ORI smp
-
-int =: ORP -: ORS@] NB. is x int(erior to) y?
-
-0.1 0.1 0.79999 int smp
-#+END_SRC
-
-#+RESULTS:
-: 1 _1 1 _1
-: 
-: 1
-
-
-#+begin_src j :session :exports both :async t
-+/ i. 10000
-#+end_src
-
-#+RESULTS:
-: 27f68fd9247d64bc3b1e7d5f17c94c32
-
-
-
-src_j[:session]{+/ i. 10} {{{results(=10=)}}}
-
-
-
-
-
-
-
-
-
-
-
-#+begin_src j :session :exports both
-
-#+end_src
-
-#+RESULTS:
-: 499999500000
-
-
-
-
-
-#+begin_src j :session :exports both :async t
-+/ i. 100000000
-#+end_src
-
-#+RESULTS:
-: a9e7c4c44b59cb0031b8979f1df58094
