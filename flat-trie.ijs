@@ -23,14 +23,6 @@ grpi=: 4 : 0
 
 grp =: grpi`grpb@.(1=#@]) f.
 parent=: * * (i:<:@{:)\
-I =: {~ NB. I←{(⊂⍵)⌷⍺}, which is dfns and squad similar to like j's index
-p =: 0 0 1 2 0 4 5 5 7 0 9 10 11 12 13 12 12 16 10 18 19 20 19 19 23 10 25
-t =: 3 1 0 7 1 2 9 0 10 1 3 1 2 0 10 9 0 10 1 2 0 10 9 0 10 0 10
-
-NB. self index for nodes that are not functions (type 3)
-B=: 1 : '(3~:y{u)}(,:I)y'
-NB. x is type vector, y is parent vector
-lexical_contour =: 4 : 'x B ^: _ y'
 
 NB. better performing version of parent from A. Hsu thesis
 parent_hsu=: 3 : 0
