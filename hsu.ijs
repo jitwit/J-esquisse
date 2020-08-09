@@ -29,7 +29,28 @@ B=: 1 : '(3~:y{u)}(,:I)y'
 NB. x is type vector, y is parent vector
 lexical_contour =: 4 : 'x B^:_ y'
 
+
+NB. function lifting
 egd2 =: 0 1 2 3 4 5 4 5 6 7 6 6 7 4 5 6 5 6 7 8 7 7 8 5 6 7 6 7 8 9 8 8 9 6 7
 egp2 =: P egd2
 egt2 =: 3 1 3 2 0 10 3 2 0 10 9 0 10 2 0 10 3 2 0 10 9 0 10 2 0 10 3 2 0 10 9 0 10 0 10
 
+
+NB. find functions who aren't roots to push out:
+NB. i←⍸(t=3)∧p≠⍳≢p
+NB. i=. I. (3 = egt2) * (~: i.@#) egp2
+
+NB. give ids to function references at end
+NB. p,←n[i]←(≢p)+⍳≢i
+NB. p =. (((#p) + (i.@#) i) i} p), i
+NB. other updates:
+NB. t =. t , (i.#i) $ 3 NB. allocated nodes are function nodes
+NB. k =. t , (i.#i) $ 1 NB. whose kind is 1
+NB. n =. t , (i.#i) $ 0 NB. whose _?? is 0
+NB. r =. r , i
+NB. also:
+NB. t =. 10 i} t  NB. now variable type
+NB. k =. 1 i} k   NB. now kind 1
+
+NB. how to express this in J?
+NB. t k n r,←3 1 0(r[i])⍴⍨ ̈≢i
