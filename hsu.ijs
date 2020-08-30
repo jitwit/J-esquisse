@@ -54,3 +54,7 @@ NB. k =. 1 i} k   NB. now kind 1
 
 NB. how to express this in J?
 NB. t k n r,←3 1 0(r[i])⍴⍨ ̈≢i
+
+
+NB. use spread to convert boxed J trees to something with depth
+NB. vectors? something like (# S:1 {:: y)

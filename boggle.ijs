@@ -1,38 +1,25 @@
-init_done=: 0
-init=: 3 : 0
-(9!:43) 0
-N=: # WORDS=: {."1  DICTIONARY=: ([: <;._1 (9{a.)&,);._2 (1!:1) < './data/definitions.txt'
-PREFX=: /:~ ~. ; <\ &.> WORDS
-NB. look up definitions, prefixes, exact matches
-define=: DICTIONARY {~ WORDS I. <@toupper
-prefix=: prefix_in&PREFX
-exact=: -: [: {&WORDS WORDS&I.
-egg =: 'RWEAUIAEOTNBTNWS'
-init_done=: 1
-'ok'
+WL =: (<_1{.a.),~<;._2@(1!:1)@<@jpath@('~/code/joggle/'&,)
+W =: = WS {~ (WS=: WL 'collins-words.txt')&I.
+P =: = PS {~ (PS=: WL 'collins-prefixes.txt')&I.
+
+G =: [: <@-.&_1"1 @ |: [: ;"_1 (<:3 3#:4-.~i.9)&(|.!._1)
+QU =: 3 : 0 ^: ('Q'&e.)
+  'U' (1+I.b)} y #~ 1+b=. 'Q'=y
 )
+Q =: QU :. (#~ [: -. _1 |. 'QU'&E.)
+L =: 1 : '<@Q"1 @ ({&u)'
+A =: [ ,"_ 0/ [ -.~ ] {::~ {:@[
+E =: 2 : '([: (#~ P @ (u L)) [: ; <@(A&v)"1) ^: (0<#) &. >'
+BP =: 3 : '(,y) E (G i.$y) ^: a: <,.i.#,y'
+BB =: 3 : '(\:#&>) /:~ ~. (#~ W) ; (,y) L"1 &.> BP y'
 
-prefix_in=: [ = ] {~ I.~
-init ^: 1 ''
-
-shake=: ({~?~@#) {"0 1~ [: ? #"1
-dice4=: _6]\'NAEAEGEGNWEHCSOAHPLVERDYTOATOWPKAFFSHRVTWEHQUMNIEITSSORLTYETTITSYDLXEDIRTOIMCUBAOBOJNLNHZRENSIEU'
-score=: 0 0 0 1 1 2 3 5 11{~8<.# NB. score: index by word length
-view_board=: -@%:@#<"0\]
-reify_grid=: [:-.&_1&.>[:,[:<"_2[:,"_2/(<:3 3#:4-.~i.9)|.!._1]
-BOG =: reify_grid i. 4 4
-sub_Q =: ('Q';'QU')&stringreplace^:('Q'&e.)
-letters =: 1 : '(<@sub_Q)"1 @ ({&u)'
-expand_path=: 1 : '< (#~ prefix @ (u letters)) y,"_ 0/ y -.~ ({:y) {:: BOG'
-expand =: 1 : '([: < [: ; u expand_path"1 @ >) ^: (0 < (*/) @ $@>@]) y'
-boggle =: 3 : 0
-  (/: #&>) /:~ ~. (#~ exact"0) ; y letters"1 &.> y expand ^: a: < ,:"0 i. # y
+BW =: Q^:_1 &.> (#~ 9<#&>) WS
+S =: 0 0 0 1 1 2 3 5 8 13 {~ 8 <. #
+RW =: 4 : 0
+  try. (({~ ?@#) @ A&(G i.x)) ^: (<:y) ? */ x catch. x RW y end.
 )
-
-test =: 3 : 0
-assert. 24 = +/ score & > boggle 'DEMODEMODEMODEMO'
-assert. 1254 = # boggle 'PSLMEAIARNTRGESO'
-'aok'
+RB =: 4 : 0
+  assert. (#y=.Q^:_1 y) <: n=.*/x
+  x $ toupper (y,a.{~65+?(n-#y)$26) ((p-.~i.n),~p=.x RW #y)} n $ y
 )
-
-test''
+RL =: 3 : 'y RB > ({~ ?@#) BW'
