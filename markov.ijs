@@ -7,7 +7,7 @@ markov=: 4 : 0
 for_r. x do.
   'src rplc term' =. r
   if. (-. term) * # mch=. I. src E. y
-  do. (y{.~{.mch),rplc, y}.~ ({.mch)+#src return.
+  do. (y{. ~ {.mch),rplc, y }. ~ ({.mch)+#src return.
   end.
 end. y
 )

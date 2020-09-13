@@ -7,7 +7,7 @@ NB. given segment ab, intersection x satisfies:
 NB.   0 = -/ .* (x , ab) ,. 1
 NB. two such segments provide necessary linear system.
 
-intersect =: , @: ,:&(-/ .*) %. ,:&([:|.1 _1*-/)
+intersect =: , @: ,:&(-/ . *) %. ,:&([:|.1 _1 * -/)
 
 line2d=: intersect :: ''
 seg2d=: 4 : 0
