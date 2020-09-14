@@ -1,5 +1,5 @@
 NB. j mailing list
-'names.list' fwrites~ a. {~ (a.i.'a') + 10 #.inv 1e7 ?@$ 1000
-;:^:_1 ":&.> 5 {. \:~ (#;{.)/.~ ];._2 (1!:1) < 'names.list'
-timespacex '5 {. \:~ (#;{.)/.~ ];._2 (1!:1) < ''names.list'''
-
+NB. http://jsoftware.com/pipermail/programming/2020-September/056560.html
+N =: 1e7
+;:^:_1":&.> 5 {. \:~ (#;{.)/.~ ws =: a. {~ 97 + ? (N,3) $ 10
+timespacex '5 {. \:~ (#;{.)/.~ ws'
