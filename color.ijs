@@ -12,9 +12,11 @@ Myuv =: ".(;._2) 0 : 0
 0.587 _0.289  _0.515
 0.114  0.436  _0.1
 )
-
+NB. matrix => invertible linear transform
+T =: 1 : '((+/ . *)&u) :. ((+/ . *)&(%.u))'
 NB. yuv : rgb <-> yuv
-Tyuv=: ((+/ . *)&Myuv) :. ((+/ . *)&(%.Myuv))
+Tyuv=: Myuv T 
+
 rgbcg=: 3 : 0
 'a b' =. (<./,>./) y
 if. (a < 0) +. 1 < b do. 0 0 0
@@ -23,6 +25,7 @@ else. <. 256 * y end.
 C8 =: (0 >. 255 <. <.) @ (256&*) NB. clamp to [0,255]
 C1 =: (1&<.) @ (0&>.) @ (%&256) NB. clamp to [0,1]
 C =: C1 :. C8
-I =: i. % <:
-img =: C8 (Tyuv^:_1"1) (0.6&,)&> { ;~ <: +: I 800
+I_11 =: %~ i:
+img =: C8 (Tyuv^:_1"1) (0.4&,)&> { ;~ -: I_11 350
 '~/j902-user/temp/viewmat.png' linki img
+
