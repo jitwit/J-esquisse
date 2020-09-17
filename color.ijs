@@ -52,11 +52,21 @@ NB. 255 * #: 7 | 3^i.6
 palette =: 3 : 0
 2 (199 cpath)/\ y
 )
+
+vmpts =: ".( ;._2) 0 : 0
+0 0 0
+0.55 0.5 0.2
+0.5 0.8 0.5
+0 0 0.8
+0.6 0 0.8
+)
+
+lhue =: 0.7 + _0.09 * (I #vmpts)
+]vm_hue =: ,/ 2 (10 cpath)/\ _3 ]\ 0.6 _0.5 _0.2 0.2 0.5 0.4
+]vm_hue =: ,/ 2 (4 cpath)/\ _3 ]\ 0 0 0 0.7 0.2 _0.4
+NB. ,/ 2 (100 cpath)/\ lhue ,. }."1 Tyuv"1 vmpts
 (#: 7 | 3^i.6)
-lhue =: 0.9 - 0.4 * (I 6)
-]vm_hue =: ,/ 2 (10 cpath)/\ Tyuv"1 (3 3 $ 0.9 0 0 0.3)
-vm_demo =: i. 100 100
-demo 1
+vm_demo =: ? 10 10 $ 0
 
 demo =: 3 : 0
 if. y
@@ -64,5 +74,4 @@ do. vm_hue viewmat vm_demo
 else. viewmat vm_demo end.
 )
 
-
-
+demo 1
