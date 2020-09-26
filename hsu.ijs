@@ -15,9 +15,14 @@ P =: 3 : 0
 ps=. 0 #~ n =. # y
 for_lk. 2 ]\ (i.n) </.~ y
 do. ps=. ps k }~ l {~ <: l I. k [ 'l k' =. lk
-end. ps + (i. n) * 0 = y
+end. ps + (i.n) * 0 = y
 )
 
+V =: 0 1 2 3 4 5 4 5 6 7 6 6 7 4 5 6 5 6 7 8 7 7 8 5 6 7 6 7 8 9 8 8 9 6 7
+n =: # V
+p =: n # 0
+j =: i. n
+([ {~ <: @: I.) & >/ _2 {. j </.~ V
 
 NB. lexical scope
 I =: {~ NB. I←{(⊂⍵)⌷⍺}, which is dfns and squad similar to like j's index
@@ -26,13 +31,23 @@ egt1 =: 3 1 0 7 1 2 9 0 10 1 3 1 2 0 10 9 0 10 1 2 0 10 9 0 10 0 10
 
 NB. self index for nodes that are not functions (type 3)
 B=: 1 : '(3~:y{u)}(,:I)y'
+
+NB. x S y => siblings of y in parent vector x
+S=: I. @: ([ = {~)"_ 0
+NB. x C y => children of y in parent vector x
+C=: i.@#@[ e. ]
+NB. x C y => descendents of y in parent vector x
+G=: 4 : '(+. x&{) ^: _ (i.#x) e. y'
+NB. x D y => delete nodes y from parent vector x
+D =: 4 : '(-.m) # x - x { +/\ m=. x G y'
+
 NB. x is type vector, y is parent vector
 lexical_contour =: 4 : 'x B^:_ y'
 
 
-NB. function lifting
+NB.NB. function lifting
 egd2 =: 0 1 2 3 4 5 4 5 6 7 6 6 7 4 5 6 5 6 7 8 7 7 8 5 6 7 6 7 8 9 8 8 9 6 7
-egp2 =: P egd2
+
 egt2 =: 3 1 3 2 0 10 3 2 0 10 9 0 10 2 0 10 3 2 0 10 9 0 10 2 0 10 3 2 0 10 9 0 10 0 10
 
 
@@ -58,3 +73,4 @@ NB. t k n r,←3 1 0(r[i])⍴⍨ ̈≢i
 
 NB. use spread to convert boxed J trees to something with depth
 NB. vectors? something like (# S:1 {:: y)
+
