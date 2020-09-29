@@ -57,11 +57,10 @@ S =. 0,(<:#y)$1 NB. v explored iff 0 = v{S
 T =. i.#y NB. bfs parent tree, initially all point to self
 while. #Q do.
   'u Q' =. ({.;}.) Q NB. pop Q
-  for_v. I. S * * u{y do. NB. unexplored out edges u -> v
-    Q =. v ,~ Q NB. push v
-    S =. 0 v} S NB. mark v explored
-    T =. u v} T NB. indicate parent in tree T
-  end.
+  vs =. I. S * u{y NB. unexplored out edges u -> v
+  Q =. vs ,~ Q NB. push vs
+  S =. 0 vs} S NB. mark vs explored
+  T =. u vs} T NB. indicate parent in tree T
 end. T
 )
 
@@ -90,5 +89,28 @@ match =: 3 : 0
 (0,_1-#y) (+"1) 4 $. $. }:"1 }. 1 = edmond_karp cap y
 )
 
-> <"1 match Z mat
-(4;0 1 3) M (0 4;1 3) M (0 1 4;1) M Z mat
+cover =: 4 : 0
+NB. x is match, y is graph
+x+y
+)
+
+NB. > <"1 match Z mat
+NB. (4;0 1 3) M (0 4;1 3) M (0 1 4;1) M Z mat
+
+
+con =: 3 : 0
+e =. (0,n=.#y) (<@:+"1) 4 $. $. 0 = y
+1 e} (,~ +: n) $ 0
+
+)
+clo =: +. (+./ . *.)~
+
+
+hungarian =: 3 : 0
+n =. # y
+g =. clo^:_ (+. |:) con y
+U =. (i.n) -. {."1 m =. match y
+g ; m ; U
+)
+
+hungarian Z mat
