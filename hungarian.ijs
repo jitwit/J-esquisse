@@ -50,11 +50,10 @@ t =. <"1 v ,.~ n + 1 + i. n
 1 (c,s,t)} (,~ +: >: n) $ 0
 )
 
-bfs =: 3 : 0
-NB. bfs from sink to source on risidual graph, calculate path
-Q =. ,0
-S =. 0,(<:#y)$1 NB. v explored iff 0 = v{S
-T =. i.#y NB. bfs parent tree, initially all point to self
+bfs =: 4 : 0
+NB. get tree from bfs starting at x in graph y
+Q =. ,x NB. seed queue from x and mark x explored
+S =. -. (T =. i.#y) e. x NB. explored v iff 0 = v{S
 while. #Q do.
   'u Q' =. ({.;}.) Q NB. pop Q
   vs =. I. S * u{y NB. unexplored out edges u -> v
@@ -73,7 +72,7 @@ delta =: 4 : 0
 NB. change in flow x, cap y
 sink =. <:#y
 R =. x res y
-T =. bfs R
+T =. 0 bfs R
 if. sink = sink { T do. x return. end.
 P =. 2 <\ |. {&T ^: a: sink
 df =. <./ | P { R
