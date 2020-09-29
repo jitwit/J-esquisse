@@ -15,7 +15,7 @@ P =: 3 : 0
 ps=. 0 #~ n =. # y
 for_lk. 2 ]\ (i.n) </.~ y
 do. ps=. ps k }~ l {~ <: l I. k [ 'l k' =. lk
-end. ps + (i.n) * 0 = y
+end. ps + (i.n) * 0=y
 )
 
 V =: 0 1 2 3 4 5 4 5 6 7 6 6 7 4 5 6 5 6 7 8 7 7 8 5 6 7 6 7 8 9 8 8 9 6 7
@@ -31,6 +31,7 @@ egt1 =: 3 1 0 7 1 2 9 0 10 1 3 1 2 0 10 9 0 10 1 2 0 10 9 0 10 0 10
 
 NB. self index for nodes that are not functions (type 3)
 B=: 1 : '(3~:y{u)}(,:I)y'
+vv =: P V 
 
 NB. x S y => siblings of y in parent vector x
 S=: I. @: ([ = {~)"_ 0
@@ -73,4 +74,10 @@ NB. t k n r,←3 1 0(r[i])⍴⍨ ̈≢i
 
 NB. use spread to convert boxed J trees to something with depth
 NB. vectors? something like (# S:1 {:: y)
-
+V =: 0 1 2 1 2 3 0 1 2 1 2 3 1 2 3
+NB. draw depth vector
+draw =: (,.@:-) |."1 '@' ,. ' ' $~ #,>./
+draw V
+path =: 3 : '{&y ^: a: y'
+]mat =: (i.@# , path) P V
+2 =/\"1 >./\"1 mat

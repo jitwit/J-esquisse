@@ -24,12 +24,13 @@ ab=: -[:+/@(-"2((,-)=/~i.2)|.!.0])3&<
 jw=: ab ^: _
 ts=: mw ^: _
 (jw-:ts) gd 100
-vmbw =: (0 0 0 ,: 255 255 255)&viewmat
-vmbw (}: i: {:)"1 |: (ab ^: a:) (?2000) grid 51
+vmbw =: (|. 0 0 0 ,: 255 255 255)&viewmat
+NB. vmbw (}: i: {:)"1 |: (ab ^: a:) (?2000) grid 51
 vmbw +/ 2 ~:/\ (ab ^: a:) (?2000) grid 51
-vmbw (ab ^: _) (?2000) grid 51
+NB. vmbw (ab ^: _) (?2000) grid 51
 
-'(mw ^: _) 1000 grid 101' bonsai '(jw ^: _) 1000 grid 101'
+vmbw +/2~:/\(ab ^: a:) 2000 grid 51
+vmbw (ab^:_) 120 120 $ 4
 
 ab ^: _ gd 100
 jw gd 30
