@@ -1,3 +1,4 @@
+mat=: ".;._2 (1!:1) < jpath '~/code/euler/J/345.in'
 M0 =: ".(;._2) 0 : 0
 250 400 350
 400 600 350
@@ -56,23 +57,38 @@ S =. 0,(<:#y)$1 NB. v explored iff 0 = v{S
 T =. i.#y NB. bfs parent tree, initially all point to self
 while. #Q do.
   'u Q' =. ({.;}.) Q NB. pop Q
-  for_v. I. S * u{y do. NB. unexplored out edges u -> v
+  for_v. I. S * * u{y do. NB. unexplored out edges u -> v
     Q =. v ,~ Q NB. push v
     S =. 0 v} S NB. mark v explored
     T =. u v} T NB. indicate parent in tree T
   end.
-end. ({&T) ^: a: <:#y
+end. T
 )
 
 res =: 4 : 0
 NB. compute residual graph from capacity y and flow x
-y - |: x NB. ?
+y - x NB. 0 = +/ ((j,i) ; i,j) { flow
+)
+
+delta =: 4 : 0
+NB. change in flow x, cap y
+sink =. <:#y
+R =. x res y
+T =. bfs R
+if. sink = sink { T do. x return. end.
+P =. 2 <\ |. {&T ^: a: sink
+df =. <./ | P { R
+x + (- |:) df P} ($x) $ 0
 )
 
 edmond_karp =: 3 : 0
-F =. 0 $~ $ G =. cap y
-F res G
+f =. 0 $~ $ g =. y
+delta&g ^: _ f
 )
 
-edmond_karp Z M1
+match =: 3 : 0
+(0,_1-#y) (+"1) 4 $. $. }:"1 }. 1 = edmond_karp cap y
+)
 
+> <"1 match Z mat
+(4;0 1 3) M (0 4;1 3) M (0 1 4;1) M Z mat
