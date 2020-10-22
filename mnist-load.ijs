@@ -7,7 +7,7 @@ NB. was used to decompress downloaded stuff
 header =: _2 (3!:4) [: , _4 |.\ 16&{.
 images =: 3 : 0
 s =. 2 }. header y
-(-*/s) (s&$)\ 16 }. a. i. y
+(-*/s) ]\ 16 }. a. i. y
 )
 
 classes =: 8 }. a.&i.
