@@ -25,7 +25,9 @@ ORBI =: [: ~. [: (/:~"1) 12 | Z12 (+/) I  NB. orbit under Z12 and T*I
 ORB =: ORBT , ORBI                        NB. orbit under dihedral 24
 DSYM =: 12 % ORBT (,&#) ORBI              NB. degrees of symmetry
 NB. same interval content but not same equiv class under action by D24
-ZREL =: -:&IV *. -. @ (e. ORB)          NB. z related
+ZREL =: -:&IV *. -. @ (e. ORB)            NB. z related
+NEG =: Z12&-.                             NB. complement
+CREL =: (-:&PF) NEG                       NB. self complement (hexachords only)
 
 (/:~@ORB) 0 1 4 6
 NB. alternate interval vector calculation based on looking at
@@ -70,6 +72,8 @@ assertions =: 0 : 0
 0 1 3 7 ZREL 0 1 4 6
 -. 1 3 5 ZREL 0 2 4
 -. 0 1 ZREL 1 2 3 4
+CREL 2 3 4 5 6 7
+CREL wholetone
 )
 
 0!:2 assertions
