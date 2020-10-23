@@ -10,18 +10,16 @@ R =: # (12 | ] - {.)\ ],}:        NB. all rotations, translated to start with 0
 H =: (/: ({:-{.)"1) @: /:~        NB. sort based on smallest width & lexicographic
 C =: {. @: H @: R @: O            NB. normal/prime form, excluding flipping
 
-NB. interval vector
-IV =: [: (-:@<:@#/.~) (i.6),0-.~,@:|@:(-/~)
-NB. list them all out
-,. (([: <@H@~. C@I."1)/.~ (+/"1)) #: i. 2 ^ 12
+up =: ([:,</~@i.@#) # ,                NB. select upper triangle
+cnt =: [: <:@#/.~ (1+i.6)&,            NB. count [1..6]
+IV =: [: cnt 6 - [: | 6 - up @ (-@-/~) NB. interval vector
 
-FLIP =: {. @: H @: ,&(R@O) 12 | 12&- NB. normal/prime form, including
-				     NB. flipping, which is kind of
-				     NB. ridiculous becuase major
-				     NB. triad ~ minor triad here...
-
-primeform_z_ =: C_twelvetone_
-IV_z_ =: IV_twelvetone_
-
-C 0 3 5
-IV 0 3 5
+IV 0 2
+IV 0 5
+IV 0 1 3
+IV 0 1 3 5
+IV 0 4 5
+IV 0 3 7
+IV 0 1 4 6
+IV 0 3 4 7
+IV 0 1 3 7
