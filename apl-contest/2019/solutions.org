@@ -283,7 +283,7 @@ I would like to come up with a solution which avoids for-looping. I
 was happy to notice the formula ~R=. q * 2 ((_1,d)+/ .*])\ R~ where
 ~d~ is ~4^m~ and ~q~ ~1/(d-1)~ from the recurrences.
 
-#+BEGIN_SRC j :session :exports both
+#+BEGIN_SRC J :session :exports both
 Romberg=: 1 : 0
 R=.-:(+/u y)*]I=.-~/]'a b'=.y
 for_n. >:i.x do. R=. R,(-:{:R)+(I%2^n)*+/u a+(I%2^n)*>:+:i.2^<:n end.

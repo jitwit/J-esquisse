@@ -20,6 +20,10 @@ U =: #&,~ </~@i.@#                        NB. select upper triangle
 cnt =: {{ <:@#/.~ u,y }}                  NB. count occs of u in y
 IV =: (1+i.6) cnt @: U @: UPCI            NB. interval vector
 IXV =: [: Z12 cnt [: , 12 | (+/~)         NB. index vector
+ORBT =: [: ~. [: (/:~"1) 12 | Z12&(+/)    NB. orbit under Z12 and T
+ORBI =: [: ~. [: (/:~"1) 12 | Z12 (+/) I  NB. orbit under Z12 and T*I
+ORB =: ORBT , ORBI                        NB. orbit under dihedral 24
+DSYM =: 12 % ORBT (,&#) ORBI              NB. degrees of symmetry
 
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
@@ -57,6 +61,9 @@ assertions =: 0 : 0
 2 0 1 2 1 0 1 2 1 0 2 4 -: IXV 3 4 7 8
 1 0 0 0 1 2 1 0 2 2 0 0 -: IXV 8 9 0
 1 0 0 2 2 0 1 2 1 0 0 0 -: IXV 0 3 4
+6 6 -: SYM wholetone
+1 1 -: SYM 0 2 4
+2 2 -: SYM 0 1 6 7
 )
 
 0!:2 assertions

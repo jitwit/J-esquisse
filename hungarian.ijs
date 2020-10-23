@@ -52,10 +52,9 @@ t =. <"1 v ,.~ n + 1 + i. n
 
 bfs =: 4 : 0
 NB. get tree from bfs starting at x in graph y
-Q =. ,x NB. seed queue from x and mark x explored
+Q =. ~.,x NB. seed queue from x and mark x explored
 S =. -. (T =. i.#y) e. x NB. explored v iff 0 = v{S
-while. #Q do.
-  'u Q' =. ({.;}.) Q NB. pop Q
+while. #Q do. 'u Q' =. ({.;}.) Q NB. pop Q
   vs =. I. S * u{y NB. unexplored out edges u -> v
   Q =. vs ,~ Q NB. push vs
   S =. 0 vs} S NB. mark vs explored
@@ -93,6 +92,7 @@ NB. x is match, y is graph
 x+y
 )
 
+  
 NB. > <"1 match Z mat
 NB. (4;0 1 3) M (0 4;1 3) M (0 1 4;1) M Z mat
 
@@ -112,4 +112,4 @@ U =. (i.n) -. {."1 m =. match y
 g ; m ; U
 )
 
-hungarian Z mat
+match Z mat
