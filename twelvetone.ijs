@@ -6,28 +6,35 @@ NB. bring some clarity.
 require 'stats/base'
 coclass 'twelvetone'
 
-Z12 =: i.12                               NB. Z/12Z
-SC =: /:~ @: ~.                           NB. set class, ie order and nub
-NR =: # ]\ ],}:                           NB. normal all rotations
-PR =: # ([: /:~ 12 | ]-{.)\ ],}:          NB. prime all rotations
-I =: 12 | -                               NB. invert in Z/12Z
-NH =: (/:(12|{:-{.)"1) @: (/:(12|]-{.)"1) NB. normal grade by "compactness"
-PH =: (/:(12|{:-{.)"1) @: /:~             NB. prime grade by "compactness"
-NF =: {. @: NH @: NR @: SC                NB. normal form
-PF =: {. @: PH @: (,&PR I) @: SC          NB. prime form
-UPCI =: {{6-|6---/~y}}                    NB. unordered pitch class intervals
-U =: #&,~ </~@i.@#                        NB. select upper triangle
-cnt =: {{ <:@#/.~ u,y }}                  NB. count occs of u in y
-IV =: (1+i.6) cnt @: U @: UPCI            NB. interval vector
-IXV =: [: Z12 cnt [: , 12 | (+/~)         NB. index vector
-ORBT =: [: ~. [: (/:~"1) 12 | Z12&(+/)    NB. orbit under Z12 and T
-ORBI =: [: ~. [: (/:~"1) 12 | Z12 (+/) I  NB. orbit under Z12 and T*I
-ORB =: ORBT , ORBI                        NB. orbit under dihedral 24
-DSYM =: 12 % ORBT (,&#) ORBI              NB. degrees of symmetry
+Z12 =: i.12                                NB. Z/12Z
+SC =: /:~ @: ~.                            NB. set class, ie order and nub
+NR =: # ]\ ],}:                            NB. normal all rotations
+PR =: # ([: /:~ 12 | ]-{.)\ ],}:           NB. prime all rotations
+I12 =: 12 | -                              NB. invert in Z/12Z
+NH =: (/:(12|{:-{.)"1) @: (/:(12|]-{.)"1)  NB. normal grade by "compactness"
+PH =: (/:(12|{:-{.)"1) @: /:~              NB. prime grade by "compactness"
+NF =: {. @: NH @: NR @: SC                 NB. normal form
+PF =: {. @: PH @: (,&PR I12) @: SC         NB. prime form
+UPCI =: {{6-|6---/~y}}                     NB. unordered pitch class intervals
+U =: #&,~ </~@i.@#                         NB. select upper triangle
+CNT =: {{ <:@#/.~ u,y }}                   NB. count occs of u in y
+IV =: (1+i.6) CNT @: U @: UPCI             NB. interval vector
+IXV =: [: Z12 CNT [: , 12 | (+/~)          NB. index vector
+ORBT =: [: ~. [: (/:~"1) 12 | Z12&(+/)     NB. orbit under Z12 and T
+ORBI =: [: ~. [: (/:~"1) 12 | Z12 +/ I12   NB. orbit under Z12 and T*I
+ORB =: [: ~. ORBT , ORBI                   NB. orbit under dihedral 24
+DSYM =: 12 % ORBT (,&#) ORBI               NB. degrees of symmetry
+TEQ =: e. ORBT                             NB. translationally equiv
+TEQ =: e. ORBT                             NB.  equiv
 NB. same interval content but not same equiv class under action by D24
-ZREL =: -:&IV *. -. @ (e. ORB)            NB. z related
-NEG =: Z12&-.                             NB. complement
-CREL =: (-:&PF) NEG                       NB. self complement (hexachords only)
+ZREL =: -:&IV *. -. @ (e. ORB)             NB. z related
+NEG =: Z12&-.                              NB. complement
+CREL =: (-:&PF) NEG                        NB. self complement (hexachords only)
+RCOM =: {{(12%#o) * y e. o=.ORBT y}}       NB. r-combinatorial
+PCOM =: {{(12%#o) * y e. o=.ORBT NEG y}}   NB. p-combinatorial
+ICOM =: {{(12%#o) * y e. o=.ORBI y}}       NB. i-combinatorial
+RICOM =: {{(12%#o) * y e. o=.ORBI NEG y}}  NB. ri-combinatorial
+COM =: PCOM,RCOM,ICOM,RICOM
 
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
@@ -65,15 +72,21 @@ assertions =: 0 : 0
 2 0 1 2 1 0 1 2 1 0 2 4 -: IXV 3 4 7 8
 1 0 0 0 1 2 1 0 2 2 0 0 -: IXV 8 9 0
 1 0 0 2 2 0 1 2 1 0 0 0 -: IXV 0 3 4
-6 6 -: SYM wholetone
-1 1 -: SYM 0 2 4
-2 2 -: SYM 0 1 6 7
+6 6 -: DSYM wholetone
+1 1 -: DSYM 0 2 4
+2 2 -: DSYM 0 1 6 7
 0 1 3 7 ZREL 0 1 4 6
 -. 1 3 5 ZREL 0 2 4
 -. 0 1 ZREL 1 2 3 4
 CREL 2 3 4 5 6 7
+CREL 0 1 2 3 4 6
 CREL wholetone
+1 1 1 1 -: COM i.6
+0 1 0 0 -: COM 0 1 2 3 6 8
+NB. 0 2 2 0 -: COM 0 1 3 6 7 9 fixme! or convince myself it's mistake in book
+3 3 3 3 -: COM 0 1 4 5 8 9
+6 6 6 6 -: COM wholetone
 )
-
+COM 0 1 3 6 7 9
+COM 0 2 3 6 7 9
 0!:2 assertions
-load 'stats/bonsai'
