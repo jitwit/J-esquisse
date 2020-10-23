@@ -5,13 +5,13 @@ NB. ties are broken by smallest intervals at bottom.
 require 'stats/base'
 coclass 'twelvetone'
 
-R =: # (12 | ] - {.)\ ],}:          NB. all rotations, translated to start with 0
-H =: (/: ({:-{.)"1) @: /:~          NB. sort based on smallest width & lexicographic
-PF =: {. @: H @: R @: /:~ @: ~.     NB. normal/prime form, excluding flipping
-				    
-U =: (#&,)~ (</~@i.@#)              NB. select upper triangle
-T =: [: <:@:#/.~ (1+i.6)&,          NB. count [1..6]
-IV =: T @: U @: (6&-@|@(6&-)@-@-/~) NB. interval vector
+R =: # (12 | ]-{.)\ ],}:        NB. all rotations, translated to start with 0
+H =: (/: ({:-{.)"1) @: /:~      NB. sort based on smallest width & lexicographic
+PF =: {. @: H @: R @: /:~ @: ~. NB. normal/prime form, excluding flipping
+
+U =: #&,~ </~@i.@#              NB. select upper triangle
+T =: [: <:@:#/.~ (1+i.6)&,      NB. count [1..6]
+IV =: T @: U @: {{6-|6---/~y}}  NB. interval vector
 
 IV 0 2
 IV 0 5
