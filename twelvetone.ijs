@@ -29,7 +29,6 @@ ZREL =: -:&IV *. -. @ (e. ORB)            NB. z related
 NEG =: Z12&-.                             NB. complement
 CREL =: (-:&PF) NEG                       NB. self complement (hexachords only)
 
-(/:~@ORB) 0 1 4 6
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
 CTT =: (+/@e."1) 12 | Z12&(+/)
@@ -78,4 +77,3 @@ CREL wholetone
 
 0!:2 assertions
 load 'stats/bonsai'
-
