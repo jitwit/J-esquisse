@@ -17,8 +17,9 @@ NF =: {. @: NH @: NR @: SC                NB. normal form
 PF =: {. @: PH @: (,&PR I) @: SC          NB. prime form
 UPCI =: {{6-|6---/~y}}                    NB. unordered pitch class intervals
 U =: #&,~ </~@i.@#                        NB. select upper triangle
-T =: [: <:@:#/.~ (1+i.6)&,                NB. count [1..6]
-IV =: T @: U @: UPCI                      NB. interval vector
+cnt =: {{ <:@#/.~ u,y }}                  NB. count occs of u in y
+IV =: (1+i.6) cnt @: U @: UPCI            NB. interval vector
+IXV =: [: Z12 cnt [: , 12 | (+/~)         NB. index vector
 
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
@@ -52,6 +53,8 @@ assertions =: 0 : 0
 12 = # ~. (PF"1) 3 comb 12 NB. there are 12 trichords
 29 = # ~. (PF"1) 4 comb 12 NB. there are 29 tetrachords
 (IV -: IVT) major
+3 0 1 2 2 0 2 2 0 2 2 0 -: IXV 1 3 6 9
+2 0 1 2 1 0 1 2 1 0 2 4 -: IXV 3 4 7 8
 )
 
 0!:2 assertions
