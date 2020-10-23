@@ -6,6 +6,7 @@ NB. bring some clarity.
 require 'stats/base'
 coclass 'twelvetone'
 
+Z12 =: i.12                               NB. Z/12Z
 SC =: /:~ @: ~.                           NB. set class, ie order and nub
 NR =: # ]\ ],}:                           NB. normal all rotations
 PR =: # ([: /:~ 12 | ]-{.)\ ],}:          NB. prime all rotations
@@ -14,11 +15,15 @@ NH =: (/:(12|{:-{.)"1) @: (/:(12|]-{.)"1) NB. normal grade by "compactness"
 PH =: (/:(12|{:-{.)"1) @: /:~             NB. prime grade by "compactness"
 NF =: {. @: NH @: NR @: SC                NB. normal form
 PF =: {. @: PH @: (,&PR I) @: SC          NB. prime form
-
 UPCI =: {{6-|6---/~y}}                    NB. unordered pitch class intervals
 U =: #&,~ </~@i.@#                        NB. select upper triangle
 T =: [: <:@:#/.~ (1+i.6)&,                NB. count [1..6]
 IV =: T @: U @: UPCI                      NB. interval vector
+
+NB. alternate interval vector calculation based on looking at
+NB. fixpoints under transposition
+CTT =: (+/@e."1) 12 | Z12&(+/)
+IVT =: 1 1 1 1 1 1r2 * [: |. _6 {. CTT
 
 major =: 0 2 4 5 7 9 11
 minor =: 0 2 3 5 7 9 10
@@ -30,7 +35,7 @@ wholetone =: +: i. 6
 primeform_z_ =: PF_twelvetone_
 intervals_z_ =: IV_twelvetone_
 
-tests =: 0 : 0
+assertions =: 0 : 0
 0 0 0 0 0 0 -: IV 11
 0 1 0 0 0 0 -: IV 0 2
 0 0 0 0 1 0 -: IV 0 5
@@ -46,7 +51,8 @@ tests =: 0 : 0
 0 1 2 6 -: PF 1 5 6 7
 12 = # ~. (PF"1) 3 comb 12 NB. there are 12 trichords
 29 = # ~. (PF"1) 4 comb 12 NB. there are 29 tetrachords
+(IV -: IVT) major
 )
 
-0!:2 tests
-
+0!:2 assertions
+load 'stats/bonsai'
