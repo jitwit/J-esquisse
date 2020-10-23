@@ -44,9 +44,9 @@ tests =: 0 : 0
 (,0) -: PF 8
 8 9 11 0 4 -: NF 0 4 8 9 11
 0 1 2 6 -: PF 1 5 6 7
+12 = # ~. (PF"1) 3 comb 12 NB. there are 12 trichords
+29 = # ~. (PF"1) 4 comb 12 NB. there are 29 tetrachords
 )
 
 0!:2 tests
-
-
 
