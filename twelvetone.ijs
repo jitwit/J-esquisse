@@ -15,10 +15,9 @@ NH =: (/:(12|{:-{.)"1) @: (/:(12|]-{.)"1)  NB. normal grade by "compactness"
 PH =: (/:(12|{:-{.)"1) @: /:~              NB. prime grade by "compactness"
 NF =: {. @: NH @: NR @: SC                 NB. normal form
 PF =: {. @: PH @: (,&PR I12) @: SC         NB. prime form
-UPCI =: {{6-|6---/~y}}                     NB. unordered pitch class intervals
 U =: #&,~ </~@i.@#                         NB. select upper triangle
 CNT =: {{ <:@#/.~ u,y }}                   NB. count occs of u in y
-IV =: (1+i.6) CNT @: U @: UPCI             NB. interval vector
+IV =: (1+i.6) CNT @: U @: {{6-|6+-/~y}}    NB. interval vector
 IXV =: [: Z12 CNT [: , 12 | (+/~)          NB. index vector
 ORBT =: [: ~. [: (/:~"1) 12 | Z12&(+/)     NB. orbit under Z12 and T
 ORBI =: [: ~. [: (/:~"1) 12 | Z12 +/ I12   NB. orbit under Z12 and T*I
@@ -90,3 +89,4 @@ NB. 0 2 2 0 -: COM 0 1 3 6 7 9 fixme! or convince myself it's mistake in book
 COM 0 1 3 6 7 9
 COM 0 2 3 6 7 9
 0!:2 assertions
+
