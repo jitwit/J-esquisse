@@ -24,7 +24,10 @@ ORBT =: [: ~. [: (/:~"1) 12 | Z12&(+/)    NB. orbit under Z12 and T
 ORBI =: [: ~. [: (/:~"1) 12 | Z12 (+/) I  NB. orbit under Z12 and T*I
 ORB =: ORBT , ORBI                        NB. orbit under dihedral 24
 DSYM =: 12 % ORBT (,&#) ORBI              NB. degrees of symmetry
+NB. same interval content but not same equiv class under action by D24
+ZREL =: -:&IV *. -. @ (e. ORB)          NB. z related
 
+(/:~@ORB) 0 1 4 6
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
 CTT =: (+/@e."1) 12 | Z12&(+/)
@@ -64,7 +67,11 @@ assertions =: 0 : 0
 6 6 -: SYM wholetone
 1 1 -: SYM 0 2 4
 2 2 -: SYM 0 1 6 7
+0 1 3 7 ZREL 0 1 4 6
+-. 1 3 5 ZREL 0 2 4
+-. 0 1 ZREL 1 2 3 4
 )
 
 0!:2 assertions
 load 'stats/bonsai'
+
