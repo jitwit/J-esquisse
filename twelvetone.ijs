@@ -23,22 +23,21 @@ ORBT =: [: ~. [: (/:~"1) 12 | Z12&(+/)     NB. orbit under Z12 and T
 ORBI =: [: ~. [: (/:~"1) 12 | Z12 +/ I12   NB. orbit under Z12 and T*I
 ORB =: [: ~. ORBT , ORBI                   NB. orbit under dihedral 24
 DSYM =: 12 % ORBT (,&#) ORBI               NB. degrees of symmetry
-TEQ =: e. ORBT                             NB. translationally equiv
-TEQ =: e. ORBT                             NB.  equiv
+EQV =: e. ORB                              NB. equivalent/symmetric by D24
 NB. same interval content but not same equiv class under action by D24
 ZREL =: -:&IV *. -. @ (e. ORB)             NB. z related
 NEG =: Z12&-.                              NB. complement
 CREL =: (-:&PF) NEG                        NB. self complement (hexachords only)
+PCOM =: {{(12%#o) * (NEG y) e. o=.ORBT y}} NB. p-combinatorial
+ICOM =: {{(12%#o) * (NEG y) e. o=.ORBI y}} NB. i-combinatorial
 RCOM =: {{(12%#o) * y e. o=.ORBT y}}       NB. r-combinatorial
-PCOM =: {{(12%#o) * y e. o=.ORBT NEG y}}   NB. p-combinatorial
-ICOM =: {{(12%#o) * y e. o=.ORBI y}}       NB. i-combinatorial
-RICOM =: {{(12%#o) * y e. o=.ORBI NEG y}}  NB. ri-combinatorial
+RICOM =: {{(12%#o) * y e. o=.ORBI y}}      NB. ri-combinatorial
 COM =: PCOM,RCOM,ICOM,RICOM
 
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
 CTT =: (+/@e."1) 12 | Z12&(+/)
-IVT =: 1 1 1 1 1 1r2 * [: |. _6 {. CTT
+IVT =: 1 1 1 1 1 0.5 * [: |. _6 {. CTT
 
 major =: 0 2 4 5 7 9 11
 minor =: 0 2 3 5 7 9 10
@@ -82,11 +81,12 @@ CREL 0 1 2 3 4 6
 CREL wholetone
 1 1 1 1 -: COM i.6
 0 1 0 0 -: COM 0 1 2 3 6 8
-NB. 0 2 2 0 -: COM 0 1 3 6 7 9 fixme! or convince myself it's mistake in book
+0 1 1 0 -: COM 0 1 2 4 5 8
+0 1 1 0 -: COM 0 1 2 3 5 7
+0 1 0 1 -: COM 0 1 2 3 6 9
+0 2 2 0 -: COM 0 1 3 6 7 9
 3 3 3 3 -: COM 0 1 4 5 8 9
 6 6 6 6 -: COM wholetone
 )
-COM 0 1 3 6 7 9
-COM 0 2 3 6 7 9
-0!:2 assertions
 
+0!:2 assertions
