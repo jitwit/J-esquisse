@@ -11,8 +11,9 @@ dat =: 1!:1 < eg
 
 SC =: qchr;csep
 SA =: a. (e.&> i. 1:)"0 _ SC
-unq =: }.@}: ^: ((2#qchr) -: 0 _1&{)
-unq1 =: }.@}: ^: ([: *./ qchr = 0 _1&{)
+unqq =: #~ [: -. (2#qchr)&E.
+unq =: unqq@}.@}: ^: ((2#qchr) -: 0 _1&{)
+cfld =: unq`{{''}}@.(-:&(,csep)) NB. clean field
 
 ]SM =: 4 3 2 $ , ". ;. _2 ] 0 : 0
 2 1  0 2  1 1 NB. neutral
@@ -25,10 +26,9 @@ cdr =: [: <;._2 ,&csep @ ({.~ i.&rsep)
 row =: (0;SM;SA)&;:
 hdr =: row @: ({.~ i.&rsep)
 pcsv =: row;._2
-NB. pcol =:
+
 0 ". '123 abcd 123'
 unq &.> row '"a,""",d,e,f'
 row '"bat","cat","dog"'
+cfld &.> row '"b""a",t,,"ca\t"'
 NB. 'unq1 &.> row 51 {. dat' bonsai 'row 51 {. dat'
-
-
