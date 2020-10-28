@@ -6,10 +6,13 @@ NB. bring some clarity.
 require 'stats/base'
 coclass 'twelvetone'
 
+NB. intro post-tonal theory Joseph N. Straus, collected definitions
+NB. and concepts.
 Z12 =: i.12                                NB. Z/12Z
 SC =: /:~ @: ~.                            NB. set class, ie order and nub
 NR =: # ]\ ],}:                            NB. normal all rotations
 PR =: # ([: /:~ 12 | ]-{.)\ ],}:           NB. prime all rotations
+T12 =: 12 | +                              NB. translate in Z/12Z
 I12 =: 12 | -                              NB. invert in Z/12Z
 NH =: (/:(12|{:-{.)"1) @: (/:(12|]-{.)"1)  NB. normal grade by "compactness"
 PH =: (/:(12|{:-{.)"1) @: /:~              NB. prime grade by "compactness"
@@ -25,7 +28,7 @@ ORB =: [: ~. ORBT , ORBI                   NB. orbit under dihedral 24
 DSYM =: 12 % ORBT (,&#) ORBI               NB. degrees of symmetry
 EQV =: e. ORB                              NB. equivalent/symmetric by D24
 NB. same interval content but not same equiv class under action by D24
-ZREL =: -:&IV *. -. @ (e. ORB)             NB. z related
+ZREL =: -:&IV *. -.@EQV                    NB. z related
 NEG =: Z12&-.                              NB. complement
 CREL =: (-:&PF) NEG                        NB. self complement (hexachords only)
 PCOM =: {{(12%#o) * (NEG y) e. o=.ORBT y}} NB. p-combinatorial
@@ -37,14 +40,27 @@ COM =: PCOM,RCOM,ICOM,RICOM
 NB. alternate interval vector calculation based on looking at
 NB. fixpoints under transposition
 CTT =: (+/@e."1) 12 | Z12&(+/)
-IVT =: 1 1 1 1 1 0.5 * [: |. _6 {. CTT
+IVT =: [: <. 1 1 1 1 1 0.5 * [: |. _6 {. CTT
 
+NB. some scales
 major =: 0 2 4 5 7 9 11
-minor =: 0 2 3 5 7 9 10
+minor =: 0 2 3 5 7 8 10
 minorh =: 0 2 3 5 7 8 11
 minormu =: 0 2 3 5 7 9 11
-minormd =: 0 2 3 5 7 8 10
 wholetone =: +: i. 6
+
+NB. moreso from generalized musical intervals and transformations now,
+NB. david lewin
+
+NB. based on model of fundamental frequency where
+NB. int | *&freq
+NB. +P4 | 4r3
+NB. +M3 | 5r4
+NB. basically group is triples 2 3 5 ^ triple under multiplication of
+NB. ratios or addition of exponents...
+DOM =: _1 1 0
+MED =: _2 0 1
+*/ 2 3 5 ^ DOM - MED
 
 primeform_z_ =: PF_twelvetone_
 intervals_z_ =: IV_twelvetone_
@@ -90,3 +106,8 @@ CREL wholetone
 )
 
 0!:2 assertions
+
+NB. major (+/@,@(=/))"1 Z12 /:~@T12"0 _/ minor
+NB. major (+/@,@(=/))"1 Z12 /:~@T12"0 _/ major
+inversions =: (12 | (- {.))"1 @ NR
+inversions 0 3 7 9
