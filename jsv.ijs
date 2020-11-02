@@ -22,7 +22,6 @@ cln =: unq`{{''}}@.(-:&(,csep)) NB. clean field (empty fields parsed as commas)
 2 0  0 2  0 3  2 0 NB. escq, error to see row delim
 )
 
-cdr =: [: <;._2 ,&csep @ ({.~ i.&rsep)
 row =: (0;SM;SA)&;:
 hdr =: row @: ({.~ i.&rsep)
 pcsv =: row;._2 NB. technically, row sep may be inside quotes, but
@@ -35,11 +34,11 @@ hdr =. {. y
 hdr
 )
 
-row '"a,""',LF,'ab",d',LF,'e,f'
 NB. unq &.> row '"a,""",d,e,f'
 NB. row '"bat","cat","dog"'
 NB. cln &.> row '"b""a",t,,"ca\t"'
 NB. 'unq1 &.> row 51 {. dat' bonsai 'row 51 {. dat'
-$ trees =: pcsv dat
-(+/%#)
-+/ _ = _ ". > }. {: |: trees
+NB.$  trees =: pcsv dat
+NB. ({. trees) i. < 'Essence_fr'
+
+NB. $ > }. 10 {. 12 { |: trees
