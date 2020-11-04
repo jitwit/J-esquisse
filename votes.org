@@ -2,8 +2,8 @@ not really deserving of a script file, but hey, calculate share of votes
 that remain needed win at final tally.
 
 let $y = a b$ be percentages of current votes $x = p$ of two leading
-parties, so $a+b <= 1$ and $p <= 1$. want to know what portion of $q =
-1 - p$ is needed for $a >= b$, by normalizing ~(%+/) y~ to ignore
+parties, so $a+b \le 1$ and $p \le 1$. want to know what portion of $q =
+1 - p$ is needed for $a \ge b$, by normalizing ~(%+/) y~ to ignore
 third party & write-in votes.
 
 #+begin_src J :session :exports code
@@ -14,10 +14,10 @@ V =: -.@[ %~ 0.5 - (*(%+/))
 
 data from AP numbers around 1:30 november 4
 #+begin_src J :session :exports code
-sts =: ;:'PA    AZ    NV    GA    WI    MI    FL    NC'
-eot =:    0.86  0.84  0.75  0.96  0.95  0.985 0.96  0.94
-cvd =:    0.468 0.51  0.492 0.486 0.496 0.498 0.478 0.487
-cvr =:    0.52  0.476 0.486 0.502 0.489 0.487 0.512 0.501
+sts =: ;:'PA    NV    GA    WI    NC'
+eot =:    0.86  0.75  0.96  0.95  0.94
+cvd =:    0.469 0.493 0.487 0.496 0.487
+cvr =:    0.519 0.487 0.501 0.489 0.501
 ord =: /: cal =: eot V"0 1 cvd ,. cvr
 #+end_src
 
@@ -25,7 +25,7 @@ ord =: /: cal =: eot V"0 1 cvd ,. cvr
 
 OK,
 
-#+begin_src J :session :exports results :verb 0!:1
+#+begin_src J :session :exports both :verb 0!:1
 (6j3&":^:(8=3!:0)) &.> ('ST';' joe    don') ,: (>sts) ;&(ord&{) cal
 #+end_src
 
@@ -35,13 +35,10 @@ OK,
 ┌──┬────────────┐
 │ST│ joe    don │
 ├──┼────────────┤
-│MI│ 0.133 0.867│
-│AZ│ 0.409 0.591│
 │WI│ 0.432 0.568│
 │NV│ 0.491 0.509│
 │NC│ 0.611 0.389│
-│PA│ 0.662 0.338│
-│GA│ 0.694 0.306│
-│FL│ 0.912 0.088│
+│PA│ 0.655 0.345│
+│GA│ 0.670 0.330│
 └──┴────────────┘
 #+end_example
