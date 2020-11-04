@@ -8,3 +8,16 @@ while. #x do. lx=. >{.x [ ly=. >{.y
    else. x=. }.x [ y=. }.y end.
 end. o
 )
+
+lmy=: 4 : 'y,(0{x){(1+(1{x)<.{:y),2{x'
+
+lmx=: 4 : 0
+ b=. (_1+#y){x
+ d=. {:y
+ m=. (}.<.}:) d
+ y , > lmy&.>/ (|.<"1 b,.m,.}:d),<#y
+)
+
+LM=: =/~ lmx^:(#@[) ,:@i.@>:@#@[
+
+'Saturday' LM 'Sunday'

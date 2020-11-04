@@ -6,36 +6,42 @@ parties, so $a+b <= 1$ and $p <= 1$. want to know what portion of $q =
 1 - p$ is needed for $a >= b$, by normalizing ~(%+/) y~ to ignore
 third party & write-in votes.
 
-#+begin_src J :session :exports both
+#+begin_src J :session :exports code
 V =: -.@[ %~ 0.5 - (*(%+/))
 #+end_src
 
 #+RESULTS:
 
 data from AP numbers around 1:30 november 4
-#+begin_src J :session :exports both
+#+begin_src J :session :exports code
 sts =: ;:'PA    AZ    NV    GA    WI    MI    FL    NC'
-eot =:    0.64  0.84  0.67  0.95  0.95  0.96  0.96  0.94
-cvd =:    0.454 0.51  0.492 0.485 0.496 0.497 0.478 0.487
-cvr =:    0.534 0.476 0.486 0.502 0.489 0.488 0.512 0.501
-grd =: /: cal =: eot V"0 1 cvd ,. cvr
-tab =: ('ST';' joe    don') ,: (>sts) ;&(grd&{) cal
-echo (6j3&":^:(8=3!:0)) &.> tab
+eot =:    0.64  0.84  0.75  0.95  0.95  0.985  0.96  0.94
+cvd =:    0.467 0.51  0.492 0.486 0.496 0.498 0.478 0.487
+cvr =:    0.521 0.476 0.486 0.502 0.489 0.487 0.512 0.501
+ord =: /: cal =: eot V"0 1 cvd ,. cvr
+#+end_src
+
+#+RESULTS:
+
+OK,
+
+#+begin_src J :session :exports output :verb 0!:1
+(6j3&":^:(8=3!:0)) &.> ('ST';' joe    don') ,: (>sts) ;&(ord&{) cal
 #+end_src
 
 #+RESULTS:
 #+begin_example
+   (6j3&":^:(8=3!:0)) &.> ('ST';' joe    don') ,: (>sts) ;&(ord&{) cal
 ┌──┬────────────┐
 │ST│ joe    don │
 ├──┼────────────┤
-│MI│ 0.390 0.610│
+│MI│ 0.133 0.867│
 │AZ│ 0.409 0.591│
 │WI│ 0.432 0.568│
-│NV│ 0.494 0.506│
-│PA│ 0.572 0.428│
+│NV│ 0.491 0.509│
+│PA│ 0.549 0.451│
 │NC│ 0.611 0.389│
-│GA│ 0.664 0.336│
+│GA│ 0.654 0.346│
 │FL│ 0.912 0.088│
 └──┴────────────┘
 #+end_example
-
