@@ -25,7 +25,7 @@ ord =: /: cal =: eot V"0 1 cvd ,. cvr
 
 OK,
 
-#+begin_src J :session :exports output :verb 0!:1
+#+begin_src J :session :exports results :verb 0!:1
 (6j3&":^:(8=3!:0)) &.> ('ST';' joe    don') ,: (>sts) ;&(ord&{) cal
 #+end_src
 
