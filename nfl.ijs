@@ -41,4 +41,4 @@ end. (%+/)"1 weights
 mat =: weight''
 page_rank=: ([: %. =@i.@#@] - *) +/ .* ((]#(1:-[)%])#@])
 NB. gives sort of reasonable ranking, but why aren't 0-8 jets last?
-,. teams2020 {~ /: 0.85 page_rank |: mat
+> teams2020 {~ /: 0.85 page_rank |: mat
