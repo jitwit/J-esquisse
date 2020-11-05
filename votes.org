@@ -6,7 +6,7 @@ parties, so $a+b \le 1$ and $p \le 1$. want to know what portion of $q =
 1 - p$ is needed for $a \ge b$, by normalizing ~(%+/) y~ to ignore
 third party & write-in votes.
 
-#+begin_src J :session :exports code
+#+begin_src J :session :exports both
 V =: -.@[ %~ 0.5 - (*(%+/))
 sts =: ;:'PA    NV      GA     NC     AZ'
 eot =:    0.87   0.75   0.99   0.94   0.88
