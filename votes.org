@@ -8,37 +8,23 @@ third party & write-in votes.
 
 #+begin_src J :session :exports code
 V =: -.@[ %~ 0.5 - (*(%+/))
-sts =: ;:'PA    NV    GA    NC    AZ'
-eot =:    0.87  0.75  0.96  0.95  0.86
-cvd =:    0.484 0.493 0.492 0.487 0.505
-cvr =:    0.505 0.487 0.496 0.501 0.481
+sts =: ;:'PA    NV      GA     NC     AZ'
+eot =:    0.87   0.75   0.99   0.94   0.88
+cvd =:    0.4845 0.4933 0.492  0.487  0.5049
+cvr =:    0.504  0.4869 0.4957 0.501  0.4814
 ord =: /: cal =: eot V"0 1 cvd ,. cvr
 prj =: }."1 ,/"1 ] 6j3 ": ord { cal
+echo ('ST';'votes';'joe   don') ,: (ord{>sts) ; (,.ord{eot) ; prj
 #+end_src
 
-#+RESULTS:
-: 0.425 0.575
-: 0.491 0.509
-: 0.549 0.451
-: 0.571 0.429
-: 0.635 0.365
-
-So,
-
-#+begin_src J :session :exports both :verb 0!:1
-('ST';'votes';'joe   don') ,: (ord{>sts) ; (,.ord{eot) ; prj
-#+end_src
 
 #+RESULTS:
-#+begin_example
-   ('ST';'votes';'joe   don') ,: (ord{>sts) ; (,.ord{eot) ; prj
-┌──┬─────┬───────────┐
-│ST│votes│joe   don  │
-├──┼─────┼───────────┤
-│AZ│0.86 │0.425 0.575│
-│NV│0.75 │0.491 0.509│
-│GA│0.96 │0.549 0.451│
-│PA│0.87 │0.571 0.429│
-│NC│0.95 │0.635 0.365│
-└──┴─────┴───────────┘
-#+end_example
+: ┌──┬─────┬───────────┐
+: │ST│votes│joe   don  │
+: ├──┼─────┼───────────┤
+: │AZ│0.88 │0.413 0.587│
+: │NV│0.75 │0.490 0.510│
+: │PA│0.87 │0.566 0.434│
+: │NC│0.94 │0.611 0.389│
+: │GA│0.99 │0.685 0.315│
+: └──┴─────┴───────────┘
