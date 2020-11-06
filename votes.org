@@ -2,16 +2,16 @@ not really deserving of a script file, but hey, calculate share of votes
 that remain needed win at final tally.
 
 let $y = a b$ be percentages of current votes $x = p$ of two leading
-parties, so $a+b \le 1$ and $p \le 1$. want to know what portion of $q =
-1 - p$ is needed for $a \ge b$, by normalizing ~(%+/) y~ to ignore
+parties, so $a+b \le 1$ and $p \le 1$. want to know what portion of $q
+= 1 - p$ is needed for $a \ge b$, through normalizing $y$ to ignore
 third party & write-in votes.
 
 #+begin_src J :session :exports both
 V =: -.@[ %~ 0.5 - (*(%+/))
 sts =: ;:'PA     NV     GA     NC     AZ'
-eot =:    0.98   0.86   0.995  0.94   0.9
-cvd =:    0.4949 0.4984 0.4940 0.4869 0.4999
-cvr =:    0.4936 0.4807 0.4937 0.5009 0.4858
+eot =:    0.98   0.87   0.995  0.94   0.9
+cvd =:    0.4952 0.4974 0.4940 0.4869 0.4999
+cvr =:    0.4933 0.4814 0.4937 0.5009 0.4858
 ord =: /: cal =: eot V"0 1 cvd ,. cvr
 prj =: }."1 ,/"1 ] 6j3 ": ord { cal
 echo ('ST';'votes';'joe   don') ,: (ord{>sts) ; (,.ord{eot) ; prj
@@ -23,8 +23,8 @@ echo ('ST';'votes';'joe   don') ,: (ord{>sts) ; (,.ord{eot) ; prj
 : │ST│votes│joe   don  │
 : ├──┼─────┼───────────┤
 : │AZ│  0.9│0.436 0.564│
-: │NV│ 0.86│0.444 0.556│
-: │PA│ 0.98│0.468 0.532│
+: │NV│ 0.87│0.445 0.555│
+: │PA│ 0.98│0.453 0.547│
 : │GA│0.995│0.470 0.530│
 : │NC│ 0.94│0.611 0.389│
 : └──┴─────┴───────────┘
