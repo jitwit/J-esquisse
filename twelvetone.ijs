@@ -3,6 +3,7 @@ NB. dunno. well, actually it's because i remember how fuzzy the
 NB. procedures for normal forms and other concepts were and J is great
 NB. for writing concise and precise definitions. perhaps this will
 NB. bring some clarity.
+
 require 'stats/base'
 coclass 'twelvetone'
 
@@ -109,5 +110,5 @@ CREL wholetone
 
 NB. major (+/@,@(=/))"1 Z12 /:~@T12"0 _/ minor
 NB. major (+/@,@(=/))"1 Z12 /:~@T12"0 _/ major
-inversions =: (12 | (- {.))"1 @ NR
-inversions 0 3 7 9
+NB. inversions =: (12 | (- {.))"1 @ NR
+NB. inversions 0 3 7 9
