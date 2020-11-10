@@ -116,3 +116,30 @@ LG =: +/ @: (([: p. ] ;~ {:@[ % ([:p.1;]) p. {.@[)"1) 1 ]\. {."1
 
 ** Newton
 
+Given a polynomial fitting $n$ data points, how can it be made to fit
+an additional one?
+
+#+begin_src J :session :exports both
+NB. ONN for online newton
+ONN =: {{ 'z p' =. y
+  d =. ({:x) - (p p.{.x)
+  (z,x);(p,0) + p. (d % (1;{."1 z) p. ({.x)) ; {."1 z
+}}
+NWT =: {{ p =. (,:@{. ; {:@{.) y
+ for_z. }. y do. p =. z ONN p end. >{:p }}
+#+end_src
+
+#+RESULTS:
+
+*** Example
+
+#+begin_src J :session :exports both :verb 0!:1
+({:"1 pts) -: (p =. NWT pts) p. {."1 pts =. _2 ]\ 3 _4 1 2 6 _1x
+(VM -: NWT) pts
+#+end_src
+
+#+RESULTS:
+:    ({:"1 pts) -: (p =. NWT pts) p. {."1 pts =. _2 ]\ 3 _4 1 2 6 _1x
+: 1
+:    (VM -: NWT) pts
+: 1
