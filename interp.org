@@ -1,0 +1,92 @@
+* Interpolation
+
+following:
+[[https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/05Interpolation/][https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/05Interpolation/]]
+
+Can fit a of degree $n-1$ to $n$ points. The key is that the powers of
+$x$ are linearly independent, so we can solve a system of equations to
+get the fit so long as x's are unique.
+
+#+begin_src J :session :exports both
+VM =: {:"1 %. {."1 ^/ i.@#	  NB. vandermonde interp
+testvm =: {:"1 -: VM p."_ 0/ {."1 NB. check that the result fits the points
+#+end_src
+
+#+RESULTS:
+
+** Examples
+
+#+begin_src J :session :exports both :verb 0!:1
+(;:'pts fit ok'),:(;VM;testvm) _2 ]\ 2 5 3 6 7 4x
+#+end_src
+
+#+RESULTS:
+:    (;:'pts fit ok'),:(;VM;testvm) _2 ]\ 2 5 3 6 7 4x
+: ┌───┬─────────────┬──┐
+: │pts│fit          │ok│
+: ├───┼─────────────┼──┤
+: │2 5│6r5 5r2 _3r10│1 │
+: │3 6│             │  │
+: │7 4│             │  │
+: └───┴─────────────┴──┘
+
+#+begin_src J :session :exports both :verb 0!:1
+(;:'pts fit ok'),:(;VM;testvm) _2 ]\ 2 2 3 1 5 2x
+#+end_src
+
+#+RESULTS:
+:    (;:'pts fit ok'),:(;VM;testvm) _2 ]\ 2 2 3 1 5 2x
+: ┌───┬──────────┬──┐
+: │pts│fit       │ok│
+: ├───┼──────────┼──┤
+: │2 2│7 _7r2 1r2│1 │
+: │3 1│          │  │
+: │5 2│          │  │
+: └───┴──────────┴──┘
+
+#+begin_src J :session :exports both :verb 0!:1
+(;:'pts fit ok'),:(;VM;testvm) _2 ]\ _2 _39 0 3 1 6 3 36
+#+end_src
+
+#+RESULTS:
+:    (;:'pts fit ok'),:(;VM;testvm) _2 ]\ _2 _39 0 3 1 6 3 36
+: ┌──────┬────────┬──┐
+: │pts   │fit     │ok│
+: ├──────┼────────┼──┤
+: │_2 _39│3 5 _4 2│1 │
+: │ 0   3│        │  │
+: │ 1   6│        │  │
+: │ 3  36│        │  │
+: └──────┴────────┴──┘
+
+#+begin_src J :session :exports both :verb 0!:1
+(;:'pts fit ok'),:(;VM;testvm) _2 ]\ 0 0 2 4 3 12x
+#+end_src
+
+#+RESULTS:
+:    (;:'pts fit ok'),:(;VM;testvm) _2 ]\ 0 0 2 4 3 12x
+: ┌────┬──────┬──┐
+: │pts │fit   │ok│
+: ├────┼──────┼──┤
+: │0  0│0 _2 2│1 │
+: │2  4│      │  │
+: │3 12│      │  │
+: └────┴──────┴──┘
+
+#+name: example4
+#+begin_src J :session :exports both :results file :plot images/vandermonde.png
+require 'plot'
+poly =. VM pts =. _2 ]\ _3.2 4.5 _1.5 0.5 0.3 0.6 0.7 1.2 2.5 3.5
+ab =. (<./,>./) {."1 pts
+pd 'reset;visible 0'
+pd 'type line; color 30 100 230'
+pd ab ; 'poly&p.'
+pd 'type dot;pensize 1.4; color 230 40 40'
+pd <"1 |: pts
+pd 'aspect 1'
+pd 'show'
+#+end_src
+#+attr_html: :height 300px
+#+attr_org: :height 300px
+#+RESULTS: example4
+[[file:images/vandermonde.png]]
