@@ -3,6 +3,8 @@
 following:
 [[https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/05Interpolation/][https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/05Interpolation/]]
 
+** Vandermonde
+
 Can fit a of degree $n-1$ to $n$ points. The key is that the powers of
 $x$ are linearly independent, so we can solve a system of equations to
 get the fit so long as x's are unique.
@@ -14,7 +16,7 @@ testvm =: {:"1 -: VM p."_ 0/ {."1 NB. check that the result fits the points
 
 #+RESULTS:
 
-** Examples
+*** Examples
 
 #+begin_src J :session :exports both :verb 0!:1
 (;:'pts fit ok'),:(;VM;testvm) _2 ]\ 2 5 3 6 7 4x
@@ -90,3 +92,27 @@ pd 'show'
 #+attr_org: :height 300px
 #+RESULTS: example4
 [[file:images/vandermonde.png]]
+
+** Lagrange
+
+Idea: find polynomials that are 0 at all $x$ except one, where they
+equal the corresponding $y$ and add them up.
+
+#+begin_src J :session :exports both :verb 0!:1
+LGDD =: +/ @: ({{p.y;~({:x)%(p. 1;y)p.{.x}}"1) 1 ]\. {."1
+LG =: +/ @: (([: p. ] ;~ {:@[ % ([:p.1;]) p. {.@[)"1) 1 ]\. {."1
+(VM-:LGDD) _2 ]\ 2 5 3 6 7 4x
+(VM-:LG  ) _2 ]\ 2 5 3 6 7 4x
+#+end_src
+
+#+RESULTS:
+:    LGDD =: +/ @: ({{p.y;~({:x)%(p. 1;y)p.{.x}}"1) 1 ]\. {."1
+:    LG =: +/ @: (([: p. ] ;~ {:@[ % ([:p.1;]) p. {.@[)"1) 1 ]\. {."1
+:    (VM-:LGDD) _2 ]\ 2 5 3 6 7 4x
+: 1
+:    (VM-:LG  ) _2 ]\ 2 5 3 6 7 4x
+: 1
+
+
+** Newton
+
