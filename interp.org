@@ -116,6 +116,39 @@ LG =: +/ @: (([: p. ] ;~ {:@[ % ([:p.1;]) p. {.@[)"1) 1 ]\. {."1
 
 ** Newton
 
+Given data-points $(x_i,y_i)$, _Newton basis polynomials_ are $n_j(x)
+= \prod (x-x_j) [0\le i < j]$. _Divided differences_ are $[y_j] = y_j$
+and recursively $[y_{a+j}\dots y_a] = \frac{[y_{a+j},\dots,y_{a+1}] -
+[y_{a+j-1},\dots,y_a]}{x_{a+j} - x_a}$ and the Newton Polynomail for
+interpolating the given points is $N(x) = \sum a_j n_j(x)$.
+
+How do the basis polynomials look?
+#+name: newton-basis
+#+begin_src J :session :exports both :results file :plot images/newton-basis.png
+pd 'reset;visible 0;aspect 1'
+pd 'type line'
+pd 0 5;'(1;1)&p.'
+pd 0 5;'(1;1 2)&p.'
+pd 0 5;'(1;1 2 3)&p.'
+pd 0 5;'(1;1 2 3 4)&p.'
+pd 'type dot; pensize 1.2; color 90 90 90'
+pd 1 2 3 4;0 0 0 0
+pd 'show'
+#+end_src
+#+attr_html: :height 400px
+#+attr_org: :height 300px
+#+RESULTS: newton-basis
+[[file:images/newton-basis.png]]
+
+# :verb 0!:1
+#+begin_src J :session :exports both
+V =: {{ ((}.-}:) y) % ((-x){.m) - x{.m }}  NB. iterate divided differences
+D =: {{ ({.y) , y {. F:: (x V) i.&.<:#y }} NB. get coefficients
+N =: {{ (({."1 u) D ({:"1 u)) +/ . * 1 , */\ y - }: {."1 u }}
+#+end_src
+
+#+RESULTS:
+
 Given a polynomial fitting $n$ data points, how can it be made to fit
 an additional one?
 
@@ -131,7 +164,7 @@ NWT =: {{ p =. (,:@{. ; {:@{.) y
 
 #+RESULTS:
 
-*** Example
+*** Examples
 
 #+begin_src J :session :exports both :verb 0!:1
 ({:"1 pts) -: (p =. NWT pts) p. {."1 pts =. _2 ]\ 3 _4 1 2 6 _1x
