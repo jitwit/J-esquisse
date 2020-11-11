@@ -140,14 +140,24 @@ pd 'show'
 #+RESULTS: newton-basis
 [[file:images/newton-basis.png]]
 
-# :verb 0!:1
-#+begin_src J :session :exports both
-V =: {{ ((}.-}:) y) % ((-x){.m) - x{.m }}  NB. iterate divided differences
-D =: {{ ({.y) , y {. F:: (x V) i.&.<:#y }} NB. get coefficients
-N =: {{ (({."1 u) D ({:"1 u)) +/ . * 1 , */\ y - }: {."1 u }}
+#+name: newton-example
+#+begin_src J :session :exports both :results file :plot images/newton-example.png
+V =: {{ ((}.-}:) y) % ((-x){.m) - x{.m }} NB. iterate divided differences
+A =: {{ ({.y) , y {.F::(x V) i.&.<:#y }}  NB. newton coefficients
+N =: {{ (({."1 u)A({:"1 u)) +/ . * 1,*/\ y-}:{."1 u }} NB. evaluate polynomial at y
+({:"1 -: (zs N"0)@{."1) zs =: (,. 3&o.) _3r2 _3r4 0 3r4 3r2
+pd 'reset;visible 0'
+pd 'type line'
+pd (; zs N"0) 1.51 * (%~ i:) 1000
+pd (; 3&o.) 1.51 * (%~ i:) 1000
+pd 'type dot;pensize 1.3;color 90 90 90'
+pd <"1 |: zs
+pd 'show'
 #+end_src
+#+attr_html: :height 400px
+#+RESULTS: newton-example
+[[file:images/newton-example.png]]
 
-#+RESULTS:
 
 Given a polynomial fitting $n$ data points, how can it be made to fit
 an additional one?
