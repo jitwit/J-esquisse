@@ -7,7 +7,7 @@ station =: 5415
 sel =: {{ (1,({.y)i.<x){::y }}
 
 NB. years =: 23 }. rcsv &.> 1 dir 'weather/',(":station),'*.csv'
-years =: _30 {. }: 3 }. rcsv &.> 1 dir 'weather/',(":station),'*.csv'
+years =: rcsv &.> 1 dir 'weather/',(":station),'*.csv'
 hdrs =: {. > {. years
 sgnd =: [: , [: ". 'Snow on Grnd (cm)'&sel
 snow =: [: , [: ". 'Total Snow (cm)'&sel

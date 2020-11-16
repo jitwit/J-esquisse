@@ -1,6 +1,6 @@
 NB. flat trie representation
 NB. read dictionary
-W=: (<@,&'$'@}:;._2) 1!:1 < jpath '~/code/gobble/cobble/share/collins.txt'
+W=: (<@,&'$'@}:;._2) 1!:1 < jpath '~/code/joggle/collins.txt'
 
 NB. compress y - study a list of words y, parent/depth/flattened chars
 compress =: (;~ [: parent_hsu 0 {:: ]) @: (0&trie)
