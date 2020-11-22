@@ -66,7 +66,7 @@ lhue =: 0.7 + _0.09 * (I #vmpts)
 ]vm_hue =: ,/ 2 (4 cpath)/\ _3 ]\ 0 0 0 0.7 0.2 _0.4
 NB. ,/ 2 (100 cpath)/\ lhue ,. }."1 Tyuv"1 vmpts
 (#: 7 | 3^i.6)
-vm_demo =: ? 10 10 $ 0
+vm_demo =: ?. 10 10 $ 0
 
 demo =: 3 : 0
 if. y

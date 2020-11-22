@@ -1,10 +1,13 @@
 load 'plot tables/csv ../jsv/jsv.ijs'
+dat =. 1!:1 < 'weather/51157-2015.csv'
+7!:2 'pcsv dat'
 
 NB. for 4715, first 23 years are blank 
 
 station =: 5415
 
 sel =: {{ (1,({.y)i.<x){::y }}
+
 
 NB. years =: 23 }. rcsv &.> 1 dir 'weather/',(":station),'*.csv'
 years =: rcsv &.> 1 dir 'weather/',(":station),'*.csv'
@@ -53,4 +56,4 @@ pd tf (+/%#)\ (+/%#) 365 {."1 mint &> years
 pd 'show'
 )
 
-plot_temp ''
+plot_snow ''
