@@ -31,7 +31,7 @@ h =. <. -: # years
 pd 'reset;visible 0; title snow frequency by day (smoothed)'
 pd 'xcaption day; ycaption P(snow);type dot'
 pd 'color 20 160 255,40 200 140'
-pd (+/%#) * 365 {."1 snow &> }: years
+pd 30 (+/%#)\ (+/%#) * 365 {."1 snow &> }: years
 pd 'key past recent;keypos middle'
 pd 'show'
 )
