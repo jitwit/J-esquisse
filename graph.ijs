@@ -16,10 +16,10 @@ dfs =: 4 : 0
 NB. get tree from dfs starting at x in graph y
 Q =. ~.,x NB. seed queue from x and mark x explored
 S =. 1 + 0 * (T =. i.#y) NB. explored v iff 0 = v{S
-while. #Q do. 'u Q' =. ({:;}:) Q NB. pop Q
+while. #Q do. 'u Q' =. ({.;}.) Q NB. pop Q
   if. u{S do. S =. 0 u} S NB. if u unexplored:
     vs =. I. S * u{y NB. unexplored edges u -> v
-    Q =. vs ,~ Q NB. push vs
+    Q =. vs , Q NB. push vs
     T =. u vs} T NB. indicate parent in tree T
   end.
 end. T
@@ -46,4 +46,5 @@ path =: 1 |.!.0 I
 circ =: 1 |. I
 
 rg =: 0.1 > ?. 1000 1000 $ 0
-6!:2 '0 bfs rg'
+7!:2 '0 bfs rg'
+7!:2 '0 dfs rg'
