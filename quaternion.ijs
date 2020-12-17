@@ -13,18 +13,12 @@ Qd =: Qx Qi                                    NB. division
 Qn =: (+/@:*:)"1                               NB. norm
 Qc =: (1 _1 _1 _1&*)"1                         NB. conjugation
 Qu =: % Qn                                     NB. unit
-Qp =: Qn , Qu
-NB. apparently faster if rank fixed here instead of at use
+Qp =: Qn , Qu                                  NB. polar form
+Qmat =: (,:_1 1*+@|.)@:(_2&(j./\))             NB. 2x2 matrix representation over C
 Qi =: (Qc % Qn)"1 f.                           NB. faster/more stable inv by conj
+NB. apparently these are faster if rank fixed here instead of at use
 
 'qr qi qj qk' =: = i. 4
 qz =: 4$0
 NB. cayley table:
 QCayley =: _8 ]\ i.~ ,/ Qx"1/~ (,-) (= i. 4)
-
-NB. '2 3 5 7 qnmul 1 2 3 4' bonsai '2 3 5 7 Qmul 1 2 3 4'
-qs =: ?. 10000 4 $ 0
-NB. '+/ | (qnmul qnrec) qs' bonsai '+/ | (Qx Qi) qs'
-
-(qi+qj) Qx qk Qd qi+qj
-Qp 0 0 0 0
