@@ -22,8 +22,6 @@ NB. standard normal pdf
 phi =: (%:%2p1) * [: ^ _0.5 * *:
 epanechnikov =: 3r4 * 0 >. 1 - *:
 
-samp =: (coname'') dobench_bonsai_ '+/ i. 201'
-eg =: (phi kde samp)"0
-
-'visible 0' plot (1.2*(>./samp)*(%~i.)1000);'eg'
-
+NB. samp =: (coname'') dobench_bonsai_ '+/ i. 201'
+NB. eg =: (phi kde samp)"0
+NB. 'visible 0' plot (1.2*(>./samp)*(%~i.)1000);'eg'

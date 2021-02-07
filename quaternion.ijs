@@ -21,4 +21,13 @@ NB. apparently these are faster if rank fixed here instead of at use
 'qr qi qj qk' =: = i. 4
 qz =: 4$0
 NB. cayley table:
-QCayley =: _8 ]\ i.~ ,/ Qx"1/~ (,-) (= i. 4)
+QCayley =: _8 ]\ i.~ ,/ Qx/~ (,-) (= i. 4)
+
+Qaa =: Qn @: }.
+
+Qrot =: 3 : 0
+ u =. u % n =. Qn u =. }. y
+ (2 * 12 o. n j. {. y) , u
+)
+
+Qrot 3 1 _2 0
