@@ -1,18 +1,19 @@
 load 'plot'
 coclass 'glicko'
 
-NB. constant related to how long it takes to go back to provisional
-NB. rating.
-t =: 1 NB. time (units are number of rating periods)
-c =: 350 (100 %~ -) &.: *: 50 NB. ...
+NB. glicko 1 rating system
+NB. http://www.glicko.net/glicko/glicko.pdf
+NB. http://www.glicko.net/research/glicko.pdf
 
-q =: 400 %~ ^. 10 NB. scaling constant
+NB. constant
+q =: 400 %~ ^. 10
 
 NB. G y -- y is rating deviation. G(RD), it comes from approximating
 NB. integration over the prior distribution of ratings given rating
 NB. deviation
 G =: 1 % (1+*&(3p_2**:q)) &.: *:
 
+NB. some "abstraction"
 RD =: 1&({"1)
 R =: 0&({"1)
 S =: 2&({"1)
@@ -33,8 +34,6 @@ dG =: dR,dRD
 NB. expected outcome of game according to ratings + deviations of two
 NB. players
 E =: 1 % 1 + 10 ^ _1r400 * ([: G (+&.:*:)&RD) * (-&R)
-
-1400 80 EG 1500 150
 
 tests =: 0 : 0
 1e_2 > | 0.995498 - G 30
