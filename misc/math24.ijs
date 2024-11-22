@@ -13,3 +13,5 @@ es=. ([: ,/ ops ([: , (' ',[) ,. ])"1 2/ perms) build y
 if. 0 = #es do. es =. ([: ,/ [: ,/ ops combp"1 2/ perms) build y end.
 es -."1 ' '
 )
+
+math24 12 12 9 5
