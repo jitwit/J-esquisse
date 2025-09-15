@@ -14,7 +14,7 @@ gauss_f =: 5 5 (+/ @ , @ (b55&*)) ;._3 ]
 
 NB. ask if maximal along direction
 suppress0=: 3 : 0
-z * *./ z (>: & |) y {~ dir_ix33 {~ dir z =. y {~ <1 1
+ z * *./ z (>: & |) y {~ dir_ix33 {~ dir z =. y {~ <1 1
 )
 
 NB. surpress non maximums
@@ -22,10 +22,10 @@ suppress_nonmax =: 3 3 suppress0 ;._3 ]
 
 NB. keep edges near strong edges (ones above threshold u)
 hysteresis=: 1 : 0
-3 3 *@:(4&{ * 2&e.)@:, ;._3 u I. y
+ 3 3 *@:(4&{ * 2&e.)@:, ;._3 u I. y
 )
 
 NB. grayscale => blur => intensity grad => directional maxes => threshold
 canny=: 1 : 0
-u hysteresis | suppress_nonmax grad_i gauss_f grayscale y
+ u hysteresis | suppress_nonmax grad_i gauss_f grayscale y
 )

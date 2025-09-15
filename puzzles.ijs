@@ -14,3 +14,6 @@ pd A R5
 pd 
 pd 'key "3 min rush" "puzzle battle" "5 min rush"'
 pd 'show'
+
+NB. line of best fit
+(%. 1,.i.@#) A PB

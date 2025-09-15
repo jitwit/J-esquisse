@@ -6,5 +6,5 @@ hf =. {.@[ e. ]          NB. contains central letter
 P =: w4 *. ss *. hf      NB. predicate
 Bee =: ] #~ P"1          NB. solve a spelling bee puzzle
 
-X =: 'HAEILVY '
+X =: 'TPOCNEY '
 X Bee D
